@@ -30,6 +30,9 @@
     <file xil_pn:fileType="FILE_XST" xil_pn:name="AXI_SPI_top.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="AXI_SPI_top_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="TB_AXI_SPI_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="addr_management.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="addr_management.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="addr_management.xst"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
@@ -52,6 +55,10 @@
       <outfile xil_pn:name="AXI_Lite_Writer.v"/>
       <outfile xil_pn:name="AXI_SPI_top.v"/>
       <outfile xil_pn:name="TB_AXI_SPI.v"/>
+    </transform>
+    <transform xil_pn:name="TRAN_SubProjectAbstractToPreProxy">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
   </transforms>
 

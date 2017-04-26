@@ -17,19 +17,19 @@ Total CPU time to Xst completion: 0.09 secs
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling verilog file "AXI_SPI_top.v" in library work
-Module <AXI_SPI_top> compiled
+Compiling verilog file "addr_management.v" in library work
+Module <addr_management> compiled
 No errors in compilation
-Analysis of file <"AXI_SPI_top.prj"> succeeded.
+Analysis of file <"addr_management.prj"> succeeded.
  
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> 
 
-Total memory usage is 202004 kilobytes
+Total memory usage is 201956 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-04-26T22:25:35</DateModified>
+  <DateModified>2017-04-27T00:59:07</DateModified>
   <ModuleName>AXI_SPI_top</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>//VBOXSVR/Downloads/AXI_Lite_to_SPI/AXI_Lite_to_SPI/iseconfig/AXI_SPI_top.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>//VBOXSVR/Downloads/AXI_Lite_to_SPI/AXI_Lite_to_SPI\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/iseconfig/AXI_SPI_top.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI\</ImplementationReportsDirectory>
   <DateInitialized>2017-03-13T09:58:27</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
