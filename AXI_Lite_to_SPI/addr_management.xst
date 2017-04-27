@@ -1,5 +1,0 @@
-set -tmpdir "C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp"
-set -xsthdpdir "C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/xst"
-elaborate
--ifn addr_management.prj
--ifmt mixed
