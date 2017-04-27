@@ -1,0 +1,43 @@
+Release 14.7 ngdbuild P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
+-intstyle ise -dd _ngo -nt timestamp -i -p xc3s200-ft256-4 AXI_SPI_top.ngc
+AXI_SPI_top.ngd
+
+Reading NGO file
+"D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/AXI_SPI_top.ngc"
+...
+Loading design module
+"D:\Documents\egyetem\rendszerarch\projektek\AXI_Lite_to_SPI/AXI_SPI_top.ngc"...
+WARNING:NgdBuild:578 - Design contains no instances.
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+
+Checking expanded design ...
+ERROR:NgdBuild:605 - logical root block 'AXI_SPI_top' with type 'AXI_SPI_top' is
+   unexpanded. Symbol 'AXI_SPI_top' is not supported in target 'spartan3'.
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     1
+  Number of warnings:   1
+
+Total memory usage is 154152 kilobytes
+
+Total REAL time to NGDBUILD completion:  5 sec
+Total CPU time to NGDBUILD completion:   4 sec
+
+One or more errors were found during NGDBUILD.  No NGD file will be written.
+
+Writing NGDBUILD log file "AXI_SPI_top.bld"...

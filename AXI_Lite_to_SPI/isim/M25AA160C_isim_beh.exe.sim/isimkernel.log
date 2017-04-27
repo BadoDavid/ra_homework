@@ -1,0 +1,29 @@
+Command line:
+   M25AA160C_isim_beh.exe
+     -simmode  gui
+     -simrunnum  1
+     -socket  60310
+
+Mon Mar 20 14:01:47 2017
+
+
+ Elaboration Time: 0.0468 sec
+
+ Current Memory Usage: 666.829 Meg
+
+ Total Signals          : 147
+ Total Nets             : 931
+ Total Signal Drivers   : 133
+ Total Blocks           : 2
+ Total Primitive Blocks : 2
+ Total Processes        : 162
+ Total Traceable Variables  : 58
+ Total Scalar Nets and Variables : 18203
+Total Line Count : 252
+
+ Total Simulation Time: 0.1248 sec
+
+ Current Memory Usage: 666.829 Meg
+
+Mon Mar 20 14:02:10 2017
+
