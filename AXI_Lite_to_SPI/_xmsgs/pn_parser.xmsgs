@@ -8,22 +8,28 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/25AA160C.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/25AA160C.v&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/AXI_Lite_Reader.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Reader.v&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/AXI_Lite_Writer.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/AXI_SPI_top.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.v&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/SPI_INVERT.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/SPI_INVERT.v&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/SPI_Writer.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/SPI_Writer.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/addr_management.v&quot; into library work</arg>
 </msg>
 
 </messages>

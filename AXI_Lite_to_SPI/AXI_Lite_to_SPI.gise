@@ -49,6 +49,7 @@
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="addr_management_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
@@ -64,13 +65,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1492181078" xil_pn:in_ck="7187636993187157527" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1492181078">
+    <transform xil_pn:end_ts="1493287017" xil_pn:in_ck="-7762020420315881902" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1493287017">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="25AA160C.v"/>
       <outfile xil_pn:name="AXI_Lite_Reader.v"/>
       <outfile xil_pn:name="AXI_Lite_Writer.v"/>
@@ -78,14 +75,17 @@
       <outfile xil_pn:name="SPI_INVERT.v"/>
       <outfile xil_pn:name="SPI_Writer.v"/>
       <outfile xil_pn:name="TB_AXI_SPI.v"/>
+      <outfile xil_pn:name="addr_management.v"/>
     </transform>
     <transform xil_pn:end_ts="1490696158" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="8119700915022018105" xil_pn:start_ts="1490696153">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1490696158" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="3869293892167747569" xil_pn:start_ts="1490696158">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1490008842" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="4641318271003307238" xil_pn:start_ts="1490008842">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -97,6 +97,7 @@
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="25AA160C.v"/>
@@ -111,6 +112,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
@@ -125,6 +127,7 @@
     <transform xil_pn:end_ts="1492181084" xil_pn:in_ck="239938332684844400" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8238929933520176465" xil_pn:start_ts="1492181084">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
@@ -163,6 +166,9 @@
     <transform xil_pn:end_ts="1492180551" xil_pn:in_ck="-460017844963571631" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-7068365938410377274" xil_pn:start_ts="1492180535">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="AXI_SPI_top.lso"/>
       <outfile xil_pn:name="AXI_SPI_top.ngc"/>
@@ -185,6 +191,7 @@
       <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="AXI_SPI_top.bld"/>
       <outfile xil_pn:name="AXI_SPI_top_ngdbuild.xrpt"/>
       <outfile xil_pn:name="_ngo"/>
