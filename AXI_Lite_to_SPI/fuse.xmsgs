@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/25AA160C.v" Line 461: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/25AA160C.v" Line 462: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/25AA160C.v" Line 463: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"D:/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/TB_AXI_SPI.v" Line 128: Target &lt;<arg fmt="%s" index="1">R_Data</arg>&gt; of concurrent assignment or output port connection should be a net type.
+</msg>
+
+</messages>
+

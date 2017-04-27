@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/Mate/Documents/egyetem/rendszerarch/projektek/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="TB_AXI_SPI" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="15" />
+   <wvobject fp_name="/TB_AXI_SPI/SPI_RESET" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_RESET</obj_property>
+      <obj_property name="ObjectShortName">SPI_RESET</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_Writer_RST" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_Writer_RST</obj_property>
+      <obj_property name="ObjectShortName">SPI_Writer_RST</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SCK_Test" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SCK_Test</obj_property>
+      <obj_property name="ObjectShortName">SCK_Test</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/CS_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">CS_N</obj_property>
+      <obj_property name="ObjectShortName">CS_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/WP_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">WP_N</obj_property>
+      <obj_property name="ObjectShortName">WP_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/HOLD_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HOLD_N</obj_property>
+      <obj_property name="ObjectShortName">HOLD_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/Data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">Data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">Data[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_W/W_DATA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">W_DATA[7:0]</obj_property>
+      <obj_property name="ObjectShortName">W_DATA[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_Writer_Start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_Writer_Start</obj_property>
+      <obj_property name="ObjectShortName">SPI_Writer_Start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_Writer_Running" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_Writer_Running</obj_property>
+      <obj_property name="ObjectShortName">SPI_Writer_Running</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/After_W_CSN" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">After_W_CSN</obj_property>
+      <obj_property name="ObjectShortName">After_W_CSN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_W/State" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">State</obj_property>
+      <obj_property name="ObjectShortName">State</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/MOSI_Test" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">MOSI_Test</obj_property>
+      <obj_property name="ObjectShortName">MOSI_Test</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/MISO_Test" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">MISO_Test</obj_property>
+      <obj_property name="ObjectShortName">MISO_Test</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_W/BitCNTR" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">BitCNTR[2:0]</obj_property>
+      <obj_property name="ObjectShortName">BitCNTR[2:0]</obj_property>
+   </wvobject>
+</wave_config>

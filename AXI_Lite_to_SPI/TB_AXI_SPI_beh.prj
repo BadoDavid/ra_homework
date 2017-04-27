@@ -1,0 +1,7 @@
+verilog work "SPI_Writer.v"
+verilog work "AXI_SPI_top.v"
+verilog work "AXI_Lite_Writer.v"
+verilog work "AXI_Lite_Reader.v"
+verilog work "25AA160C.v"
+verilog work "TB_AXI_SPI.v"
+verilog work "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
