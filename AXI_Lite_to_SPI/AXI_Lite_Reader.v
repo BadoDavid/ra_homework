@@ -31,9 +31,9 @@ module AXI_Lite_Reader(
 	input [1:0] RRESP,
 	//Control:
 	input R_Start,
-	input Read_from,
-	output reg R_Data,
-	input R_Prot,
+	input [31:0] Read_from,
+	output reg [31:0] R_Data,
+	input [2:0] R_Prot,
 	output reg Reader_Run
 	);
 	reg [1:0] state;

@@ -46,6 +46,4 @@ module AXI_SPI_top(
     );
 
 
-
-
 endmodule
