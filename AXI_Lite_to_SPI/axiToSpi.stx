@@ -1,0 +1,49 @@
+Release 14.6 - xst P.68d (nt)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Parameter xsthdpdir set to C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.22 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "M_SpiSender.v" in library work
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 84 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 85 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 86 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 87 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 88 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 89 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 90 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 91 Too many digits specified in binary constant
+Compiling verilog file "ipcore_dir/axiToSpi_fifo.v" in library work
+Module <M_SpiSender> compiled
+Compiling verilog file "axiToSpi.v" in library work
+Module <axiToSpi_fifo> compiled
+Module <axiToSpi> compiled
+No errors in compilation
+Analysis of file <"axiToSpi.prj"> succeeded.
+ 
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.25 secs
+ 
+--> 
+
+Total memory usage is 132076 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    9 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

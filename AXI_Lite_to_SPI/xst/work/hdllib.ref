@@ -1,1 +1,4 @@
 MO AXI_SPI_top NULL AXI_SPI_top.v vlg53/_a_x_i___s_p_i__top.bin 1492180543
+MO axiToSpi NULL axiToSpi.v vlg7D/axi_to_spi.bin 1494183339
+MO axiToSpi_fifo NULL ipcore_dir/axiToSpi_fifo.v vlg4C/axi_to_spi__fifo.bin 1494183339
+MO M_SpiSender NULL M_SpiSender.v vlg5D/_m___spi_sender.bin 1494183339

@@ -1,0 +1,3 @@
+verilog work "M_SpiSender.v"
+verilog work "ipcore_dir/axiToSpi_fifo.v"
+verilog work "axiToSpi.v"
