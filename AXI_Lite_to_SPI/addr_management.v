@@ -27,8 +27,6 @@ module addr_management(
    input WVALID,
    output WREADY,
    input [31:0] WDATA,
-   output BVALID,
-   input BREADY,
    input ARVALID,
    output ARREADY,
    input [31:0] ARADDR,

@@ -75,7 +75,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494242397" xil_pn:in_ck="-2824836789290683555" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494242397">
+    <transform xil_pn:end_ts="1494266404" xil_pn:in_ck="-2824836789290683555" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494266404">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -109,9 +109,8 @@
       <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1494243342" xil_pn:in_ck="800716666246360164" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1494243342">
+    <transform xil_pn:end_ts="1494266408" xil_pn:in_ck="800716666246360164" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1494266408">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
@@ -129,7 +128,7 @@
       <outfile xil_pn:name="addr_management.v"/>
       <outfile xil_pn:name="axiToSpi.v"/>
     </transform>
-    <transform xil_pn:end_ts="1494243344" xil_pn:in_ck="800716666246360164" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1494243342">
+    <transform xil_pn:end_ts="1494266411" xil_pn:in_ck="800716666246360164" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1494266408">
       <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>

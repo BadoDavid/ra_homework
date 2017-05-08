@@ -24,19 +24,19 @@ module AXI_Lite_Writer(
 		 output reg AWVALID,
 		 input AWREADY,
 		 output reg [31:0] AWADDR,
-		 output reg [2:0] AWPROT,
+		 //output reg [2:0] AWPROT,
 		 output reg WVALID,
 		 input WREADY,
 		 output reg [31:0] WDATA,
-		 output reg [3:0] WSTRB,
-		 input BVALID,
-		 input [1:0] BRESP,
-		 output reg BREADY,
+		 //output reg [3:0] WSTRB,
+		 //input BVALID,
+		 //input [1:0] BRESP,
+		 //output reg BREADY,
 		 //CONTROL:
 		 input [31:0] Write_to,
 		 input [31:0] W_Data,
-		 input [3:0] Strobe,
-		 input [2:0] W_Prot,
+		 //input [3:0] Strobe,
+		 //input [2:0] W_Prot,
 		 input W_Start,
 		 output reg Writer_Run
 		);
@@ -50,9 +50,9 @@ module AXI_Lite_Writer(
 				WVALID		<= 0;
 				WDATA			<= 0;
 				AWADDR		<= 0;
-				WSTRB			<= 0;
-				BREADY		<= 0;
-				AWPROT		<= 0;
+				//WSTRB			<= 0;
+				//BREADY		<= 0;
+				//AWPROT		<= 0;
 				state 		<= 2'b00;
 				started		<= 0;
 				Writer_Run	<= 0;
@@ -64,12 +64,12 @@ module AXI_Lite_Writer(
 			if (started) begin 
 				if (state == 2'b00) begin
 						AWADDR 	<= Write_to;
-						AWPROT	<= W_Prot;
+						//AWPROT	<= W_Prot;
 						AWVALID	<= 1;
 						WVALID	<= 0;
 						WDATA		<= 0;
-						WSTRB		<= 0;
-						BREADY	<= 0;
+						//WSTRB		<= 0;
+						//BREADY	<= 0;
 						state		<= 2'b01;
 					end
 				else if (state == 2'b01) begin
@@ -77,29 +77,31 @@ module AXI_Lite_Writer(
 						AWVALID	<= 0;
 						WDATA		<= W_Data; //Data to be written in AXI-SPI slave
 						WVALID	<= 1;
-						WSTRB		<= Strobe; //Active (valid) bytes of WDATA 
+						//WSTRB		<= Strobe; //Active (valid) bytes of WDATA 
 						state		<= 2'b10;
 						end
 					end
 				else if (state == 2'b10) begin
 					if (WREADY) begin
 						WVALID	<= 0;
-						WSTRB		<= 4'b0000;
-						BREADY	<= 1;
-						state		<= 2'b11;
+						//WSTRB		<= 4'b0000;
+						//BREADY	<= 1;
+						state			<= 2'b00;
+						Writer_Run	<= 0;			//Can be started again
+						started		<= 0;
 						end
 					end
-				else if (state == 2'b11) begin
-					if (BVALID) begin
+				/*else if (state == 2'b11) begin
+					/*if (BVALID) begin
 						BREADY 		<= 0;	
-						if(BRESP == 2'b00) begin	//Response is OK
+						/*if(BRESP == 2'b00) begin	//Response is OK
 							state			<= 2'b00;
 							Writer_Run	<= 0;			//Can be started again
 							started		<= 0;
 							end
 						else state 		<= 2'b00;	//Tries writing the same data again
 						end
-					end
+					end*/
 				end
 			end				
 endmodule
