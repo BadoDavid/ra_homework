@@ -18,6 +18,8 @@ Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/addr_management
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/SPI_Writer.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" into library work
+WARNING:HDLCompiler:114 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" Line 95: /* in comment
+WARNING:HDLCompiler:114 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" Line 97: /* in comment
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Reader.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI.v" into library work

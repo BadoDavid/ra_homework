@@ -29,6 +29,12 @@
 <msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 272: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
 </msg>
 
+<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" Line 95: /* in comment
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" Line 97: /* in comment
+</msg>
+
 <msg type="warning" file="HDLCompiler" num="267" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 136: Cannot find port <arg fmt="%s" index="1">DATA_COUNT</arg> on this module
 </msg>
 
