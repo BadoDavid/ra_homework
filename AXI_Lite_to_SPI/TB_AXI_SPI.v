@@ -202,7 +202,6 @@ module TB_AXI_SPI;
 				W_Data		<= 32'h00000000;	//32 bit Data
 				//Strobe		<= 4'b1111;			//Valid Bytes in Data (e.g. 1111: the whole 32bits are valid, 0011: The last 2 Bytes (16 bits) are valid)
 				//W_Prot		<= 3'b000;			//Data[0]/Instr[1], Secure[0]/Non-Secure[1], Normal access[0]/Privileged[1]
-				//W_Prot		<= 3'b000;			//Data[0]/Instr[1], Secure[0]/Non-Secure[1], Normal access[0]/Privileged[1]
 				W_Start		<= 1;					//Send Data
 	end
 	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
@@ -303,6 +302,43 @@ module TB_AXI_SPI;
 		#3000	
 			After_W_CSN			<= 1;
 	end
+	/**/
+	
+	/*************************** UUT Test *****************************************/
+	/*			Configures the AXI-Lite - SPI Peripheral										*/
+	/*			Writes a byte to the memory (Address=, Data=)								*/
+	/*			Then reads it.																			*/
+	/******************************************************************************/
+	// Remove the * to test the UUT
+	localparam
+		BASE_ADDRESS  			= 32'hFFFF0000,
+		OFFSET_COMMAND_REG	= 4'b1000,
+		OFFSET_STATUS_REG		= 4'b0100,
+		OFFSET_TX_FIFO 		= 4'b1100,
+		OFFSET_RX_FIFO 		= 4'b0000,
+		CMD_REG					= 32'bXXXX0000000000000000000000000000, //XXXX:CPOL CPHA DIV1 DIV2
+		TX_DATA					= 32'h00000000; //TODO
+	
+	//Configure the command register	
+	initial begin
+		#37	Write_to		<= BASE_ADDRESS+OFFSET_COMMAND_REG;	
+				W_Data		<= CMD_REG;	
+				W_Start		<= 1;					//Send Data
+	end
+	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
+	//Write to the tx_fifo
+	initial begin
+		#207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+				W_Data		<= CMD_REG;	//32 bit Data
+				W_Start		<= 1;					//Send Data
+	end	
+	//Read status register
+	initial begin
+		#607	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
+				R_Start		<= 1;					//Send Data
+	end
+	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0; 
+
 	/**/
 endmodule
 
