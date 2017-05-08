@@ -1,0 +1,5 @@
+set -tmpdir "C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp"
+set -xsthdpdir "C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst"
+elaborate
+-ifn M_SpiSender.prj
+-ifmt mixed

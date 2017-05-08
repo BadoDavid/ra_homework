@@ -52,7 +52,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_RxFifo_pctrl.vhd
+-- Filename: axiToSpi_rxFifo_pctrl.vhd
 --
 -- Description:
 --   Used for protocol control on write and read interface stimulus and status generation
@@ -67,9 +67,9 @@ USE IEEE.std_logic_arith.all;
 USE IEEE.std_logic_misc.all;
 
 LIBRARY work;
-USE work.axiToSpi_RxFifo_pkg.ALL;
+USE work.axiToSpi_rxFifo_pkg.ALL;
 
-ENTITY axiToSpi_RxFifo_pctrl IS
+ENTITY axiToSpi_rxFifo_pctrl IS
   GENERIC(
    AXI_CHANNEL         : STRING  :="NONE";
    C_APPLICATION_TYPE  : INTEGER := 0;
@@ -103,7 +103,7 @@ ENTITY axiToSpi_RxFifo_pctrl IS
 END ENTITY;
 
 
-ARCHITECTURE fg_pc_arch OF axiToSpi_RxFifo_pctrl IS
+ARCHITECTURE fg_pc_arch OF axiToSpi_rxFifo_pctrl IS
  
  CONSTANT C_DATA_WIDTH   : INTEGER := if_then_else(C_DIN_WIDTH > C_DOUT_WIDTH,C_DIN_WIDTH,C_DOUT_WIDTH);
  CONSTANT LOOP_COUNT     : INTEGER := divroundup(C_DATA_WIDTH,8);
@@ -317,7 +317,7 @@ END PROCESS;
     -----------------------------------------------------
     -- WR_EN GENERATION
     -----------------------------------------------------
-    gen_rand_wr_en:axiToSpi_RxFifo_rng
+    gen_rand_wr_en:axiToSpi_rxFifo_rng
     GENERIC MAP(
     	         WIDTH => 8,
                  SEED  => TB_SEED+1
@@ -376,7 +376,7 @@ END PROCESS;
     -----------------------------------------------------
     -- RD_EN GENERATION
     -----------------------------------------------------
-    gen_rand_rd_en:axiToSpi_RxFifo_rng
+    gen_rand_rd_en:axiToSpi_rxFifo_rng
     GENERIC MAP(
     	         WIDTH => 8,
                  SEED  => TB_SEED

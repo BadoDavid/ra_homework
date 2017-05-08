@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_TxFifo_dverif.vhd
+-- Filename: axiToSpi_txFifo_dverif.vhd
 --
 -- Description:
 --   Used for FIFO read interface stimulus generation and data checking
@@ -66,9 +66,9 @@ USE IEEE.std_logic_arith.all;
 USE IEEE.std_logic_misc.all;
 
 LIBRARY work;
-USE work.axiToSpi_TxFifo_pkg.ALL;
+USE work.axiToSpi_txFifo_pkg.ALL;
 
-ENTITY axiToSpi_TxFifo_dverif IS
+ENTITY axiToSpi_txFifo_dverif IS
   GENERIC(
    C_DIN_WIDTH        : INTEGER := 0;
    C_DOUT_WIDTH       : INTEGER := 0;
@@ -88,7 +88,7 @@ ENTITY axiToSpi_TxFifo_dverif IS
 END ENTITY;
 
 
-ARCHITECTURE fg_dv_arch OF axiToSpi_TxFifo_dverif IS
+ARCHITECTURE fg_dv_arch OF axiToSpi_txFifo_dverif IS
  
  CONSTANT C_DATA_WIDTH    : INTEGER := if_then_else(C_DIN_WIDTH > C_DOUT_WIDTH,C_DIN_WIDTH,C_DOUT_WIDTH);
  CONSTANT EXTRA_WIDTH     : INTEGER := if_then_else(C_CH_TYPE = 2,1,0);
@@ -127,7 +127,7 @@ BEGIN
       expected_dout <= rand_num(C_DOUT_WIDTH-1 DOWNTO 0);
 
     gen_num:FOR N IN LOOP_COUNT-1 DOWNTO 0 GENERATE
-      rd_gen_inst2:axiToSpi_TxFifo_rng
+      rd_gen_inst2:axiToSpi_txFifo_rng
       GENERIC MAP(
       	        WIDTH => 8,
                 SEED  => TB_SEED+N

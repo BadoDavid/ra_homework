@@ -50,5 +50,5 @@ rem ----------------------------------------------------------------------------
 rmdir /S /Q results
 mkdir results
 cd results
-copy ..\..\..\axiToSpi_TxFifo.ngc .
+copy ..\..\..\axiToSpi_txFifo.ngc .
 planAhead -mode batch -source ..\planAhead_ise.tcl

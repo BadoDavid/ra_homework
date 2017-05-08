@@ -46,22 +46,22 @@
 
 
 set device xc3s200ft256-4
-set projName axiToSpi_TxFifo
-set design axiToSpi_TxFifo
+set projName axiToSpi_txFifo
+set design axiToSpi_txFifo
 set projDir [file dirname [info script]]
 create_project $projName $projDir/results/$projName -part $device -force
 set_property design_mode RTL [current_fileset -srcset]
-set top_module axiToSpi_TxFifo_exdes
-add_files -norecurse {../../example_design/axiToSpi_TxFifo_exdes.vhd}
-add_files -norecurse {./axiToSpi_TxFifo.ngc}
-import_files -fileset [get_filesets constrs_1] -force -norecurse {../../example_design/axiToSpi_TxFifo_exdes.xdc}
-set_property top axiToSpi_TxFifo_exdes [get_property srcset [current_run]]
+set top_module axiToSpi_txFifo_exdes
+add_files -norecurse {../../example_design/axiToSpi_txFifo_exdes.vhd}
+add_files -norecurse {./axiToSpi_txFifo.ngc}
+import_files -fileset [get_filesets constrs_1] -force -norecurse {../../example_design/axiToSpi_txFifo_exdes.xdc}
+set_property top axiToSpi_txFifo_exdes [get_property srcset [current_run]]
 synth_design
 opt_design 
 place_design 
 route_design 
-write_sdf -rename_top_module axiToSpi_TxFifo_exdes -file routed.sdf 
-write_verilog -nolib -mode timesim -sdf_anno false -rename_top_module axiToSpi_TxFifo_exdes routed.v
+write_sdf -rename_top_module axiToSpi_txFifo_exdes -file routed.sdf 
+write_verilog -nolib -mode timesim -sdf_anno false -rename_top_module axiToSpi_txFifo_exdes routed.v
 report_timing -nworst 30 -path_type full -file routed.twr
 report_drc -file report.drc
 write_bitstream -bitgen_options {-g UnconstrainedPins:Allow}

@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_RxFifo_exdes.vhd
+-- Filename: axiToSpi_rxFifo_exdes.vhd
 --
 -- Description:
 --   This is the FIFO core wrapper with BUFG instances for clock connections.
@@ -71,9 +71,12 @@ use unisim.vcomponents.all;
 --------------------------------------------------------------------------------
 -- Entity Declaration
 --------------------------------------------------------------------------------
-entity axiToSpi_RxFifo_exdes is
+entity axiToSpi_rxFifo_exdes is
    PORT (
            CLK                       : IN  std_logic;
+     	   DATA_COUNT                : OUT std_logic_vector(5-1 DOWNTO 0);
+           WR_ACK                    : OUT std_logic;
+           VALID                     : OUT std_logic;
            RST                       : IN  std_logic;
            WR_EN 		     : IN  std_logic;
            RD_EN                     : IN  std_logic;
@@ -82,19 +85,22 @@ entity axiToSpi_RxFifo_exdes is
            FULL                      : OUT std_logic;
            EMPTY                     : OUT std_logic);
 
-end axiToSpi_RxFifo_exdes;
+end axiToSpi_rxFifo_exdes;
 
 
 
-architecture xilinx of axiToSpi_RxFifo_exdes is
+architecture xilinx of axiToSpi_rxFifo_exdes is
 
   signal clk_i    : std_logic;
 
 
 
-  component axiToSpi_RxFifo is
+  component axiToSpi_rxFifo is
    PORT (
            CLK                       : IN  std_logic;
+     	   DATA_COUNT                : OUT std_logic_vector(5-1 DOWNTO 0);
+           WR_ACK                    : OUT std_logic;
+           VALID                     : OUT std_logic;
            RST                       : IN  std_logic;
            WR_EN 		     : IN  std_logic;
            RD_EN                     : IN  std_logic;
@@ -115,9 +121,12 @@ begin
 
 
 
-  exdes_inst : axiToSpi_RxFifo 
+  exdes_inst : axiToSpi_rxFifo 
     PORT MAP (
            CLK                       => clk_i,
+           DATA_COUNT                => data_count,
+           WR_ACK                    => wr_ack,
+           VALID                     => valid,
            RST                       => rst,
            WR_EN 		     => wr_en,
            RD_EN                     => rd_en,

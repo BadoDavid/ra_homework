@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_RxFifo_synth.vhd
+-- Filename: axiToSpi_rxFifo_synth.vhd
 --
 -- Description:
 --   This is the demo testbench for fifo_generator core.
@@ -72,12 +72,12 @@ LIBRARY std;
 USE std.textio.ALL;
 
 LIBRARY work;
-USE work.axiToSpi_RxFifo_pkg.ALL;
+USE work.axiToSpi_rxFifo_pkg.ALL;
 
 --------------------------------------------------------------------------------
 -- Entity Declaration
 --------------------------------------------------------------------------------
-ENTITY axiToSpi_RxFifo_synth IS
+ENTITY axiToSpi_rxFifo_synth IS
   GENERIC(
   	   FREEZEON_ERROR : INTEGER := 0;
 	   TB_STOP_CNT    : INTEGER := 0;
@@ -91,10 +91,13 @@ ENTITY axiToSpi_RxFifo_synth IS
       );
 END ENTITY;
 
-ARCHITECTURE simulation_arch OF axiToSpi_RxFifo_synth IS
+ARCHITECTURE simulation_arch OF axiToSpi_rxFifo_synth IS
 
     -- FIFO interface signal declarations
     SIGNAL clk_i	                  :   STD_LOGIC;
+    SIGNAL data_count                     :   STD_LOGIC_VECTOR(5-1 DOWNTO 0);
+    SIGNAL wr_ack                         :   STD_LOGIC;
+    SIGNAL valid                          :   STD_LOGIC;
     SIGNAL rst	                          :   STD_LOGIC;
     SIGNAL wr_en                          :   STD_LOGIC;
     SIGNAL rd_en                          :   STD_LOGIC;
@@ -179,7 +182,7 @@ ARCHITECTURE simulation_arch OF axiToSpi_RxFifo_synth IS
     full_i                    <=   full;
     empty_i                   <=   empty;
 
-    fg_dg_nv: axiToSpi_RxFifo_dgen
+    fg_dg_nv: axiToSpi_rxFifo_dgen
       GENERIC MAP (
           	C_DIN_WIDTH       => 8,
 		C_DOUT_WIDTH      => 8,
@@ -195,7 +198,7 @@ ARCHITECTURE simulation_arch OF axiToSpi_RxFifo_synth IS
                 WR_DATA           => wr_data
 	       );
 
-   fg_dv_nv: axiToSpi_RxFifo_dverif
+   fg_dv_nv: axiToSpi_rxFifo_dverif
     GENERIC MAP (  
 	       C_DOUT_WIDTH       => 8,
 	       C_DIN_WIDTH        => 8,
@@ -213,7 +216,7 @@ ARCHITECTURE simulation_arch OF axiToSpi_RxFifo_synth IS
 	      DOUT_CHK            => dout_chk_i
 	    );
 
-    fg_pc_nv: axiToSpi_RxFifo_pctrl
+    fg_pc_nv: axiToSpi_rxFifo_pctrl
     GENERIC MAP ( 
               AXI_CHANNEL         => "Native",
               C_APPLICATION_TYPE  => 0,
@@ -249,9 +252,12 @@ ARCHITECTURE simulation_arch OF axiToSpi_RxFifo_synth IS
 
 
 
-  axiToSpi_RxFifo_inst : axiToSpi_RxFifo_exdes 
+  axiToSpi_rxFifo_inst : axiToSpi_rxFifo_exdes 
     PORT MAP (
            CLK                       => clk_i,
+           DATA_COUNT                => data_count,
+           WR_ACK                    => wr_ack,
+           VALID                     => valid,
            RST                       => rst,
            WR_EN 		     => wr_en,
            RD_EN                     => rd_en,

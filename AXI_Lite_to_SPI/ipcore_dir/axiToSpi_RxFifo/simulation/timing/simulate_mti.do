@@ -52,15 +52,15 @@ echo "Compiling Core Verilog UNISIM/Behavioral model"
 vlog -work work ../../implement/results/routed.v
 
 echo "Compiling Test Bench Files"
-vcom -work work ../axiToSpi_RxFifo_pkg.vhd  
-vcom -work work ../axiToSpi_RxFifo_rng.vhd 
-vcom -work work ../axiToSpi_RxFifo_dgen.vhd
-vcom -work work ../axiToSpi_RxFifo_dverif.vhd
-vcom -work work ../axiToSpi_RxFifo_pctrl.vhd 
-vcom -work work ../axiToSpi_RxFifo_synth.vhd 
-vcom -work work ../axiToSpi_RxFifo_tb.vhd
+vcom -work work ../axiToSpi_rxFifo_pkg.vhd  
+vcom -work work ../axiToSpi_rxFifo_rng.vhd 
+vcom -work work ../axiToSpi_rxFifo_dgen.vhd
+vcom -work work ../axiToSpi_rxFifo_dverif.vhd
+vcom -work work ../axiToSpi_rxFifo_pctrl.vhd 
+vcom -work work ../axiToSpi_rxFifo_synth.vhd 
+vcom -work work ../axiToSpi_rxFifo_tb.vhd
 
-vsim  -t ps -voptargs="+acc" +transport_int_delays -L simprims_ver glbl -sdfmax /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst=../../implement/results/routed.sdf work.axiToSpi_RxFifo_tb
+vsim  -t ps -voptargs="+acc" +transport_int_delays -L simprims_ver glbl -sdfmax /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst=../../implement/results/routed.sdf work.axiToSpi_rxFifo_tb
 
 add log -r /*
 do wave_mti.do

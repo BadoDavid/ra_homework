@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_TxFifo_exdes.vhd
+-- Filename: axiToSpi_txFifo_exdes.vhd
 --
 -- Description:
 --   This is the FIFO core wrapper with BUFG instances for clock connections.
@@ -71,35 +71,41 @@ use unisim.vcomponents.all;
 --------------------------------------------------------------------------------
 -- Entity Declaration
 --------------------------------------------------------------------------------
-entity axiToSpi_TxFifo_exdes is
+entity axiToSpi_txFifo_exdes is
    PORT (
            CLK                       : IN  std_logic;
+     	   DATA_COUNT                : OUT std_logic_vector(5-1 DOWNTO 0);
+           WR_ACK                    : OUT std_logic;
+           VALID                     : OUT std_logic;
            RST                       : IN  std_logic;
            WR_EN 		     : IN  std_logic;
            RD_EN                     : IN  std_logic;
-           DIN                       : IN  std_logic_vector(8-1 DOWNTO 0);
-           DOUT                      : OUT std_logic_vector(8-1 DOWNTO 0);
+           DIN                       : IN  std_logic_vector(9-1 DOWNTO 0);
+           DOUT                      : OUT std_logic_vector(9-1 DOWNTO 0);
            FULL                      : OUT std_logic;
            EMPTY                     : OUT std_logic);
 
-end axiToSpi_TxFifo_exdes;
+end axiToSpi_txFifo_exdes;
 
 
 
-architecture xilinx of axiToSpi_TxFifo_exdes is
+architecture xilinx of axiToSpi_txFifo_exdes is
 
   signal clk_i    : std_logic;
 
 
 
-  component axiToSpi_TxFifo is
+  component axiToSpi_txFifo is
    PORT (
            CLK                       : IN  std_logic;
+     	   DATA_COUNT                : OUT std_logic_vector(5-1 DOWNTO 0);
+           WR_ACK                    : OUT std_logic;
+           VALID                     : OUT std_logic;
            RST                       : IN  std_logic;
            WR_EN 		     : IN  std_logic;
            RD_EN                     : IN  std_logic;
-           DIN                       : IN  std_logic_vector(8-1 DOWNTO 0);
-           DOUT                      : OUT std_logic_vector(8-1 DOWNTO 0);
+           DIN                       : IN  std_logic_vector(9-1 DOWNTO 0);
+           DOUT                      : OUT std_logic_vector(9-1 DOWNTO 0);
            FULL                      : OUT std_logic;
            EMPTY                     : OUT std_logic);
 
@@ -115,9 +121,12 @@ begin
 
 
 
-  exdes_inst : axiToSpi_TxFifo 
+  exdes_inst : axiToSpi_txFifo 
     PORT MAP (
            CLK                       => clk_i,
+           DATA_COUNT                => data_count,
+           WR_ACK                    => wr_ack,
+           VALID                     => valid,
            RST                       => rst,
            WR_EN 		     => wr_en,
            RD_EN                     => rd_en,

@@ -57,7 +57,7 @@
 // (in parentheses) to your own signal names.
 
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
-axiToSpi_RxFifo your_instance_name (
+axiToSpi_rxFifo your_instance_name (
   .clk(clk), // input clk
   .rst(rst), // input rst
   .din(din), // input [7 : 0] din
@@ -65,12 +65,15 @@ axiToSpi_RxFifo your_instance_name (
   .rd_en(rd_en), // input rd_en
   .dout(dout), // output [7 : 0] dout
   .full(full), // output full
-  .empty(empty) // output empty
+  .wr_ack(wr_ack), // output wr_ack
+  .empty(empty), // output empty
+  .valid(valid), // output valid
+  .data_count(data_count) // output [4 : 0] data_count
 );
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 
-// You must compile the wrapper file axiToSpi_RxFifo.v when simulating
-// the core, axiToSpi_RxFifo. When compiling the wrapper file, be sure to
+// You must compile the wrapper file axiToSpi_rxFifo.v when simulating
+// the core, axiToSpi_rxFifo. When compiling the wrapper file, be sure to
 // reference the XilinxCoreLib Verilog simulation library. For detailed
 // instructions, please refer to the "CORE Generator Help".
 

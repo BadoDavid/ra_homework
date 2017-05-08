@@ -27,7 +27,8 @@ module M_SpiSender(
 	 input [1:0] clkDiv,
     input [7:0] txData,
     output reg [7:0] rxData,
-    output reg ready,
+    output reg ready, // ready for instruction (idle)
+	 output reg returnedValue, // shows if the data emitted is return from a read seq.
 // SPI external
     output SCK,
     output reg CE,
@@ -36,6 +37,19 @@ module M_SpiSender(
 	 input CPOL,
     input CPHA
     );
+
+localparam
+	SPI_CMD_READ  = 8'b0000_0011, // Read data from memory array beginning at selected address
+	SPI_CMD_WRITE = 8'b0000_0010; // Write data to memory array beginning at selected address
+
+	// following two are used for determining returnData
+	reg returnValue = 0; // tells if the current long term sequence is expected to return a value
+								// (e.g. as a read cycle returns read data
+	reg [1:0] longSequenceStep = 0; 	// shows cycle number of the long term sequence
+										// e.g. 	SPI_CMD_READ 	--> 0th
+										//			ADDR0				--> 1st
+										//			ADDR1				--> 2nd
+										//			READ BYTE		--> 3rd
 
 //**************** CLOCK DIVIDER ****************
 
@@ -95,6 +109,9 @@ module M_SpiSender(
    always @(posedge clk)
       if (rst) begin
          state <= s_def;
+			returnedValue <= 0;
+			returnValue <= 0;
+			longSequenceStep <= 4'b0;
       end
       else
 			case (state)
@@ -105,10 +122,19 @@ module M_SpiSender(
 						
 						// write data to tx register if CPHA=0
 						// see 'initial data setup notes'
-						if( CPHA == 1'b0)
+						if (CPHA == 1'b0)
 							txReg <= txData;
 						
+						if (txData == SPI_CMD_READ)
+						begin
+							returnValue <= 1;
+							longSequenceStep <= 4'b0;
+						end
+						else if (returnValue == 1)
+							longSequenceStep <= longSequenceStep + 1;
+												
 						ready <= 0;
+						returnedValue <= 0;
 						
 						if (CE == 1)
 						begin
@@ -133,7 +159,7 @@ module M_SpiSender(
 				s_working : begin
                if (bitCount == 4'h8)
 					begin
-						rxData <= rxReg;	
+						rxData <= rxReg;
 						if (continued == 0)
 						begin
 							waitReg <= 0;
@@ -159,6 +185,11 @@ module M_SpiSender(
 					bitCount <= 4'b0;				
 					ready <= 1;
 					state <= s_idle;
+					
+					if (returnValue == 1 && longSequenceStep == 2'b11)
+						returnedValue <= 1;
+					returnValue <= 0;
+					longSequenceStep <= 4'b0;
             end
             s_def : begin
                resetClk <= 1;

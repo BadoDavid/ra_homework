@@ -47,21 +47,21 @@
 rm -rf simv* csrc DVEfiles AN.DB
 
 echo "Compiling Core Verilog UNISIM/Behavioral model"
-vlogan +v2k  ../../../axiToSpi_TxFifo.v
-vhdlan  ../../example_design/axiToSpi_TxFifo_exdes.vhd
+vlogan +v2k  ../../../axiToSpi_txFifo.v
+vhdlan  ../../example_design/axiToSpi_txFifo_exdes.vhd
 
 echo "Compiling Test Bench Files"
-vhdlan   ../axiToSpi_TxFifo_pkg.vhd
-vhdlan   ../axiToSpi_TxFifo_rng.vhd 
-vhdlan   ../axiToSpi_TxFifo_dgen.vhd
-vhdlan   ../axiToSpi_TxFifo_dverif.vhd
-vhdlan   ../axiToSpi_TxFifo_pctrl.vhd 
-vhdlan   ../axiToSpi_TxFifo_synth.vhd 
-vhdlan   ../axiToSpi_TxFifo_tb.vhd
+vhdlan   ../axiToSpi_txFifo_pkg.vhd
+vhdlan   ../axiToSpi_txFifo_rng.vhd 
+vhdlan   ../axiToSpi_txFifo_dgen.vhd
+vhdlan   ../axiToSpi_txFifo_dverif.vhd
+vhdlan   ../axiToSpi_txFifo_pctrl.vhd 
+vhdlan   ../axiToSpi_txFifo_synth.vhd 
+vhdlan   ../axiToSpi_txFifo_tb.vhd
 
 echo "Elaborating Design"
 vlogan +v2k $XILINX/verilog/src/glbl.v
-vcs -time_res 1ps +vcs+lic+wait -debug axiToSpi_TxFifo_tb glbl
+vcs -time_res 1ps +vcs+lic+wait -debug axiToSpi_txFifo_tb glbl
 
 echo "Simulating Design"
 ./simv -ucli -i ucli_commands.key

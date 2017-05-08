@@ -25,8 +25,8 @@
 *     (c) Copyright 1995-2017 Xilinx, Inc.                                     *
 *     All rights reserved.                                                     *
 *******************************************************************************/
-// You must compile the wrapper file axiToSpi_TxFifo.v when simulating
-// the core, axiToSpi_TxFifo. When compiling the wrapper file, be sure to
+// You must compile the wrapper file axiToSpi_txFifo.v when simulating
+// the core, axiToSpi_txFifo. When compiling the wrapper file, be sure to
 // reference the XilinxCoreLib Verilog simulation library. For detailed
 // instructions, please refer to the "CORE Generator Help".
 
@@ -36,7 +36,7 @@
 
 `timescale 1ns/1ps
 
-module axiToSpi_TxFifo(
+module axiToSpi_txFifo(
   clk,
   rst,
   din,
@@ -44,17 +44,23 @@ module axiToSpi_TxFifo(
   rd_en,
   dout,
   full,
-  empty
+  wr_ack,
+  empty,
+  valid,
+  data_count
 );
 
 input clk;
 input rst;
-input [7 : 0] din;
+input [8 : 0] din;
 input wr_en;
 input rd_en;
-output [7 : 0] dout;
+output [8 : 0] dout;
 output full;
+output wr_ack;
 output empty;
+output valid;
+output [4 : 0] data_count;
 
 // synthesis translate_off
 
@@ -86,7 +92,7 @@ output empty;
     .C_COUNT_TYPE(0),
     .C_DATA_COUNT_WIDTH(5),
     .C_DEFAULT_VALUE("BlankString"),
-    .C_DIN_WIDTH(8),
+    .C_DIN_WIDTH(9),
     .C_DIN_WIDTH_AXIS(1),
     .C_DIN_WIDTH_RACH(32),
     .C_DIN_WIDTH_RDCH(64),
@@ -94,7 +100,7 @@ output empty;
     .C_DIN_WIDTH_WDCH(64),
     .C_DIN_WIDTH_WRCH(2),
     .C_DOUT_RST_VAL("0"),
-    .C_DOUT_WIDTH(8),
+    .C_DOUT_WIDTH(9),
     .C_ENABLE_RLOCS(0),
     .C_ENABLE_RST_SYNC(1),
     .C_ERROR_INJECTION_TYPE(0),
@@ -124,7 +130,7 @@ output empty;
     .C_HAS_AXIS_TSTRB(0),
     .C_HAS_AXIS_TUSER(0),
     .C_HAS_BACKUP(0),
-    .C_HAS_DATA_COUNT(0),
+    .C_HAS_DATA_COUNT(1),
     .C_HAS_DATA_COUNTS_AXIS(0),
     .C_HAS_DATA_COUNTS_RACH(0),
     .C_HAS_DATA_COUNTS_RDCH(0),
@@ -147,8 +153,8 @@ output empty;
     .C_HAS_SLAVE_CE(0),
     .C_HAS_SRST(0),
     .C_HAS_UNDERFLOW(0),
-    .C_HAS_VALID(0),
-    .C_HAS_WR_ACK(0),
+    .C_HAS_VALID(1),
+    .C_HAS_WR_ACK(1),
     .C_HAS_WR_DATA_COUNT(0),
     .C_HAS_WR_RST(0),
     .C_IMPLEMENTATION_TYPE(0),
@@ -257,7 +263,10 @@ output empty;
     .RD_EN(rd_en),
     .DOUT(dout),
     .FULL(full),
+    .WR_ACK(wr_ack),
     .EMPTY(empty),
+    .VALID(valid),
+    .DATA_COUNT(data_count),
     .BACKUP(),
     .BACKUP_MARKER(),
     .SRST(),
@@ -275,12 +284,9 @@ output empty;
     .INJECTDBITERR(),
     .INJECTSBITERR(),
     .ALMOST_FULL(),
-    .WR_ACK(),
     .OVERFLOW(),
     .ALMOST_EMPTY(),
-    .VALID(),
     .UNDERFLOW(),
-    .DATA_COUNT(),
     .RD_DATA_COUNT(),
     .WR_DATA_COUNT(),
     .PROG_FULL(),

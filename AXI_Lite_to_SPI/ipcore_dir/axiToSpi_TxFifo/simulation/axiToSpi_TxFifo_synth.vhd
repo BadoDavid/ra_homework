@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_TxFifo_synth.vhd
+-- Filename: axiToSpi_txFifo_synth.vhd
 --
 -- Description:
 --   This is the demo testbench for fifo_generator core.
@@ -72,12 +72,12 @@ LIBRARY std;
 USE std.textio.ALL;
 
 LIBRARY work;
-USE work.axiToSpi_TxFifo_pkg.ALL;
+USE work.axiToSpi_txFifo_pkg.ALL;
 
 --------------------------------------------------------------------------------
 -- Entity Declaration
 --------------------------------------------------------------------------------
-ENTITY axiToSpi_TxFifo_synth IS
+ENTITY axiToSpi_txFifo_synth IS
   GENERIC(
   	   FREEZEON_ERROR : INTEGER := 0;
 	   TB_STOP_CNT    : INTEGER := 0;
@@ -91,20 +91,23 @@ ENTITY axiToSpi_TxFifo_synth IS
       );
 END ENTITY;
 
-ARCHITECTURE simulation_arch OF axiToSpi_TxFifo_synth IS
+ARCHITECTURE simulation_arch OF axiToSpi_txFifo_synth IS
 
     -- FIFO interface signal declarations
     SIGNAL clk_i	                  :   STD_LOGIC;
+    SIGNAL data_count                     :   STD_LOGIC_VECTOR(5-1 DOWNTO 0);
+    SIGNAL wr_ack                         :   STD_LOGIC;
+    SIGNAL valid                          :   STD_LOGIC;
     SIGNAL rst	                          :   STD_LOGIC;
     SIGNAL wr_en                          :   STD_LOGIC;
     SIGNAL rd_en                          :   STD_LOGIC;
-    SIGNAL din                            :   STD_LOGIC_VECTOR(8-1 DOWNTO 0);
-    SIGNAL dout                           :   STD_LOGIC_VECTOR(8-1 DOWNTO 0);
+    SIGNAL din                            :   STD_LOGIC_VECTOR(9-1 DOWNTO 0);
+    SIGNAL dout                           :   STD_LOGIC_VECTOR(9-1 DOWNTO 0);
     SIGNAL full                           :   STD_LOGIC;
     SIGNAL empty                          :   STD_LOGIC;
    -- TB Signals
-    SIGNAL wr_data                        :   STD_LOGIC_VECTOR(8-1 DOWNTO 0);
-    SIGNAL dout_i                         :   STD_LOGIC_VECTOR(8-1 DOWNTO 0);
+    SIGNAL wr_data                        :   STD_LOGIC_VECTOR(9-1 DOWNTO 0);
+    SIGNAL dout_i                         :   STD_LOGIC_VECTOR(9-1 DOWNTO 0);
     SIGNAL wr_en_i                        :   STD_LOGIC := '0';
     SIGNAL rd_en_i                        :   STD_LOGIC := '0';
     SIGNAL full_i                         :   STD_LOGIC := '0';
@@ -179,10 +182,10 @@ ARCHITECTURE simulation_arch OF axiToSpi_TxFifo_synth IS
     full_i                    <=   full;
     empty_i                   <=   empty;
 
-    fg_dg_nv: axiToSpi_TxFifo_dgen
+    fg_dg_nv: axiToSpi_txFifo_dgen
       GENERIC MAP (
-          	C_DIN_WIDTH       => 8,
-		C_DOUT_WIDTH      => 8,
+          	C_DIN_WIDTH       => 9,
+		C_DOUT_WIDTH      => 9,
 		TB_SEED           => TB_SEED, 
  		C_CH_TYPE         => 0	
                  )
@@ -195,10 +198,10 @@ ARCHITECTURE simulation_arch OF axiToSpi_TxFifo_synth IS
                 WR_DATA           => wr_data
 	       );
 
-   fg_dv_nv: axiToSpi_TxFifo_dverif
+   fg_dv_nv: axiToSpi_txFifo_dverif
     GENERIC MAP (  
-	       C_DOUT_WIDTH       => 8,
-	       C_DIN_WIDTH        => 8,
+	       C_DOUT_WIDTH       => 9,
+	       C_DIN_WIDTH        => 9,
 	       C_USE_EMBEDDED_REG => 0,
 	       TB_SEED            => TB_SEED, 
  	       C_CH_TYPE          => 0
@@ -213,12 +216,12 @@ ARCHITECTURE simulation_arch OF axiToSpi_TxFifo_synth IS
 	      DOUT_CHK            => dout_chk_i
 	    );
 
-    fg_pc_nv: axiToSpi_TxFifo_pctrl
+    fg_pc_nv: axiToSpi_txFifo_pctrl
     GENERIC MAP ( 
               AXI_CHANNEL         => "Native",
               C_APPLICATION_TYPE  => 0,
-	      C_DOUT_WIDTH        => 8,
-	      C_DIN_WIDTH         => 8,
+	      C_DOUT_WIDTH        => 9,
+	      C_DIN_WIDTH         => 9,
 	      C_WR_PNTR_WIDTH     => 5,
     	      C_RD_PNTR_WIDTH     => 5,
  	      C_CH_TYPE           => 0,
@@ -249,9 +252,12 @@ ARCHITECTURE simulation_arch OF axiToSpi_TxFifo_synth IS
 
 
 
-  axiToSpi_TxFifo_inst : axiToSpi_TxFifo_exdes 
+  axiToSpi_txFifo_inst : axiToSpi_txFifo_exdes 
     PORT MAP (
            CLK                       => clk_i,
+           DATA_COUNT                => data_count,
+           WR_ACK                    => wr_ack,
+           VALID                     => valid,
            RST                       => rst,
            WR_EN 		     => wr_en,
            RD_EN                     => rd_en,

@@ -49,20 +49,20 @@ vlib work
 vmap work work 
 
 echo "Compiling Core Verilog UNISIM/Behavioral model"
-vlog -work work ../../../axiToSpi_RxFifo.v
-vcom -work work ../../example_design/axiToSpi_RxFifo_exdes.vhd
+vlog -work work ../../../axiToSpi_rxFifo.v
+vcom -work work ../../example_design/axiToSpi_rxFifo_exdes.vhd
 
 echo "Compiling Test Bench Files"
-vcom -work work ../axiToSpi_RxFifo_pkg.vhd
-vcom -work work ../axiToSpi_RxFifo_rng.vhd 
-vcom -work work ../axiToSpi_RxFifo_dgen.vhd
-vcom -work work ../axiToSpi_RxFifo_dverif.vhd
-vcom -work work ../axiToSpi_RxFifo_pctrl.vhd 
-vcom -work work ../axiToSpi_RxFifo_synth.vhd 
-vcom -work work ../axiToSpi_RxFifo_tb.vhd
+vcom -work work ../axiToSpi_rxFifo_pkg.vhd
+vcom -work work ../axiToSpi_rxFifo_rng.vhd 
+vcom -work work ../axiToSpi_rxFifo_dgen.vhd
+vcom -work work ../axiToSpi_rxFifo_dverif.vhd
+vcom -work work ../axiToSpi_rxFifo_pctrl.vhd 
+vcom -work work ../axiToSpi_rxFifo_synth.vhd 
+vcom -work work ../axiToSpi_rxFifo_tb.vhd
 
 vlog -work work $env(XILINX)/verilog/src/glbl.v
-vsim  -t ps -voptargs="+acc" -L XilinxCoreLib_ver -L unisims_ver glbl work.axiToSpi_RxFifo_tb
+vsim  -t ps -voptargs="+acc" -L XilinxCoreLib_ver -L unisims_ver glbl work.axiToSpi_rxFifo_tb
 
 add log -r /*
 do wave_mti.do

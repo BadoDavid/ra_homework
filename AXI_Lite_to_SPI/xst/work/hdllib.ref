@@ -1,5 +1,7 @@
-MO AXI_SPI_top NULL AXI_SPI_top.v vlg53/_a_x_i___s_p_i__top.bin 1492180543
-MO axiToSpi NULL axiToSpi.v vlg7D/axi_to_spi.bin 1494239287
 MO AXI_Lite_Writer NULL AXI_Lite_Writer.v vlg3B/_a_x_i___lite___writer.bin 1494239268
+MO AXI_SPI_top NULL AXI_SPI_top.v vlg53/_a_x_i___s_p_i__top.bin 1492180543
+MO axiToSpi_rxFifo NULL ipcore_dir/axiToSpi_rxFifo.v vlg3E/axi_to_spi__rx_fifo.bin 1494267889
+MO axiToSpi NULL axiToSpi.v vlg7D/axi_to_spi.bin 1494267889
+MO axiToSpi_txFifo NULL ipcore_dir/axiToSpi_txFifo.v vlg28/axi_to_spi__tx_fifo.bin 1494267889
 MO axiToSpi_fifo NULL ipcore_dir/axiToSpi_fifo.v vlg4C/axi_to_spi__fifo.bin 1494239287
-MO M_SpiSender NULL M_SpiSender.v vlg5D/_m___spi_sender.bin 1494239287
+MO M_SpiSender NULL M_SpiSender.v vlg5D/_m___spi_sender.bin 1494279273

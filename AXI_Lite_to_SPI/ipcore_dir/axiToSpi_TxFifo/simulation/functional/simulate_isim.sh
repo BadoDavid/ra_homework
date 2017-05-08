@@ -47,19 +47,19 @@
 #--------------------------------------------------------------------------------
 
 echo "Compiling Core Verilog UNISIM/Behavioral model"
-vlogcomp -work work ../../../axiToSpi_TxFifo.v
-vhpcomp -work work ../../example_design/axiToSpi_TxFifo_exdes.vhd
+vlogcomp -work work ../../../axiToSpi_txFifo.v
+vhpcomp -work work ../../example_design/axiToSpi_txFifo_exdes.vhd
 
 echo "Compiling Test Bench Files"
-vhpcomp -work work ../axiToSpi_TxFifo_pkg.vhd
-vhpcomp -work work ../axiToSpi_TxFifo_rng.vhd 
-vhpcomp -work work ../axiToSpi_TxFifo_dgen.vhd
-vhpcomp -work work ../axiToSpi_TxFifo_dverif.vhd
-vhpcomp -work work ../axiToSpi_TxFifo_pctrl.vhd 
-vhpcomp -work work ../axiToSpi_TxFifo_synth.vhd 
-vhpcomp -work work ../axiToSpi_TxFifo_tb.vhd
+vhpcomp -work work ../axiToSpi_txFifo_pkg.vhd
+vhpcomp -work work ../axiToSpi_txFifo_rng.vhd 
+vhpcomp -work work ../axiToSpi_txFifo_dgen.vhd
+vhpcomp -work work ../axiToSpi_txFifo_dverif.vhd
+vhpcomp -work work ../axiToSpi_txFifo_pctrl.vhd 
+vhpcomp -work work ../axiToSpi_txFifo_synth.vhd 
+vhpcomp -work work ../axiToSpi_txFifo_tb.vhd
 
 vlogcomp -work work $XILINX/verilog/src/glbl.v
-fuse work.axiToSpi_TxFifo_tb work.glbl -L xilinxcorelib_ver -L unisims_ver -o axiToSpi_TxFifo_tb.exe
+fuse work.axiToSpi_txFifo_tb work.glbl -L xilinxcorelib_ver -L unisims_ver -o axiToSpi_txFifo_tb.exe
 
-./axiToSpi_TxFifo_tb.exe -gui -tclbatch ./wave_isim.tcl
+./axiToSpi_txFifo_tb.exe -gui -tclbatch ./wave_isim.tcl

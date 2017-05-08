@@ -60,7 +60,8 @@ module axiToSpi(
 		start,
 		continued;
 	wire
-		ready;
+		ready,
+		readDataIsReady;
 	wire [7:0] rxData;
 	reg [7:0] txData;
 
@@ -73,6 +74,7 @@ M_SpiSender sender(
     .txData(txData),
     .rxData(rxData),
     .ready(ready),
+	 .returnedValue(readDataIsReady),
     .SCK(SPI_SCK),
     .CE(SPI_CS),
     .MOSI(SPI_MOSI),
@@ -122,25 +124,25 @@ M_SpiSender sender(
 //**************** TX_FIFO GEN CORE ****************
 	
 	reg
-		txFifo_wr,
-		txFifo_rd;
+		txFifo_wr = 0,
+		txFifo_rd = 0;
 	wire
 		txFifo_empty,
 		txFifo_full,
 		txFifo_wrack,
 		txFifo_valid;
-	wire [7:0] txFifo_dout;
-	reg [7:0] txFifo_din;
+	wire [8:0] txFifo_dout;
+	reg [8:0] txFifo_din;
 	wire [4:0] txFifo_dataCount;
 	
-axiToSpi_fifo txFifo(
+axiToSpi_txFifo txFifo(
 	.CLK(bus2ip_clk),
 	.RST(rst),
-	.DIN(txFifo_din), // 7:0
+	.DIN(txFifo_din), // 8:0
 	.WR_EN(txFifo_wr),
 	.FULL(txFifo_full),
 	.WR_ACK(txFifo_wrack),
-	.DOUT(txFifo_dout), // 7:0
+	.DOUT(txFifo_dout), // 8:0
 	.RD_EN(txFifo_rd),
 	.EMPTY(txFifo_empty),
 	.VALID(txFifo_valid),
@@ -150,8 +152,8 @@ axiToSpi_fifo txFifo(
 //**************** RX_FIFO GEN CORE ****************
 
 	reg
-		rxFifo_wr,
-		rxFifo_rd;
+		rxFifo_wr = 0,
+		rxFifo_rd = 0;
 	wire
 		rxFifo_empty,
 		rxFifo_full,
@@ -161,7 +163,7 @@ axiToSpi_fifo txFifo(
 	reg [7:0] rxFifo_din;
 	wire [4:0] rxFifo_dataCount;
 
-axiToSpi_fifo rxFifo(
+axiToSpi_rxFifo rxFifo(
 	.CLK(bus2ip_clk),
 	.RST(rst),
 	.DIN(rxFifo_din), // 7:0
@@ -183,18 +185,17 @@ axiToSpi_fifo rxFifo(
 	end
 	
 //**************** READ STATE MACHINE ****************
-	
+// gets data from rx fifo and puts it onto bus
+
 	localparam
 		sr_idle 		= 4'b0001,
-		sr_reading	= 4'b0010,
-		sr_wait	 	= 4'b0100,
-		sr_done		= 4'b1000,
-		sr_finished	= 4'b1111;
+		sr_beginRead= 4'b0010,
+		sr_waitValid= 4'b0100,
+		sr_done		= 4'b1000;
 
 	reg [3:0] rxFifoState  = sr_idle;
-	reg [2:0] readCount = 0;
-
-   always @(posedge bus2ip_clk)
+	
+	always @(posedge bus2ip_clk)
 	begin
       if (rst) begin
          rxFifoState <= sr_idle;
@@ -202,40 +203,31 @@ axiToSpi_fifo rxFifo(
       else begin
 			case (rxFifoState)
             sr_idle : begin
-					//REG_RX <= 32'hFF_FF_FF_FF;
-					readCount <= 3'b0;
+					
             end
-				sr_reading : begin
-					if (~rxFifo_empty == 1)
+				sr_beginReading : begin
+					rxFifo_rd <= 1;
+					rxFifoState <= sr_waitValid;
+            end
+				sr_waitValid : begin
+					if (rxFifo_valid == 1)
 					begin
-						rxFifo_rd <= 1;
-						readCount <= readCount + 1;
-						rxFifoState <= sr_wait;
+						rxFifo_rd <= 0;
+						REG_RX <= {24'hFF_FF_FF, rxFifo_dout};
+						rxFifoState <= sr_signalDone;
 					end
-					else
-						rxFifoState <= sr_finished;
-            end
-				sr_wait : begin
-					rxFifoState <= sr_done;
-            end
-				sr_done : begin
-					REG_RX <= {REG_RX[23:0], rxFifo_dout};
-					if (readCount == 3'b100)
-						rxFifoState <= sr_finished;
-					else
-						rxFifoState <= sr_reading;
-            end
-				sr_finished : begin
-					ip2bus_rdack <= 1;
-					rxFifoState <= sr_idle;
 				end
+				sr_signalDone : begin
+					ip2bus_rdack = 1;
+					rxFifoState <= sr_idle;
+            end
             default: begin  // Fault Recovery
                rxFifoState <= sr_idle;
 				end
 			endcase
 		end
 	end
-	
+
 //**************** READ CHIP ENABLES ****************
 	
 	always @(posedge bus2ip_clk)
@@ -245,10 +237,9 @@ axiToSpi_fifo rxFifo(
 		else if (bus2ip_rdce[ce_tx])
 			ip2bus_rdack = 1; // this should really never happen tho (!)
 		else if (bus2ip_rdce[ce_rx])
-		begin 
-			if (rxFifoState == sr_idle)
-				rxFifoState  <= sr_reading;
-		end
+			if (rxFifo_empty == 0)
+				if (rxFifoState == sr_idle)
+					rxFifoState  <= sr_beginRead;
 	end
 	
 	always @(negedge 
@@ -259,26 +250,51 @@ axiToSpi_fifo rxFifo(
 		)
 		ip2bus_rdack = 0;
 
-//**************** WRITE STATE MACHINE ****************
+//**************** RX FIFO POPULATOR ****************
+// if read data is returned from the spi sender module, push it to rx fifo
 	
+	reg newRxFifoItem = 0;
+
+	always @(posedge readDataIsReady)
+	begin
+		if (ready == 1) // should always be so when readDataIsReady, but who knows ¯\_(o_o)_/¯
+			if (rxFifo_full == 0)
+			begin
+				rxFifo_din = rxData;
+				newRxFifoItem = 1;
+			end
+	end
+	
+	always @(posedge bus2ip_clk)
+	begin
+		if (newRxFifoItem == 1)
+		begin
+			WR_EN <= 1;
+			newRxFifoItem <= 0;
+		end
+		else begin
+			if (WR_ACK == 1)
+				WR_EN <= 0;
+		end
+	end
+
+//**************** WRITE STATE MACHINE ****************
+//populates tx fifo with axi-incoming data
+
 	localparam
-		sw_idle 			= 4'b0000_0001,
-		sw_feedTxFifo	= 4'b0000_0010,
-		sw_wait	 		= 4'b0000_0100,
-		sw_done			= 4'b0000_1000,
-		sw_inished		= 4'b0001_0000,
-		sw_fnished		= 4'b0010_0000,
-		sw_fiished		= 4'b0100_0000,
-		sw_finshed		= 4'b1000_0000;
+		sw_idle 					= 4'b0001,
+		sw_waitFifoWrite		= 4'b0010,
+		sw_continueFilling	= 4'b0100,
+		sw_endLongSeq			= 4'b1000;
 
 	reg [3:0] wrFifoState  = sw_idle;
-	reg [3:0] expectedBytes = 0;
 	reg direction = 0;
 	localparam
 		read = 0,
 		write = 1;
-	reg [15:0] address = 0;
+
 	reg controlled = 0;
+	reg [2:0] longSeqCount = 0;
 
    always @(posedge bus2ip_clk)
 	begin
@@ -288,34 +304,89 @@ axiToSpi_fifo rxFifo(
       else begin
 			case (wrFifoState)
             sw_idle : begin
-					
-            end
-				sw_feedTxFifo : begin
-					if (controlled == 0)
+					if (bus2ip_wrce[ce_tx])
 					begin
-						expectedBytes <= bus2ip_data[3:0];
-						direction <= bus2ip_data[8];
-						address <= bus2ip_data[31:16];
-						controlled <= 1;
-					end
-					else begin
-						if (direction == read)
+						if (bus2ip_data[8] == 1) // got a ctrl msg
 						begin
-						// WTF TODO
+							if (controlled == 0) // and not in an active long reception
+							begin 
+								if (	(bus2ip_data[4] == read) && // read means 2 more bytes will come + 2 needed for CMD and dummy write
+										(txFifo_dataCount <= 27)) // 27 means there are 4 free slots remaining
+								begin
+									controlled <= 1;
+									txFifo_din <= {1, SPI_CMD_READ}; // schedule a read command and hold CE
+									direction <= read;
+									longSeqCount <= 3'b001; // total of 4 required (CMD_READ, addr, addr2, dummy write to perform read)
+									txFifo_wr <= 1; // enable fifo writing
+									wrFifoState <= sw_waitFifoWrite;
+								end
+								if (	(bus2ip_data[4] == write) && // write means 3 more bytes will come + 2 needed for CMD
+										(txFifo_dataCount <= 26)) //26 means there are 5 free slots remaining
+								begin
+									controlled <= 1;
+									txFifo_din <= {0, SPI_CMD_WREN}; // schedule a write latch enable cmd and release CE afterwards
+									direction <= write;
+									longSeqCount <= 3'b001; // total of 5 required (CMD_WREN, CMD_WR, addr1, addr2, data)
+									txFifo_wr <= 1; // enable fifo writing
+									wrFifoState <= sw_waitFifoWrite;
+								end
+								// else tx fifo is too full to catch required data
+							end
+							// else do nothing, something is screwed
 						end
-						else begin// write
-						
+						else begin // got a data msg
+							if (controlled == 1) // and had a still open ctrl word previously
+							begin
+								if( (direction == read && longSeqCount < 3) || (direction == write && longSeqCount < 5) ) // NOTE longSeqCount <3 bc. 4th is dummy which does not come from the bus !!
+								begin // data message is expected to be received
+									longSeqCount = longSeqCount + 1;
+									txFifo_wr <= 1; // enable fifo writing
+									wrFifoState <= sw_waitFifoWrite;
+									if (direction == write && longSeqCount == 4)
+										txFifo_din <= {0, bus2ip_data[7:0]}; // schedule data write and end CE
+									else
+										txFifo_din <= {1, bus2ip_data[7:0]}; // schedule data write and hold CE
+								end
+								// else do nothing, unexpectedly long data or maybe lost or forgotten ctrl msg ?
+							end
+							// else do nothing, screwed
 						end
+
 					end
             end
-				sw_idle : begin
-					
+				sw_waitFifoWrite : begin
+					if (txFifo_wrack == 1)
+					begin
+						txFifo_wr <= 0;
+						if ( (direction == read && longSeqCount == 4) || (direction == write && longSeqCount == 5) )
+							wrFifoState <= sw_endLongSeq;
+						else
+							wrFifoState <= sw_continueFilling;
+					end
             end
-				sw_idle : begin
-					
+				sw_continueFilling : begin
+					if (direction == write && longSeqCount == 1) // means only a CMD_WREN was given, now give CMD_WR
+					begin
+						wrFifoState <= sw_waitFifoWrite;
+						txFifo_wr <= 1; // enable fifo writing
+						longSeqCount = longSeqCount + 1;
+						txFifo_din <= {1, SPI_CMD_WR}; // schedule a write cmd and hold CE afterwards
+					end
+					else if (direction == read && longSeqCount == 3) // means only a dummy write is missing
+					begin
+						wrFifoState <= sw_waitFifoWrite;
+						txFifo_wr <= 1; // enable fifo writing
+						longSeqCount = longSeqCount + 1;
+						txFifo_din <= {0, 8'hFF_FF_FF_FF}; // schedule dummy write cmd and release CE afterwards
+					end
             end
-
-            default: begin  // Fault Recovery
+				sw_endLongSeq : begin
+					controlled <= 0;
+					longSeqCount <= 3'b000;
+					txFifo_wr <= 0; // just for safety ... ¯\_(o_-)_/¯
+					wrFifoState <= sw_idle;
+            end
+            default : begin  // Fault Recovery
                wrFifoState <= sw_idle;
 				end
 			endcase
@@ -326,11 +397,15 @@ axiToSpi_fifo rxFifo(
 32 31 24 23 16 15 8 7 0
 INCOMING BUS DATA FORMAT (bus2ip_data)
 	31			 0
-	aa_aa_-i_-n
-		aa address (14 bit)
-		i	direction (0: read, 1: write)
-		n 	bytes to be written (max 15 or F)
-	dd_dd_dd_dd
+is it a ctrl msg?
+	--_--_-c_dn
+		c  control word (1: yes, 0: not)
+ctrl:
+	--_--_-1_dn
+		d	direction (0: read, 1: write)
+		n 	bytes following this word if ctrl
+normal:	
+	--_--_-0_dd
 		dd	data
 	...
 */
@@ -342,9 +417,70 @@ INCOMING BUS DATA FORMAT (bus2ip_data)
 	SPI_CMD_WREN  = 8'b0000_0110, // Set the write enable latch (enable write operations)
 	SPI_CMD_RDSR  = 8'b0000_0101, // Read STATUS register
 	SPI_CMD_WRSR  = 8'b0000_0001; // Write STATUS register
+	
+axiToSpi_txFifo txFifo(
+	.CLK(bus2ip_clk),
+	.RST(rst),
+	.DIN(txFifo_din), // 8:0
+	.WR_EN(txFifo_wr),
+	.FULL(txFifo_full),
+	.WR_ACK(txFifo_wrack),
+	.DOUT(txFifo_dout), // 8:0
+	.RD_EN(txFifo_rd),
+	.EMPTY(txFifo_empty),
+	.VALID(txFifo_valid),
+	.DATA_COUNT(txFifo_dataCount) // 4:0
+	
 */
 	
+//**************** TX FIFO DEPOPULATOR ****************
+// if any data is found in tx fifo and spi module idle, begin transmission
+
+	localparam
+		sdd_idle 					= 4'b0001,
+		sdd_waitForTxFifo			= 4'b0010,
+		sdd_activateSpiSender	= 4'b0100,
+		sdd_wait						= 4'b1000;
+
+	reg [3:0] txFifoDepopulatorState  = sdd_idle;
 	
+	always @(posedge bus2ip_clk)
+	begin
+      if (rst) begin
+         rxFifoState <= sr_idle;
+      end
+      else begin
+			case (txFifoDepopulatorState)
+            sdd_idle : begin
+					if (txFifo_empty == 0 && ready == 1)
+					begin
+						txFifo_rd <= 1;
+						txFifoDepopulatorState <= sdd_waitForTxFifo;
+					end
+            end
+				sdd_waitForTxFifo : begin
+					if (txFifo_valid)
+					begin
+						txFifo_rd <= 0;
+						txData <= txFifo_dout[7:0];
+						continued <= txFifo_dout[8];
+						txFifoDepopulatorState <= sdd_activateSpiSender;
+					end
+            end
+				sdd_activateSpiSender : begin
+					start <= 1;
+					txFifoDepopulatorState <= sdd_idle;
+				end
+            default: begin  // Fault Recovery
+               txFifoDepopulatorState <= sdd_wait;
+				end
+				sdd_wait : begin
+					txFifoDepopulatorState <= sdd_idle;
+				end
+			endcase
+		end
+	end
+		
 //**************** WRITE CHIP ENABLES ****************
 	
 	always @(posedge bus2ip_clk)
@@ -352,25 +488,25 @@ INCOMING BUS DATA FORMAT (bus2ip_data)
 		if (bus2ip_wrce[ce_cmd])
 		begin
 			REG_CMD = bus2ip_data;
-			ip2bus_wrack = 1;
+			ip2bus_wrack <= 1;
 		end
 		if (bus2ip_wrce[ce_status])
 		begin
 			REG_STATUS = bus2ip_data;
-			ip2bus_wrack = 1;
+			ip2bus_wrack <= 1;
 		end
 		if (bus2ip_wrce[ce_rx])
 		begin
-			ip2bus_wrack = 1; // this should really never happen tho (!)
+			ip2bus_wrack <= 1; // this should really never happen tho (!)
 		end
-		if (bus2ip_wrce[ce_tx])
+/*		if (bus2ip_wrce[ce_tx])
 		begin
 			if (
-				txFifo_dataCount >= 5'h4 &&
+				txFifo_full == 0 &&
 				wrFifoState == sw_idle
 				)
 				wrFifoState <= sw_feedTxFifo;
-		end
+		end*/
 	end
 
 	always @(negedge 
@@ -382,40 +518,3 @@ INCOMING BUS DATA FORMAT (bus2ip_data)
 		ip2bus_wrack = 0;
 
 endmodule
-
-/*
- ______   _______  _______  _______  _______  _______  _______ _________ _______  ______  
-(  __  \ (  ____ \(  ____ )(  ____ )(  ____ \(  ____ \(  ___  )\__   __/(  ____ \(  __  \ 
-| (  \  )| (    \/| (    )|| (    )|| (    \/| (    \/| (   ) |   ) (   | (    \/| (  \  )
-| |   ) || (__    | (____)|| (____)|| (__    | |      | (___) |   | |   | (__    | |   ) |
-| |   | ||  __)   |  _____)|     __)|  __)   | |      |  ___  |   | |   |  __)   | |   | |
-| |   ) || (      | (      | (\ (   | (      | |      | (   ) |   | |   | (      | |   ) |
-| (__/  )| (____/\| )      | ) \ \__| (____/\| (____/\| )   ( |   | |   | (____/\| (__/  )
-(______/ (_______/|/       |/   \__/(_______/(_______/|/     \|   )_(   (_______/(______/ 
-                                                                                          
- _______  _______  ______   _______                                                       
-(  ____ \(  ___  )(  __  \ (  ____ \                                                      
-| (    \/| (   ) || (  \  )| (    \/ _                                                    
-| |      | |   | || |   ) || (__    (_)                                                   
-| |      | |   | || |   | ||  __)                                                         
-| |      | |   | || |   ) || (       _                                                    
-| (____/\| (___) || (__/  )| (____/\(_)                                                   
-(_______/(_______)(______/ (_______/                                                      
-                                                                                          
-*/
-
-//**************** RX_FIFO register - static shift register ****************
-	//TODO SPI_SCK posedge!? this is just some wire to silence warnings
-/*
-   reg [31:0] RX_FIFO;
-
-   always @(posedge SPI_SCK)
-      if (RX_FIFO_EN)
-         RX_FIFO <= {RX_FIFO[30:0], SPI_MISO};
-
-   genvar i;
-   generate
-      for (i=0; i < 32; i=i+1) 
-         assign ip2bus_data[i] = RX_FIFO[i]; // map RX_FIFO[31..0] to ip2bus_data[31..0]
-   endgenerate
-*/

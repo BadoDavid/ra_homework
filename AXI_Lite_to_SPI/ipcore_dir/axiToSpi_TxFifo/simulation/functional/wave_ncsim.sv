@@ -58,12 +58,12 @@
 window new WaveWindow  -name  "Waves for FIFO Generator Example Design"
 waveform  using  "Waves for FIFO Generator Example Design"
 
-waveform add -signals /axiToSpi_TxFifo_tb/axiToSpi_TxFifo_synth_inst/axiToSpi_TxFifo_inst/CLK
-waveform add -signals /axiToSpi_TxFifo_tb/axiToSpi_TxFifo_synth_inst/axiToSpi_TxFifo_inst/RST
+waveform add -signals /axiToSpi_txFifo_tb/axiToSpi_txFifo_synth_inst/axiToSpi_txFifo_inst/CLK
+waveform add -signals /axiToSpi_txFifo_tb/axiToSpi_txFifo_synth_inst/axiToSpi_txFifo_inst/RST
 waveform add -label WRITE
-waveform add -signals /axiToSpi_TxFifo_tb/axiToSpi_TxFifo_synth_inst/axiToSpi_TxFifo_inst/WR_EN
-waveform add -signals /axiToSpi_TxFifo_tb/axiToSpi_TxFifo_synth_inst/axiToSpi_TxFifo_inst/FULL
+waveform add -signals /axiToSpi_txFifo_tb/axiToSpi_txFifo_synth_inst/axiToSpi_txFifo_inst/WR_EN
+waveform add -signals /axiToSpi_txFifo_tb/axiToSpi_txFifo_synth_inst/axiToSpi_txFifo_inst/FULL
 waveform add -label READ
-waveform add -signals /axiToSpi_TxFifo_tb/axiToSpi_TxFifo_synth_inst/axiToSpi_TxFifo_inst/RD_EN
-waveform add -signals /axiToSpi_TxFifo_tb/axiToSpi_TxFifo_synth_inst/axiToSpi_TxFifo_inst/EMPTY
+waveform add -signals /axiToSpi_txFifo_tb/axiToSpi_txFifo_synth_inst/axiToSpi_txFifo_inst/RD_EN
+waveform add -signals /axiToSpi_txFifo_tb/axiToSpi_txFifo_synth_inst/axiToSpi_txFifo_inst/EMPTY
 console submit -using simulator -wait no "run"

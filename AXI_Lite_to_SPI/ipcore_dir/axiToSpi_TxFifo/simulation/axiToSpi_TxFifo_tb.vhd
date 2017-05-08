@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_TxFifo_tb.vhd
+-- Filename: axiToSpi_txFifo_tb.vhd
 --
 -- Description:
 --   This is the demo testbench top file for fifo_generator core.
@@ -70,20 +70,20 @@ USE ieee.std_logic_textio.ALL;
 USE std.textio.ALL;
 
 LIBRARY work;
-USE work.axiToSpi_TxFifo_pkg.ALL;
+USE work.axiToSpi_txFifo_pkg.ALL;
 
-ENTITY axiToSpi_TxFifo_tb IS
+ENTITY axiToSpi_txFifo_tb IS
 END ENTITY;
 
 
-ARCHITECTURE axiToSpi_TxFifo_arch OF axiToSpi_TxFifo_tb IS
+ARCHITECTURE axiToSpi_txFifo_arch OF axiToSpi_txFifo_tb IS
  SIGNAL  status              : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
  SIGNAL  wr_clk              : STD_LOGIC;
  SIGNAL  reset 	             : STD_LOGIC;
  SIGNAL  sim_done            : STD_LOGIC := '0';
  SIGNAL  end_of_sim          : STD_LOGIC_VECTOR(4 DOWNTO 0) := (OTHERS => '0');
  -- Write and Read clock periods
- CONSTANT wr_clk_period_by_2 : TIME := 100 ns;
+ CONSTANT wr_clk_period_by_2 : TIME := 200 ns;
  -- Procedures to display strings
  PROCEDURE disp_str(CONSTANT str:IN STRING) IS
     variable dp_l : line := null;   
@@ -104,7 +104,7 @@ BEGIN
   -- Generation of clock
 
   PROCESS BEGIN
-    WAIT FOR 200 ns; -- Wait for global reset
+    WAIT FOR 400 ns; -- Wait for global reset
     WHILE 1 = 1 LOOP
       wr_clk <= '0';
       WAIT FOR wr_clk_period_by_2;
@@ -117,13 +117,13 @@ BEGIN
   
   PROCESS BEGIN
     reset <= '1';
-    WAIT FOR 2100 ns;
+    WAIT FOR 4200 ns;
     reset <= '0';
     WAIT;
   END PROCESS;
   
   
-  -- Error message printing based on STATUS signal from axiToSpi_TxFifo_synth
+  -- Error message printing based on STATUS signal from axiToSpi_txFifo_synth
 
   PROCESS(status)
   BEGIN
@@ -177,13 +177,13 @@ BEGIN
     severity failure;
   END PROCESS;
 
-  -- Instance of axiToSpi_TxFifo_synth
+  -- Instance of axiToSpi_txFifo_synth
   
-  axiToSpi_TxFifo_synth_inst:axiToSpi_TxFifo_synth
+  axiToSpi_txFifo_synth_inst:axiToSpi_txFifo_synth
    GENERIC MAP(
               FREEZEON_ERROR => 0,
  	      TB_STOP_CNT    => 2,
- 	      TB_SEED        => 43 
+ 	      TB_SEED        => 44 
  	      )
   PORT MAP(
 	   CLK           => wr_clk,

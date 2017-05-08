@@ -57,16 +57,16 @@
 
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/CLK
-add wave -noupdate /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/RST
+add wave -noupdate /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/CLK
+add wave -noupdate /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/RST
 add wave -noupdate -divider WRITE
-add wave -noupdate /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/WR_EN
-add wave -noupdate /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/FULL
-add wave -noupdate -radix hexadecimal /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/DIN
+add wave -noupdate /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/WR_EN
+add wave -noupdate /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/FULL
+add wave -noupdate -radix hexadecimal /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/DIN
 add wave -noupdate -divider READ
-add wave -noupdate /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/RD_EN
-add wave -noupdate /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/EMPTY
-add wave -noupdate -radix hexadecimal /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/DOUT
+add wave -noupdate /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/RD_EN
+add wave -noupdate /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/EMPTY
+add wave -noupdate -radix hexadecimal /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/DOUT
 
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {2164886 ps} 0}

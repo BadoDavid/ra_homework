@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_RxFifo_tb.vhd
+-- Filename: axiToSpi_rxFifo_tb.vhd
 --
 -- Description:
 --   This is the demo testbench top file for fifo_generator core.
@@ -70,13 +70,13 @@ USE ieee.std_logic_textio.ALL;
 USE std.textio.ALL;
 
 LIBRARY work;
-USE work.axiToSpi_RxFifo_pkg.ALL;
+USE work.axiToSpi_rxFifo_pkg.ALL;
 
-ENTITY axiToSpi_RxFifo_tb IS
+ENTITY axiToSpi_rxFifo_tb IS
 END ENTITY;
 
 
-ARCHITECTURE axiToSpi_RxFifo_arch OF axiToSpi_RxFifo_tb IS
+ARCHITECTURE axiToSpi_rxFifo_arch OF axiToSpi_rxFifo_tb IS
  SIGNAL  status              : STD_LOGIC_VECTOR(7 DOWNTO 0) := "00000000";
  SIGNAL  wr_clk              : STD_LOGIC;
  SIGNAL  reset 	             : STD_LOGIC;
@@ -123,7 +123,7 @@ BEGIN
   END PROCESS;
   
   
-  -- Error message printing based on STATUS signal from axiToSpi_RxFifo_synth
+  -- Error message printing based on STATUS signal from axiToSpi_rxFifo_synth
 
   PROCESS(status)
   BEGIN
@@ -177,9 +177,9 @@ BEGIN
     severity failure;
   END PROCESS;
 
-  -- Instance of axiToSpi_RxFifo_synth
+  -- Instance of axiToSpi_rxFifo_synth
   
-  axiToSpi_RxFifo_synth_inst:axiToSpi_RxFifo_synth
+  axiToSpi_rxFifo_synth_inst:axiToSpi_rxFifo_synth
    GENERIC MAP(
               FREEZEON_ERROR => 0,
  	      TB_STOP_CNT    => 2,

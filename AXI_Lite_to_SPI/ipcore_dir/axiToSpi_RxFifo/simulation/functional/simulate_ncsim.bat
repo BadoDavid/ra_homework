@@ -47,22 +47,22 @@
 mkdir work
 
 echo "Compiling Core Verilog UNISIM/Behavioral model"
-ncvlog -work work ../../../axiToSpi_RxFifo.v
-ncvhdl -v93 -work work ../../example_design/axiToSpi_RxFifo_exdes.vhd
+ncvlog -work work ../../../axiToSpi_rxFifo.v
+ncvhdl -v93 -work work ../../example_design/axiToSpi_rxFifo_exdes.vhd
 
 echo "Compiling Test Bench Files"
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_pkg.vhd
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_rng.vhd 
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_dgen.vhd
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_dverif.vhd
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_pctrl.vhd 
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_synth.vhd 
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_tb.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_pkg.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_rng.vhd 
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_dgen.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_dverif.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_pctrl.vhd 
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_synth.vhd 
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_tb.vhd
 
 echo "Elaborating Design"
 ncvlog -work work $XILINX/verilog/src/glbl.v
-ncelab -access +rwc glbl work.axiToSpi_RxFifo_tb
+ncelab -access +rwc glbl work.axiToSpi_rxFifo_tb
 
 echo "Simulating Design"
-ncsim -gui -input @"simvision -input wave_ncsim.sv" work.axiToSpi_RxFifo_tb
+ncsim -gui -input @"simvision -input wave_ncsim.sv" work.axiToSpi_rxFifo_tb
 

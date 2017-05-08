@@ -1,12 +1,12 @@
 run
 -ifmt VHDL
--ent axiToSpi_TxFifo_exdes 
+-ent axiToSpi_txFifo_exdes 
 -p xc3s5000-fg1156-4
 -ifn xst.prj
 -write_timing_constraints No
 -iobuf YES
 -max_fanout 100
--ofn axiToSpi_TxFifo_exdes 
+-ofn axiToSpi_txFifo_exdes 
 -ofmt NGC
 -bus_delimiter ()
 -hierarchy_separator /

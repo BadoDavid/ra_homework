@@ -50,16 +50,16 @@ echo "Compiling Core Verilog UNISIM/Behavioral model"
 vlogan +v2k  ../../implement/results/routed.v
 
 echo "Compiling Test Bench Files"
-vhdlan   ../axiToSpi_RxFifo_pkg.vhd
-vhdlan   ../axiToSpi_RxFifo_rng.vhd
-vhdlan   ../axiToSpi_RxFifo_dgen.vhd
-vhdlan   ../axiToSpi_RxFifo_dverif.vhd
-vhdlan   ../axiToSpi_RxFifo_pctrl.vhd
-vhdlan   ../axiToSpi_RxFifo_synth.vhd
-vhdlan   ../axiToSpi_RxFifo_tb.vhd
+vhdlan   ../axiToSpi_rxFifo_pkg.vhd
+vhdlan   ../axiToSpi_rxFifo_rng.vhd
+vhdlan   ../axiToSpi_rxFifo_dgen.vhd
+vhdlan   ../axiToSpi_rxFifo_dverif.vhd
+vhdlan   ../axiToSpi_rxFifo_pctrl.vhd
+vhdlan   ../axiToSpi_rxFifo_synth.vhd
+vhdlan   ../axiToSpi_rxFifo_tb.vhd
 
 echo "Elaborating Design"
-vcs -time_res 1ps +neg_tchk -sdf max:/axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst:../../implement/results/routed.sdf +vcs+lic+wait -debug axiToSpi_RxFifo_tb glbl
+vcs -time_res 1ps +neg_tchk -sdf max:/axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst:../../implement/results/routed.sdf +vcs+lic+wait -debug axiToSpi_rxFifo_tb glbl
 
 echo "Simulating Design"
 ./simv -ucli -i ucli_commands.key

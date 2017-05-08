@@ -25,8 +25,8 @@
 *     (c) Copyright 1995-2017 Xilinx, Inc.                                     *
 *     All rights reserved.                                                     *
 *******************************************************************************/
-// You must compile the wrapper file axiToSpi_RxFifo.v when simulating
-// the core, axiToSpi_RxFifo. When compiling the wrapper file, be sure to
+// You must compile the wrapper file axiToSpi_rxFifo.v when simulating
+// the core, axiToSpi_rxFifo. When compiling the wrapper file, be sure to
 // reference the XilinxCoreLib Verilog simulation library. For detailed
 // instructions, please refer to the "CORE Generator Help".
 
@@ -36,7 +36,7 @@
 
 `timescale 1ns/1ps
 
-module axiToSpi_RxFifo(
+module axiToSpi_rxFifo(
   clk,
   rst,
   din,
@@ -44,7 +44,10 @@ module axiToSpi_RxFifo(
   rd_en,
   dout,
   full,
-  empty
+  wr_ack,
+  empty,
+  valid,
+  data_count
 );
 
 input clk;
@@ -54,7 +57,10 @@ input wr_en;
 input rd_en;
 output [7 : 0] dout;
 output full;
+output wr_ack;
 output empty;
+output valid;
+output [4 : 0] data_count;
 
 // synthesis translate_off
 
@@ -124,7 +130,7 @@ output empty;
     .C_HAS_AXIS_TSTRB(0),
     .C_HAS_AXIS_TUSER(0),
     .C_HAS_BACKUP(0),
-    .C_HAS_DATA_COUNT(0),
+    .C_HAS_DATA_COUNT(1),
     .C_HAS_DATA_COUNTS_AXIS(0),
     .C_HAS_DATA_COUNTS_RACH(0),
     .C_HAS_DATA_COUNTS_RDCH(0),
@@ -147,8 +153,8 @@ output empty;
     .C_HAS_SLAVE_CE(0),
     .C_HAS_SRST(0),
     .C_HAS_UNDERFLOW(0),
-    .C_HAS_VALID(0),
-    .C_HAS_WR_ACK(0),
+    .C_HAS_VALID(1),
+    .C_HAS_WR_ACK(1),
     .C_HAS_WR_DATA_COUNT(0),
     .C_HAS_WR_RST(0),
     .C_IMPLEMENTATION_TYPE(0),
@@ -257,7 +263,10 @@ output empty;
     .RD_EN(rd_en),
     .DOUT(dout),
     .FULL(full),
+    .WR_ACK(wr_ack),
     .EMPTY(empty),
+    .VALID(valid),
+    .DATA_COUNT(data_count),
     .BACKUP(),
     .BACKUP_MARKER(),
     .SRST(),
@@ -275,12 +284,9 @@ output empty;
     .INJECTDBITERR(),
     .INJECTSBITERR(),
     .ALMOST_FULL(),
-    .WR_ACK(),
     .OVERFLOW(),
     .ALMOST_EMPTY(),
-    .VALID(),
     .UNDERFLOW(),
-    .DATA_COUNT(),
     .RD_DATA_COUNT(),
     .WR_DATA_COUNT(),
     .PROG_FULL(),

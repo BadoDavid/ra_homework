@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_TxFifo_pkg.vhd
+-- Filename: axiToSpi_txFifo_pkg.vhd
 --
 -- Description:
 --   This is the demo testbench package file for FIFO Generator core.
@@ -64,7 +64,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE ieee.std_logic_arith.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-PACKAGE axiToSpi_TxFifo_pkg IS
+PACKAGE axiToSpi_txFifo_pkg IS
 
  FUNCTION divroundup (
     data_value : INTEGER;
@@ -98,7 +98,7 @@ PACKAGE axiToSpi_TxFifo_pkg IS
    size : integer )
  RETURN std_logic_vector;
  ------------------------
- COMPONENT axiToSpi_TxFifo_rng IS
+ COMPONENT axiToSpi_txFifo_rng IS
     GENERIC (WIDTH : integer :=  8;
              SEED  : integer := 3);
     PORT (
@@ -110,7 +110,7 @@ PACKAGE axiToSpi_TxFifo_pkg IS
  END COMPONENT; 
  ------------------------ 
  
- COMPONENT axiToSpi_TxFifo_dgen IS
+ COMPONENT axiToSpi_txFifo_dgen IS
   GENERIC (
 	    C_DIN_WIDTH   : INTEGER := 32;
 	    C_DOUT_WIDTH  : INTEGER := 32;
@@ -128,7 +128,7 @@ PACKAGE axiToSpi_TxFifo_pkg IS
  END COMPONENT;
  ------------------------ 
 
- COMPONENT axiToSpi_TxFifo_dverif IS
+ COMPONENT axiToSpi_txFifo_dverif IS
   GENERIC(
    C_DIN_WIDTH        : INTEGER := 0;
    C_DOUT_WIDTH       : INTEGER := 0;
@@ -148,7 +148,7 @@ PACKAGE axiToSpi_TxFifo_pkg IS
  END COMPONENT; 
  ------------------------ 
 
- COMPONENT axiToSpi_TxFifo_pctrl IS
+ COMPONENT axiToSpi_txFifo_pctrl IS
    GENERIC(
      AXI_CHANNEL         : STRING  := "NONE";
      C_APPLICATION_TYPE  : INTEGER := 0;
@@ -181,7 +181,7 @@ PACKAGE axiToSpi_TxFifo_pkg IS
       );
  END COMPONENT;
  ------------------------
- COMPONENT axiToSpi_TxFifo_synth IS
+ COMPONENT axiToSpi_txFifo_synth IS
   GENERIC(
   	   FREEZEON_ERROR : INTEGER := 0;
 	   TB_STOP_CNT    : INTEGER := 0;
@@ -195,14 +195,17 @@ PACKAGE axiToSpi_TxFifo_pkg IS
       );
  END COMPONENT;
  ------------------------
- COMPONENT axiToSpi_TxFifo_exdes IS
+ COMPONENT axiToSpi_txFifo_exdes IS
    PORT (
            CLK                       : IN  std_logic;
+     	   DATA_COUNT                : OUT std_logic_vector(5-1 DOWNTO 0);
+           WR_ACK                    : OUT std_logic;
+           VALID                     : OUT std_logic;
            RST                       : IN  std_logic;
            WR_EN 		     : IN  std_logic;
            RD_EN                     : IN  std_logic;
-           DIN                       : IN  std_logic_vector(8-1 DOWNTO 0);
-           DOUT                      : OUT std_logic_vector(8-1 DOWNTO 0);
+           DIN                       : IN  std_logic_vector(9-1 DOWNTO 0);
+           DOUT                      : OUT std_logic_vector(9-1 DOWNTO 0);
            FULL                      : OUT std_logic;
            EMPTY                     : OUT std_logic);
 
@@ -210,11 +213,11 @@ PACKAGE axiToSpi_TxFifo_pkg IS
  ------------------------ 
 
 
-END axiToSpi_TxFifo_pkg;
+END axiToSpi_txFifo_pkg;
 
 
 
-PACKAGE BODY axiToSpi_TxFifo_pkg IS
+PACKAGE BODY axiToSpi_txFifo_pkg IS
 
  FUNCTION divroundup (
     data_value : INTEGER;
@@ -343,4 +346,4 @@ PACKAGE BODY axiToSpi_TxFifo_pkg IS
     RETURN result;
   END hexstr_to_std_logic_vec;
 
-END axiToSpi_TxFifo_pkg;
+END axiToSpi_txFifo_pkg;

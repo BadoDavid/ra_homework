@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_TxFifo_rng.vhd
+-- Filename: axiToSpi_txFifo_rng.vhd
 --
 -- Description:
 --   Used for generation of pseudo random numbers
@@ -65,7 +65,7 @@ USE ieee.std_logic_unsigned.all;
 USE IEEE.std_logic_arith.all;
 USE IEEE.std_logic_misc.all;
 
-ENTITY axiToSpi_TxFifo_rng IS
+ENTITY axiToSpi_txFifo_rng IS
     GENERIC (
       WIDTH        : integer :=  8;
       SEED         : integer :=  3);
@@ -76,7 +76,7 @@ ENTITY axiToSpi_TxFifo_rng IS
       RANDOM_NUM  : OUT STD_LOGIC_VECTOR (WIDTH-1 DOWNTO 0));
 END ENTITY;
 
-ARCHITECTURE rg_arch OF axiToSpi_TxFifo_rng IS
+ARCHITECTURE rg_arch OF axiToSpi_txFifo_rng IS
 BEGIN
 PROCESS (CLK,RESET)
   VARIABLE rand_temp : STD_LOGIC_VECTOR(width-1 DOWNTO 0):=conv_std_logic_vector(SEED,width);

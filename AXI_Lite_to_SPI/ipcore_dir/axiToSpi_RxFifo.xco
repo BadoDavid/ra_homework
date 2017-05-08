@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.6
-# Date: Sun May 07 17:03:23 2017
+# Date: Mon May 08 18:19:49 2017
 #
 ##############################################################
 #
@@ -51,8 +51,8 @@ CSET axis_type=FIFO
 CSET buser_width=1
 CSET clock_enable_type=Slave_Interface_Clock_Enable
 CSET clock_type_axi=Common_Clock
-CSET component_name=axiToSpi_RxFifo
-CSET data_count=false
+CSET component_name=axiToSpi_rxFifo
+CSET data_count=true
 CSET data_count_width=5
 CSET disable_timing_violations=false
 CSET disable_timing_violations_axi=false
@@ -194,12 +194,12 @@ CSET use_clock_enable=false
 CSET use_dout_reset=true
 CSET use_embedded_registers=false
 CSET use_extra_logic=false
-CSET valid_flag=false
+CSET valid_flag=true
 CSET valid_sense=Active_High
 CSET wach_type=FIFO
 CSET wdch_type=FIFO
 CSET wrch_type=FIFO
-CSET write_acknowledge_flag=false
+CSET write_acknowledge_flag=true
 CSET write_acknowledge_sense=Active_High
 CSET write_clock_frequency=1
 CSET write_data_count=false
@@ -210,4 +210,4 @@ CSET wuser_width=1
 MISC pkg_timestamp=2012-11-19T12:39:56Z
 # END Extra information
 GENERATE
-# CRC: 45458853
+# CRC: 2f5a85d6

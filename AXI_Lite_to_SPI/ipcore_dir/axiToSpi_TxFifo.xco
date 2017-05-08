@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.6
-# Date: Sun May 07 14:32:58 2017
+# Date: Mon May 08 18:14:36 2017
 #
 ##############################################################
 #
@@ -51,8 +51,8 @@ CSET axis_type=FIFO
 CSET buser_width=1
 CSET clock_enable_type=Slave_Interface_Clock_Enable
 CSET clock_type_axi=Common_Clock
-CSET component_name=axiToSpi_TxFifo
-CSET data_count=false
+CSET component_name=axiToSpi_txFifo
+CSET data_count=true
 CSET data_count_width=5
 CSET disable_timing_violations=false
 CSET disable_timing_violations_axi=false
@@ -134,7 +134,7 @@ CSET inject_sbit_error_rdch=false
 CSET inject_sbit_error_wach=false
 CSET inject_sbit_error_wdch=false
 CSET inject_sbit_error_wrch=false
-CSET input_data_width=8
+CSET input_data_width=9
 CSET input_depth=32
 CSET input_depth_axis=1024
 CSET input_depth_rach=16
@@ -143,7 +143,7 @@ CSET input_depth_wach=16
 CSET input_depth_wdch=1024
 CSET input_depth_wrch=16
 CSET interface_type=Native
-CSET output_data_width=8
+CSET output_data_width=9
 CSET output_depth=32
 CSET overflow_flag=false
 CSET overflow_flag_axi=false
@@ -194,12 +194,12 @@ CSET use_clock_enable=false
 CSET use_dout_reset=true
 CSET use_embedded_registers=false
 CSET use_extra_logic=false
-CSET valid_flag=false
+CSET valid_flag=true
 CSET valid_sense=Active_High
 CSET wach_type=FIFO
 CSET wdch_type=FIFO
 CSET wrch_type=FIFO
-CSET write_acknowledge_flag=false
+CSET write_acknowledge_flag=true
 CSET write_acknowledge_sense=Active_High
 CSET write_clock_frequency=1
 CSET write_data_count=false
@@ -210,4 +210,4 @@ CSET wuser_width=1
 MISC pkg_timestamp=2012-11-19T12:39:56Z
 # END Extra information
 GENERATE
-# CRC: ca6f5cd0
+# CRC: d4cadb9d

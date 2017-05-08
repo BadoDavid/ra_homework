@@ -54,22 +54,22 @@
 #   This is the VCS wave form file.
 #
 #--------------------------------------------------------------------------------
-if { ![gui_is_db_opened -db {axiToSpi_RxFifo.vpd}] } {
-	gui_open_db -design V1 -file axiToSpi_RxFifo.vpd -nosource
+if { ![gui_is_db_opened -db {axiToSpi_rxFifo.vpd}] } {
+	gui_open_db -design V1 -file axiToSpi_rxFifo.vpd -nosource
 }
 gui_set_precision 1ps
 gui_set_time_units 1ps
 
 gui_open_window Wave
-gui_sg_create axiToSpi_RxFifo_Group
-gui_list_add_group -id Wave.1 {axiToSpi_RxFifo_Group}
+gui_sg_create axiToSpi_rxFifo_Group
+gui_list_add_group -id Wave.1 {axiToSpi_rxFifo_Group}
 
-gui_sg_addsignal -group axiToSpi_RxFifo_Group /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/CLK
-gui_sg_addsignal -group axiToSpi_RxFifo_Group /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/RST
-gui_sg_addsignal -group axiToSpi_RxFifo_Group  WRITE -divider
-gui_sg_addsignal -group axiToSpi_RxFifo_Group /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/WR_EN
-gui_sg_addsignal -group axiToSpi_RxFifo_Group /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/FULL
-gui_sg_addsignal -group axiToSpi_RxFifo_Group  READ -divider
-gui_sg_addsignal -group axiToSpi_RxFifo_Group /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/RD_EN
-gui_sg_addsignal -group axiToSpi_RxFifo_Group /axiToSpi_RxFifo_tb/axiToSpi_RxFifo_synth_inst/axiToSpi_RxFifo_inst/EMPTY
+gui_sg_addsignal -group axiToSpi_rxFifo_Group /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/CLK
+gui_sg_addsignal -group axiToSpi_rxFifo_Group /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/RST
+gui_sg_addsignal -group axiToSpi_rxFifo_Group  WRITE -divider
+gui_sg_addsignal -group axiToSpi_rxFifo_Group /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/WR_EN
+gui_sg_addsignal -group axiToSpi_rxFifo_Group /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/FULL
+gui_sg_addsignal -group axiToSpi_rxFifo_Group  READ -divider
+gui_sg_addsignal -group axiToSpi_rxFifo_Group /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/RD_EN
+gui_sg_addsignal -group axiToSpi_rxFifo_Group /axiToSpi_rxFifo_tb/axiToSpi_rxFifo_synth_inst/axiToSpi_rxFifo_inst/EMPTY
 gui_zoom -window Wave.1 -full

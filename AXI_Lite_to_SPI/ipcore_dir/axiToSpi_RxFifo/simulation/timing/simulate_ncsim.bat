@@ -49,24 +49,24 @@ echo "Compiling Core Verilog UNISIM/Behavioral model"
 ncvlog -work work ../../implement/results/routed.v
 
 echo "Compiling Test Bench Files"
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_pkg.vhd
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_rng.vhd 
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_dgen.vhd
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_dverif.vhd
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_pctrl.vhd 
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_synth.vhd 
-ncvhdl -v93 -work work ../axiToSpi_RxFifo_tb.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_pkg.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_rng.vhd 
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_dgen.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_dverif.vhd
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_pctrl.vhd 
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_synth.vhd 
+ncvhdl -v93 -work work ../axiToSpi_rxFifo_tb.vhd
 
 echo "Compiling SDF file"
 ncsdfc ../../implement/results/routed.sdf -output ./routed.sdf.X
 
 echo "Generating SDF command file"
 echo 'COMPILED_SDF_FILE = "routed.sdf.X",' > sdf.cmd
-echo 'SCOPE = :axiToSpi_RxFifo_synth_inst:axiToSpi_RxFifo_inst,' >> sdf.cmd
+echo 'SCOPE = :axiToSpi_rxFifo_synth_inst:axiToSpi_rxFifo_inst,' >> sdf.cmd
 echo 'MTM_CONTROL = "MAXIMUM";' >> sdf.cmd
 
 echo "Elaborating Design"
-ncelab -access +rwc glbl -sdf_cmd_file sdf.cmd work.axiToSpi_RxFifo_tb
+ncelab -access +rwc glbl -sdf_cmd_file sdf.cmd work.axiToSpi_rxFifo_tb
 
 echo "Simulating Design"
-ncsim -gui -input @"simvision -input wave_ncsim.sv" work.axiToSpi_RxFifo_tb
+ncsim -gui -input @"simvision -input wave_ncsim.sv" work.axiToSpi_rxFifo_tb

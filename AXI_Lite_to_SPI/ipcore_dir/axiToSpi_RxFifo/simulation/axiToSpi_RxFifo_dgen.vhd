@@ -51,7 +51,7 @@
 -- PART OF THIS FILE AT ALL TIMES.
 --------------------------------------------------------------------------------
 --
--- Filename: axiToSpi_RxFifo_dgen.vhd
+-- Filename: axiToSpi_rxFifo_dgen.vhd
 --
 -- Description:
 --   Used for write interface stimulus generation
@@ -66,9 +66,9 @@ USE IEEE.std_logic_arith.all;
 USE IEEE.std_logic_misc.all;
 
 LIBRARY work;
-USE work.axiToSpi_RxFifo_pkg.ALL;
+USE work.axiToSpi_rxFifo_pkg.ALL;
 
-ENTITY axiToSpi_RxFifo_dgen IS
+ENTITY axiToSpi_rxFifo_dgen IS
   GENERIC (
 	    C_DIN_WIDTH   : INTEGER := 32;
 	    C_DOUT_WIDTH  : INTEGER := 32;
@@ -86,7 +86,7 @@ ENTITY axiToSpi_RxFifo_dgen IS
 END ENTITY;
 
 
-ARCHITECTURE fg_dg_arch OF axiToSpi_RxFifo_dgen IS
+ARCHITECTURE fg_dg_arch OF axiToSpi_rxFifo_dgen IS
  
   CONSTANT C_DATA_WIDTH : INTEGER := if_then_else(C_DIN_WIDTH > C_DOUT_WIDTH,C_DIN_WIDTH,C_DOUT_WIDTH);
   CONSTANT LOOP_COUNT   : INTEGER := divroundup(C_DATA_WIDTH,8);
@@ -103,7 +103,7 @@ ARCHITECTURE fg_dg_arch OF axiToSpi_RxFifo_dgen IS
   -- Generation of DATA
   ----------------------------------------------
   gen_stim:FOR N IN LOOP_COUNT-1 DOWNTO 0 GENERATE
-    rd_gen_inst1:axiToSpi_RxFifo_rng
+    rd_gen_inst1:axiToSpi_rxFifo_rng
     GENERIC MAP(
     	       WIDTH => 8,
                SEED  => TB_SEED+N

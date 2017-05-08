@@ -48,14 +48,14 @@ echo "Compiling Core Verilog UNISIM/Behavioral model"
 vlogcomp -work work ..\\..\\implement\\results\\routed.v
 
 echo "Compiling Test Bench Files"
-vhpcomp -work work ..\\axiToSpi_TxFifo_pkg.vhd
-vhpcomp -work work ..\\axiToSpi_TxFifo_rng.vhd 
-vhpcomp -work work ..\\axiToSpi_TxFifo_dgen.vhd
-vhpcomp -work work ..\\axiToSpi_TxFifo_dverif.vhd
-vhpcomp -work work ..\\axiToSpi_TxFifo_pctrl.vhd 
-vhpcomp -work work ..\\axiToSpi_TxFifo_synth.vhd 
-vhpcomp -work work ..\\axiToSpi_TxFifo_tb.vhd
+vhpcomp -work work ..\\axiToSpi_txFifo_pkg.vhd
+vhpcomp -work work ..\\axiToSpi_txFifo_rng.vhd 
+vhpcomp -work work ..\\axiToSpi_txFifo_dgen.vhd
+vhpcomp -work work ..\\axiToSpi_txFifo_dverif.vhd
+vhpcomp -work work ..\\axiToSpi_txFifo_pctrl.vhd 
+vhpcomp -work work ..\\axiToSpi_txFifo_synth.vhd 
+vhpcomp -work work ..\\axiToSpi_txFifo_tb.vhd
 
-fuse work.axiToSpi_TxFifo_tb work.glbl -L simprims_ver -o axiToSpi_TxFifo_tb.exe
+fuse work.axiToSpi_txFifo_tb work.glbl -L simprims_ver -o axiToSpi_txFifo_tb.exe
 
-.\\axiToSpi_TxFifo_tb.exe -sdfmax /axiToSpi_TxFifo_tb/axiToSpi_TxFifo_synth_inst/axiToSpi_TxFifo_inst=..\\..\\implement\\results\\routed.sdf -gui -tclbatch .\\wave_isim.tcl
+.\\axiToSpi_txFifo_tb.exe -sdfmax /axiToSpi_txFifo_tb/axiToSpi_txFifo_synth_inst/axiToSpi_txFifo_inst=..\\..\\implement\\results\\routed.sdf -gui -tclbatch .\\wave_isim.tcl

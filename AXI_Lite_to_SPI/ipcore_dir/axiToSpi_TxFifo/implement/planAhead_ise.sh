@@ -51,5 +51,5 @@
 rm -rf results
 mkdir results
 cd results
-cp ../../../axiToSpi_TxFifo.ngc .
+cp ../../../axiToSpi_txFifo.ngc .
 planAhead -mode batch -source ../planAhead_ise.tcl
