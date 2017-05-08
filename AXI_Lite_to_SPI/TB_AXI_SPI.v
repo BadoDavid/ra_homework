@@ -109,7 +109,8 @@ module TB_AXI_SPI;
 		.RRESP(RRESP), 
 		.SPI_MOSI(SPI_MOSI), 
 		.SPI_MISO(SPI_MISO), 
-		.SPI_SCK(SPI_SCK)
+		.SPI_SCK(SPI_SCK),
+		.SPI_CS(CS_N)
 	);
 	
 	// Instantiate the AXI-Lite Reader 
@@ -156,9 +157,9 @@ module TB_AXI_SPI;
 	
 	//	Instantiate the SPI EEPROM
 	M25AA160C EEPROM (
-		.SI(MOSI_Test),		// Change MOSI_Test to SPI_MOSI to run test on UUT
-		.SCK(SCK_Test),		// Change SCK_Test to SPI_SCK to run test on UUT
-		.SO(MISO_Test),		// Change MISO_Test to SPI_MISO to run test on UUT
+		.SI(SPI_MOSI),		// Change MOSI_Test to SPI_MOSI to run test on UUT
+		.SCK(SPI_SCK),		// Change SCK_Test to SPI_SCK to run test on UUT
+		.SO(SPI_MISO),		// Change MISO_Test to SPI_MISO to run test on UUT
 		.CS_N(CS_N),
 		.WP_N(WP_N),
 		.HOLD_N(HOLD_N),
@@ -194,7 +195,7 @@ module TB_AXI_SPI;
 	/**************************** Simple write to module **********************************/
 	/* Writes 'W_Data' to the address given in 'Write_to' as a Master on the AXI-Lite bus.*/
 	/**************************************************************************************/
-	/* Remove comment sign to run the write example
+	/* Remove this line to run the write example
 	
 	initial begin
 		#37	Write_to		<= 32'h00000000;	//32 bit Write Address
@@ -205,24 +206,24 @@ module TB_AXI_SPI;
 	end
 	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
 	
-	*/
+	
 	/**************************** Simple read from module ***********************************/
 	/*          Reads 32 bits data (R_Data) from the address given in 'Read_from'           */
 	/*								as a Master on the AXI-Lite bus.											 */
 	/****************************************************************************************/
-	/* Remove comment sign to run the read example
+	/* Remove this line to run the read example
 	initial begin
 		#37	Read_from	<= 32'h00000000;	//32 bit Read Address
 				R_Prot		<= 3'b000;			//Data[0]/Instr[1], Secure[0]/Non-Secure[1], Normal access[0]/Privileged[1]
 				R_Start		<= 1;					//Send Data
 	end
 	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0; 
-	*/
+
 	
 	/*************************** EEPROM Test ************************************************/
 	/*			Writes a single data to the memory and then reads it.									 */
 	/****************************************************************************************/
-	
+	/* Remove this line to test the EEPROM without the AXI-SPI IP
 	initial begin 
 			WP_N 					<= 0;
 			HOLD_N				<= 0;
@@ -286,6 +287,7 @@ module TB_AXI_SPI;
 	
 	//Kiolvasás
 	initial begin
+		#5000000 //Beírási idõ
 		#60000
 			Data					<= 8'b00000011;//READ instruction
 			SPI_Writer_Start	<= 1;
@@ -300,5 +302,6 @@ module TB_AXI_SPI;
 		#3000	
 			After_W_CSN			<= 1;
 	end
+	/**/
 endmodule
 

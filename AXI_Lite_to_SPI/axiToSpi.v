@@ -65,20 +65,20 @@ module axiToSpi(
 	reg [7:0] txData;
 
 M_SpiSender sender(
-    clk(bus2ip_clk),
-	 rst(rst),
-    start(start),
-	 continued(continued),
-	 clkDiv(DIV),
-    txData(txData),
-    rxData(rxData),
-    ready(ready),
-    SCK(SPI_SCK),
-    CE(SPI_CS),
-    MOSI(SPI_MOSI),
-    MISO(SPI_MISO),
-	 CPOL(CPOL),
-    CPHA(CPHA)
+    .clk(bus2ip_clk),
+	 .rst(rst),
+    .start(start),
+	 .continued(continued),
+	 .clkDiv(DIV),
+    .txData(txData),
+    .rxData(rxData),
+    .ready(ready),
+    .SCK(SPI_SCK),
+    .CE(SPI_CS),
+    .MOSI(SPI_MOSI),
+    .MISO(SPI_MISO),
+	 .CPOL(CPOL),
+    .CPHA(CPHA)
 );
 
 //**************** CONTROL WORD DEFINITIONS ****************
@@ -134,17 +134,17 @@ M_SpiSender sender(
 	wire [4:0] txFifo_dataCount;
 	
 axiToSpi_fifo txFifo(
-	CLK(bus2ip_clk),
-	RST(rst),
-	DIN(txFifo_din), // 7:0
-	WR_EN(txFifo_wr),
-	FULL(txFifo_full),
-	WR_ACK(txFifo_wrack),
-	DOUT(txFifo_dout), // 7:0
-	RD_EN(txFifo_rd),
-	EMPTY(txFifo_empty),
-	VALID(txFifo_valid),
-	DATA_COUNT(txFifo_dataCount) // 4:0
+	.CLK(bus2ip_clk),
+	.RST(rst),
+	.DIN(txFifo_din), // 7:0
+	.WR_EN(txFifo_wr),
+	.FULL(txFifo_full),
+	.WR_ACK(txFifo_wrack),
+	.DOUT(txFifo_dout), // 7:0
+	.RD_EN(txFifo_rd),
+	.EMPTY(txFifo_empty),
+	.VALID(txFifo_valid),
+	.DATA_COUNT(txFifo_dataCount) // 4:0
 );
 
 //**************** RX_FIFO GEN CORE ****************
@@ -162,17 +162,17 @@ axiToSpi_fifo txFifo(
 	wire [4:0] rxFifo_dataCount;
 
 axiToSpi_fifo rxFifo(
-	CLK(bus2ip_clk),
-	RST(rst),
-	DIN(rxFifo_din), // 7:0
-	WR_EN(rxFifo_wr),
-	FULL(rxFifo_full),
-	WR_ACK(rxFifo_wrack),
-	DOUT(rxFifo_dout), // 7:0
-	RD_EN(rxFifo_rd),
-	EMPTY(rxFifo_empty),
-	VALID(rxFifo_valid),
-	DATA_COUNT(rxFifo_dataCount) // 4:0
+	.CLK(bus2ip_clk),
+	.RST(rst),
+	.DIN(rxFifo_din), // 7:0
+	.WR_EN(rxFifo_wr),
+	.FULL(rxFifo_full),
+	.WR_ACK(rxFifo_wrack),
+	.DOUT(rxFifo_dout), // 7:0
+	.RD_EN(rxFifo_rd),
+	.EMPTY(rxFifo_empty),
+	.VALID(rxFifo_valid),
+	.DATA_COUNT(rxFifo_dataCount) // 4:0
 );
 
 //**************** BASIC REGISTERS CONT'D ****************

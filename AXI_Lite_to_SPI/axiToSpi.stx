@@ -1,16 +1,16 @@
-Release 14.6 - xst P.68d (nt)
+Release 14.7 - xst P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp
+--> Parameter TMPDIR set to D:/Projektek/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.20 secs
+Total CPU time to Xst completion: 0.12 secs
  
---> Parameter xsthdpdir set to C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst
+--> Parameter xsthdpdir set to D:/Projektek/ra_homework/AXI_Lite_to_SPI/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.22 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
 
@@ -30,6 +30,14 @@ Compiling verilog file "ipcore_dir/axiToSpi_fifo.v" in library work
 Module <M_SpiSender> compiled
 Compiling verilog file "axiToSpi.v" in library work
 Module <axiToSpi_fifo> compiled
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 265 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 266 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 267 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 268 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 269 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 270 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 271 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "axiToSpi.v" line 272 Too many digits specified in binary constant
 Module <axiToSpi> compiled
 No errors in compilation
 Analysis of file <"axiToSpi.prj"> succeeded.
@@ -37,13 +45,13 @@ Analysis of file <"axiToSpi.prj"> succeeded.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> 
 
-Total memory usage is 132076 kilobytes
+Total memory usage is 215680 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    9 (   0 filtered)
+Number of warnings :   17 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

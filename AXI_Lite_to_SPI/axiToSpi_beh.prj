@@ -1,0 +1,4 @@
+verilog work "M_SpiSender.v"
+verilog work "ipcore_dir/axiToSpi_fifo.v"
+verilog work "axiToSpi.v"
+verilog work "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

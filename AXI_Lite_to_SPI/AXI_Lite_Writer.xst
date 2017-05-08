@@ -1,5 +1,5 @@
 set -tmpdir "D:/Projektek/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp"
 set -xsthdpdir "D:/Projektek/ra_homework/AXI_Lite_to_SPI/xst"
 elaborate
--ifn axiToSpi.prj
+-ifn AXI_Lite_Writer.prj
 -ifmt mixed

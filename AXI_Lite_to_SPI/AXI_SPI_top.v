@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Mate Fucsko
 // 
 // Create Date:    09:58:27 03/13/2017 
 // Design Name: 
@@ -9,7 +9,7 @@
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
-// Description: Ebben a modulban kellene osszekotni az SPI periferiat az AXI illesztovel
+// Description: Ebben a modulban van osszerakva az SPI periferia az AXI illesztovel
 //
 // Dependencies: 
 //
@@ -42,8 +42,59 @@ module AXI_SPI_top(
     output [1:0] RRESP,
     output SPI_MOSI,
     input SPI_MISO,
-    output SPI_SCK
+    output SPI_SCK,
+	 output SPI_CS
     );
-
-
+	 
+	wire bus2ip_clk;
+	wire [31:0] bus2ip_addr; 
+	wire [31:0] bus2ip_data;
+	wire [3:0] bus2ip_wrce;
+	wire [3:0] bus2ip_rdce;
+	wire [127:0] ip2bus_data;
+	wire ip2bus_rdack;
+	wire ip2bus_wrack;
+	
+	addr_management Addr_Manage(
+   .ACLK(ACLK),
+	.ARESETn(ARESETn),
+   .AWVALID(AWVALID),
+   .AWREADY(AWREADY),
+   .AWADDR(AWADDR),
+   .WVALID(WVALID),
+   .WREADY(WREADY),
+   .WDATA(WDATA),
+   .BVALID(BVALID),
+   .BREADY(BREADY),
+   .ARVALID(ARVALID),
+   .ARREADY(ARREADY),
+   .ARADDR(ARADDR),
+   .RVALID(RVALID),
+   .RREADY(RREADY),
+   .RDATA(RDATA),
+	 
+	.bus2ip_clk(bus2ip_clk),
+	.bus2ip_addr(bus2ip_addr), 
+	.bus2ip_data(bus2ip_data),
+	.bus2ip_wrce(bus2ip_wrce),
+	.bus2ip_rdce(bus2ip_rdce),
+	.ip2bus_data(ip2bus_data),
+	.ip2bus_rdack(ip2bus_rdack),
+	.ip2bus_wrack(ip2bus_wrack)
+   );
+	
+	axiToSpi SPI_IP(
+	.bus2ip_clk(bus2ip_clk),		//16MHz
+	.bus2ip_data(bus2ip_data),
+	.bus2ip_wrce(bus2ip_wrce),
+	.bus2ip_rdce(bus2ip_rdce),
+	.ip2bus_data(ip2bus_data),
+	.ip2bus_rdack(ip2bus_rdack),
+	.ip2bus_wrack(ip2bus_wrack),
+	
+	.SPI_MOSI(SPI_MOSI),
+	.SPI_MISO(SPI_MISO),
+	.SPI_SCK(SPI_SCK), // must no exceed 10MHz
+	.SPI_CS(SPI_CS)
+	);
 endmodule
