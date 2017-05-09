@@ -38,12 +38,6 @@
 <msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 393: Concatenation with unsized literal; will interpret as 32 bits
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" Line 95: /* in comment
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="114" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" Line 97: /* in comment
-</msg>
-
 <msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 461: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
 </msg>
 

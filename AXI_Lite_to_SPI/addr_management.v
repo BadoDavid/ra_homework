@@ -87,8 +87,10 @@ module addr_management(
 		if (WVALID == 1) 
 			begin
 				bus2ip_data = WDATA;
-				if(ip2bus_wrack == 1)
+				if(ip2bus_wrack == 1) begin
 					w_ready <= 1;
+					bus2ip_wrce <= 0;//edited by M
+				end
 			end
 			
 	// Read data
@@ -97,6 +99,15 @@ module addr_management(
 			begin
 				bus2ip_data = RDATA;
 				r_valid <= 1;
+				bus2ip_rdce	<= 0;//edited by M
 			end
 			
+	// Handshaking - rev. by Mate
+	always @ (posedge ACLK) begin
+		if (AWVALID == 0)	aw_ready		<= 0;
+		if (ARVALID == 0)	ar_ready		<= 0;
+		if (WVALID == 0) 	w_ready		<= 0;
+		if	(RREADY == 1)	r_valid		<= 0;
+	end
+	
 endmodule

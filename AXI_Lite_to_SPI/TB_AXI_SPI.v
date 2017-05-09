@@ -177,19 +177,15 @@ module TB_AXI_SPI;
 		.Running(SPI_Writer_Running),
 		.After_W_CSN(After_W_CSN)
 	);
-	
+
+	// Initialize ACKL and ARESETn	
 	initial begin
-		// Initialize Inputs
 		ACLK = 0;
 		ARESETn = 1;
-		SPI_MISO = 0;
-
-		// Wait 100 ns for global reset to finish
-		#100;
-        
-		// Add stimulus here
+		#17 ARESETn <= 0;
+		#30 ARESETn <= 1;
 	end
-	initial	#17 ARESETn <= 0;
+
 	always	#5 ACLK <= ~ACLK;
 	
 	/**************************** Simple write to module **********************************/
@@ -330,80 +326,82 @@ module TB_AXI_SPI;
 	initial begin
 		#37	Write_to		<= BASE_ADDRESS+OFFSET_COMMAND_REG;	
 				W_Data		<= CMD_REG;	
-				W_Start		<= 1;					//Send Data
+		#10	W_Start		<= 1;					//Send Data
 	end
 	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
-	//Write to the tx_fifo: WREN
+	/*//Write to the tx_fifo: WREN
 	initial begin
 		#207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_CMD_WREN;	//write enable
-				W_Start		<= 1;					
+		#10	W_Start		<= 1;					
 	end	
+	
 	//Read status register
 	initial begin
 		#607	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
-				R_Start		<= 1;					
+		#10	R_Start		<= 1;					
 	end
 	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0;
+	/**/
 	//Write to the eeprom
 	initial begin
 		#1007	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
-				W_Data		<= 32'h00000000+SPI_CMD_WRITE;	//write
-				W_Start		<= 1;					
+				W_Data		<= 32'h00000000+9'b110000011;	//write ctrl word
+		#10	W_Start		<= 1;					
 	end	
 	initial begin
-		#1107	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#1507	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_HIGH;	//addr
-				W_Start		<= 1;					
+		#10	W_Start		<= 1;					
 	end	
 	initial begin
-		#1207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#1907	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_LOW;	//addr
-				W_Start		<= 1;					
+		#10	W_Start		<= 1;					
 	end	
 	initial begin
-		#1307	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#2307	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+8'b10101010;	//32 bit Data
-				W_Start		<= 1;					
+		#10	W_Start		<= 1;					
 	end	
 	
 	//Read status register
-	initial begin
+	/*initial begin
 		#1507	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
-				R_Start		<= 1;					
+		#10	R_Start		<= 1;					
 	end
-	
+	*/
 	//Read instruction to eeprom
 	initial begin
 		#6000000
 		#1007	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_CMD_READ;	//read
-				W_Start		<= 1;					
+		#10	W_Start		<= 1;					
 	end	
 	initial begin
 		#6000000
 		#1107	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_HIGH;	//addr
-				W_Start		<= 1;					
+		#10	W_Start		<= 1;					
 	end	
 	initial begin
 		#6000000
 		#1207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_LOW;	//addr
-				W_Start		<= 1;					
+		#10	W_Start		<= 1;					
 	end	
 	//Read status register
-	initial begin
+	/*initial begin
 		#6000000
 		#20000	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
-					R_Start		<= 1;					
-	end
+		#10		R_Start		<= 1;					
+	end*/
 	//Read from the rx fifo
-	initial begin
+	/*initial begin
 		#6000000
 		#25000	Read_from	<= BASE_ADDRESS+OFFSET_RX_FIFO;	
-					R_Start		<= 1;					
-	end	
+		#10		R_Start		<= 1;					
+	end	*/
 	//Init SPI
 	initial begin 
 			WP_N 					<= 0;

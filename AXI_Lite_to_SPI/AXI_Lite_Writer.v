@@ -76,32 +76,21 @@ module AXI_Lite_Writer(
 					if (AWREADY) begin
 						AWVALID	<= 0;
 						WDATA		<= W_Data; //Data to be written in AXI-SPI slave
-						WVALID	<= 1;
-						//WSTRB		<= Strobe; //Active (valid) bytes of WDATA 
 						state		<= 2'b10;
 						end
 					end
-				else if (state == 2'b10) begin
+				else if (state == 2'b10) begin //1 CLK cycle wait for WVALID
+						WVALID		<= 1;
+						state			<= 2'b11;
+					end
+				else if (state == 2'b11) begin
 					if (WREADY) begin
-						WVALID	<= 0;
-						//WSTRB		<= 4'b0000;
-						//BREADY	<= 1;
+						WVALID		<= 0;
 						state			<= 2'b00;
 						Writer_Run	<= 0;			//Can be started again
 						started		<= 0;
 						end
 					end
-				/*else if (state == 2'b11) begin
-					/*if (BVALID) begin
-						BREADY 		<= 0;	
-						/*if(BRESP == 2'b00) begin	//Response is OK
-							state			<= 2'b00;
-							Writer_Run	<= 0;			//Can be started again
-							started		<= 0;
-							end
-						else state 		<= 2'b00;	//Tries writing the same data again
-						end
-					end*/
 				end
 			end				
 endmodule
