@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.22 secs
  
 --> Parameter xsthdpdir set to C:/Documents and Settings/Administrator/Desktop/ra_homework/AXI_Lite_to_SPI/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.22 secs
  
 --> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
 
@@ -32,8 +32,8 @@ Analysis of file <"M_SpiSender.prj"> succeeded.
  
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.34 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.25 secs
  
 --> 
 

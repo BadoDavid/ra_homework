@@ -61,7 +61,6 @@
     <file xil_pn:fileType="FILE_XST" xil_pn:name="axiToSpi.xst"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="axiToSpi_stx_beh.prj"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
-    <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
@@ -76,9 +75,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494310906" xil_pn:in_ck="-2824836789290683555" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494310906">
+    <transform xil_pn:end_ts="1494242397" xil_pn:in_ck="-2824836789290683555" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494242397">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="25AA160C.v"/>
       <outfile xil_pn:name="AXI_Lite_Reader.v"/>
       <outfile xil_pn:name="AXI_Lite_Writer.v"/>
@@ -89,25 +92,33 @@
       <outfile xil_pn:name="addr_management.v"/>
       <outfile xil_pn:name="axiToSpi.v"/>
     </transform>
-    <transform xil_pn:end_ts="1494310923" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="8119700915022018105" xil_pn:start_ts="1494310923">
+    <transform xil_pn:end_ts="1494243342" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="8119700915022018105" xil_pn:start_ts="1494243342">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494310923" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="3869293892167747569" xil_pn:start_ts="1494310923">
+    <transform xil_pn:end_ts="1494243342" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="3869293892167747569" xil_pn:start_ts="1494243342">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494310924" xil_pn:in_ck="275167853854545676" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="4641318271003307238" xil_pn:start_ts="1494310923">
+    <transform xil_pn:end_ts="1494242271" xil_pn:in_ck="2912772287184202299" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="4641318271003307238" xil_pn:start_ts="1494242271">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="ipcore_dir/axiToSpi_rxFifo.ngc"/>
-      <outfile xil_pn:name="ipcore_dir/axiToSpi_rxFifo.v"/>
-      <outfile xil_pn:name="ipcore_dir/axiToSpi_txFifo.ngc"/>
-      <outfile xil_pn:name="ipcore_dir/axiToSpi_txFifo.v"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1494310924" xil_pn:in_ck="985637891529016769" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1494310924">
+    <transform xil_pn:end_ts="1494243342" xil_pn:in_ck="800716666246360164" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1494243342">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="25AA160C.v"/>
       <outfile xil_pn:name="AXI_Lite_Reader.v"/>
       <outfile xil_pn:name="AXI_Lite_Writer.v"/>
@@ -117,12 +128,15 @@
       <outfile xil_pn:name="TB_AXI_SPI.v"/>
       <outfile xil_pn:name="addr_management.v"/>
       <outfile xil_pn:name="axiToSpi.v"/>
-      <outfile xil_pn:name="ipcore_dir/axiToSpi_rxFifo.v"/>
-      <outfile xil_pn:name="ipcore_dir/axiToSpi_txFifo.v"/>
     </transform>
-    <transform xil_pn:end_ts="1494310926" xil_pn:in_ck="985637891529016769" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1494310924">
+    <transform xil_pn:end_ts="1494243344" xil_pn:in_ck="800716666246360164" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1494243342">
       <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1492181084" xil_pn:in_ck="239938332684844400" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8238929933520176465" xil_pn:start_ts="1492181084">
       <status xil_pn:value="AbortedRun"/>

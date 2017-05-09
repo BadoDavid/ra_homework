@@ -40,6 +40,19 @@ module axiToSpi(
 		*/
 	output reg ip2bus_rdack,
 	output reg ip2bus_wrack,
+	/*
+		IMPORTANT REGARDING RD/WR ACK & RD/WR CE LINES
+		They work as a synchronous handshake pair:
+		Once CE is detected as HIGH (and machine is idle) the selected operation begins.
+		By the time CE is given, incoming bus data MUST be valid.
+		While operating, please DO NOT modify incoming bus data. It may cause unintended results.
+		After completion the appropriate ACK will fire. Now the CE may be pulled back LOW, which
+		triggers the ACK to become LOW again, thus signalling the machine is ready for reception again.
+		New operation may be triggered via raising CE again.
+		
+		Incoming bus data may only change while CE is LOW !
+		It is better not to try and give WR and RD CEs simultaneously.
+	*/
 	
 	output reg SPI_MOSI,
 	input SPI_MISO,
@@ -188,10 +201,10 @@ axiToSpi_rxFifo rxFifo(
 // gets data from rx fifo and puts it onto bus
 
 	localparam
-		sr_idle 		= 4'b0001,
-		sr_beginRead= 4'b0010,
-		sr_waitValid= 4'b0100,
-		sr_done		= 4'b1000;
+		sr_idle 			= 4'b0001,
+		sr_beginRead	= 4'b0010,
+		sr_waitValid	= 4'b0100,
+		sr_signalDone	= 4'b1000;
 
 	reg [3:0] rxFifoState  = sr_idle;
 	
@@ -214,10 +227,10 @@ axiToSpi_rxFifo rxFifo(
 					begin
 						rxFifo_rd <= 0;
 						REG_RX <= {24'hFF_FF_FF, rxFifo_dout};
-						rxFifoState <= sr_done;
+						rxFifoState <= sr_signalDone;
 					end
 				end
-				sr_done : begin
+				sr_signalDone : begin
 					ip2bus_rdack = 1;
 					rxFifoState <= sr_idle;
             end
@@ -304,7 +317,7 @@ axiToSpi_rxFifo rxFifo(
       else begin
 			case (wrFifoState)
             sw_idle : begin
-					if (bus2ip_wrce[ce_tx])
+					if (bus2ip_wrce[ce_tx] == 1 && ip2bus_wrack == 0)
 					begin
 						if (bus2ip_data[8] == 1) // got a ctrl msg
 						begin
@@ -384,6 +397,7 @@ axiToSpi_rxFifo rxFifo(
 					controlled <= 0;
 					longSeqCount <= 3'b000;
 					txFifo_wr <= 0; // just for safety ... ¯\_(o_-)_/¯
+					ip2bus_wrack <= 1;
 					wrFifoState <= sw_idle;
             end
             default : begin  // Fault Recovery
@@ -408,29 +422,6 @@ normal:
 	--_--_-0_dd
 		dd	data
 	...
-*/
-/* for reference:
-	
-	SPI_CMD_READ  = 8'b0000_0011, // Read data from memory array beginning at selected address
-	SPI_CMD_WRITE = 8'b0000_0010, // Write data to memory array beginning at selected address
-	SPI_CMD_WRDI  = 8'b0000_0100, // Reset the write enable latch (disable write operations)
-	SPI_CMD_WREN  = 8'b0000_0110, // Set the write enable latch (enable write operations)
-	SPI_CMD_RDSR  = 8'b0000_0101, // Read STATUS register
-	SPI_CMD_WRSR  = 8'b0000_0001; // Write STATUS register
-	
-axiToSpi_txFifo txFifo(
-	.CLK(bus2ip_clk),
-	.RST(rst),
-	.DIN(txFifo_din), // 8:0
-	.WR_EN(txFifo_wr),
-	.FULL(txFifo_full),
-	.WR_ACK(txFifo_wrack),
-	.DOUT(txFifo_dout), // 8:0
-	.RD_EN(txFifo_rd),
-	.EMPTY(txFifo_empty),
-	.VALID(txFifo_valid),
-	.DATA_COUNT(txFifo_dataCount) // 4:0
-	
 */
 	
 //**************** TX FIFO DEPOPULATOR ****************
