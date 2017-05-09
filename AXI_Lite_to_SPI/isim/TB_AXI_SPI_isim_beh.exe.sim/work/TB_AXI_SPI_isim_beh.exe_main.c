@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     xsi_register_info(&xsi_info);
 
     xsi_register_min_prec_unit(-12);
-    work_m_00000000002802237167_1065690844_init();
+    work_m_00000000003369708745_1065690844_init();
     work_m_00000000004085518319_1714226470_init();
     xilinxcorelib_ver_m_00000000001553933253_0870541705_init();
     xilinxcorelib_ver_m_00000000003461156251_1730892331_init();
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     xilinxcorelib_ver_m_00000000003461156251_2279043104_init();
     xilinxcorelib_ver_m_00000000001291582275_3266368905_init();
     work_m_00000000000525253079_0594460652_init();
-    work_m_00000000000357440129_3836069363_init();
+    work_m_00000000001590479269_3836069363_init();
     work_m_00000000002632546562_1505086248_init();
     work_m_00000000001756973115_0738575614_init();
     work_m_00000000001566736235_2006619456_init();

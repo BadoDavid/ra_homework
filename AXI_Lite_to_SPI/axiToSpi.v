@@ -77,6 +77,7 @@ module axiToSpi(
 		readDataIsReady;
 	wire [7:0] rxData;
 	reg [7:0] txData;
+	
 
 M_SpiSender sender(
     .clk(bus2ip_clk),
@@ -115,6 +116,8 @@ M_SpiSender sender(
 				29..28	DIV, value-divider pairings: 00-2 | 01-4 | 10-8 | 11-16
 				27..0		-
 		*/
+	wire CPOL, CPHA;
+	wire [1:0] DIV;
 	assign CPOL = REG_CMD[31];
 	assign CPHA = REG_CMD[30];
 	assign DIV = REG_CMD[29:28];
@@ -309,6 +312,8 @@ axiToSpi_rxFifo rxFifo(
 	reg controlled = 0;
 	reg [2:0] longSeqCount = 0;
 
+	reg [7:0] DEBUG = 0;
+
    always @(posedge bus2ip_clk)
 	begin
       if (rst) begin
@@ -324,7 +329,7 @@ axiToSpi_rxFifo rxFifo(
 							if (controlled == 0) // and not in an active long reception
 							begin 
 								if (	(bus2ip_data[4] == read) && // read means 2 more bytes will come + 2 needed for CMD and dummy write
-										(txFifo_dataCount <= 27)) // 27 means there are 4 free slots remaining
+										(txFifo_dataCount < 28)) // 27 means there are 4 free slots remaining
 								begin
 									controlled <= 1;
 									txFifo_din <= {1, SPI_CMD_READ}; // schedule a read command and hold CE
@@ -332,9 +337,10 @@ axiToSpi_rxFifo rxFifo(
 									longSeqCount <= 3'b001; // total of 4 required (CMD_READ, addr, addr2, dummy write to perform read)
 									txFifo_wr <= 1; // enable fifo writing
 									wrFifoState <= sw_waitFifoWrite;
+									DEBUG <= 1;
 								end
 								if (	(bus2ip_data[4] == write) && // write means 3 more bytes will come + 2 needed for CMD
-										(txFifo_dataCount <= 26)) //26 means there are 5 free slots remaining
+										(txFifo_dataCount < 27)) //26 means there are 5 free slots remaining
 								begin
 									controlled <= 1;
 									txFifo_din <= {0, SPI_CMD_WREN}; // schedule a write latch enable cmd and release CE afterwards
@@ -342,6 +348,7 @@ axiToSpi_rxFifo rxFifo(
 									longSeqCount <= 3'b001; // total of 5 required (CMD_WREN, CMD_WR, addr1, addr2, data)
 									txFifo_wr <= 1; // enable fifo writing
 									wrFifoState <= sw_waitFifoWrite;
+									DEBUG <= 2;
 								end
 								// else tx fifo is too full to catch required data
 							end
@@ -355,6 +362,7 @@ axiToSpi_rxFifo rxFifo(
 									longSeqCount = longSeqCount + 1;
 									txFifo_wr <= 1; // enable fifo writing
 									wrFifoState <= sw_waitFifoWrite;
+									DEBUG <= 3;
 									if (direction == write && longSeqCount == 4)
 										txFifo_din <= {0, bus2ip_data[7:0]}; // schedule data write and end CE
 									else
@@ -371,6 +379,8 @@ axiToSpi_rxFifo rxFifo(
 					if (txFifo_wrack == 1)
 					begin
 						txFifo_wr <= 0;
+						DEBUG <= 4;
+						if ( !((direction == write && longSeqCount == 1) || (direction == read && longSeqCount == 3)) ) ip2bus_wrack <= 1; //Edited by M
 						if ( (direction == read && longSeqCount == 4) || (direction == write && longSeqCount == 5) )
 							wrFifoState <= sw_endLongSeq;
 						else
@@ -384,6 +394,7 @@ axiToSpi_rxFifo rxFifo(
 						txFifo_wr <= 1; // enable fifo writing
 						longSeqCount = longSeqCount + 1;
 						txFifo_din <= {1, SPI_CMD_WRITE}; // schedule a write cmd and hold CE afterwards
+						DEBUG <= 5;
 					end
 					else if (direction == read && longSeqCount == 3) // means only a dummy write is missing
 					begin
@@ -391,6 +402,11 @@ axiToSpi_rxFifo rxFifo(
 						txFifo_wr <= 1; // enable fifo writing
 						longSeqCount = longSeqCount + 1;
 						txFifo_din <= {0, 8'hFF_FF_FF_FF}; // schedule dummy write cmd and release CE afterwards
+						DEBUG <= 6;
+					end
+					else begin
+						wrFifoState <= sw_idle; //Edited by M
+						DEBUG <= 7;
 					end
             end
 				sw_endLongSeq : begin
@@ -399,6 +415,7 @@ axiToSpi_rxFifo rxFifo(
 					txFifo_wr <= 0; // just for safety ... ¯\_(o_-)_/¯
 					ip2bus_wrack <= 1;
 					wrFifoState <= sw_idle;
+					DEBUG <= 8;
             end
             default : begin  // Fault Recovery
                wrFifoState <= sw_idle;
@@ -500,12 +517,7 @@ normal:
 		end*/
 	end
 
-	always @(negedge 
-		bus2ip_wrce[ce_cmd],
-		bus2ip_wrce[ce_status],
-		bus2ip_wrce[ce_tx],
-		bus2ip_wrce[ce_rx]
-		)
-		ip2bus_wrack = 0;
+	always @(posedge bus2ip_clk )
+		if(bus2ip_wrce==0) ip2bus_wrack <= 0;
 
 endmodule

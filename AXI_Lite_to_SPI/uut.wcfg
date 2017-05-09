@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="39" />
+   <WVObjectSize size="43" />
    <wvobject fp_name="/TB_AXI_SPI/ARESETn" type="logic" db_ref_id="1">
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">ARESETn</obj_property>
@@ -81,6 +81,15 @@
       <obj_property name="BkColor">128 128 255</obj_property>
       <obj_property name="TextColor">230 230 230</obj_property>
    </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/DEBUG" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">DEBUG[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DEBUG[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bus2ip_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">bus2ip_data[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/ip2bus_rdack" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">ip2bus_rdack</obj_property>
       <obj_property name="ObjectShortName">ip2bus_rdack</obj_property>
@@ -101,9 +110,17 @@
       <obj_property name="ElementShortName">txFifo_dataCount[4:0]</obj_property>
       <obj_property name="ObjectShortName">txFifo_dataCount[4:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/txFifo_din" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">txFifo_din[8:0]</obj_property>
+      <obj_property name="ObjectShortName">txFifo_din[8:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/wrFifoState" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">wrFifoState[3:0]</obj_property>
       <obj_property name="ObjectShortName">wrFifoState[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/longSeqCount" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">longSeqCount[2:0]</obj_property>
+      <obj_property name="ObjectShortName">longSeqCount[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/controlled" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">controlled</obj_property>

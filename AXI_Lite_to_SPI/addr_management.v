@@ -57,15 +57,17 @@ module addr_management(
 	assign WREADY = w_ready;
 	assign RVALID = r_valid;
 	
+	reg [3:0] wrce_temp; //Edited by M
+	
 	// Write address
 	always @ (posedge ACLK)
 		if (AWVALID == 1) 
 			begin
 				case (AWADDR[3:2])
-					2'b00 : bus2ip_wrce = 4'b0001;
-					2'b01 : bus2ip_wrce = 4'b0010;
-					2'b10 : bus2ip_wrce = 4'b0100;
-					2'b11 : bus2ip_wrce = 4'b1000;
+					2'b00 : wrce_temp = 4'b0001;
+					2'b01 : wrce_temp = 4'b0010;
+					2'b10 : wrce_temp = 4'b0100;
+					2'b11 : wrce_temp = 4'b1000;
 				endcase
 				aw_ready <= 1;
 			end
@@ -87,6 +89,7 @@ module addr_management(
 	always @ (posedge ACLK)
 		if (WVALID == 1) 
 			begin
+				bus2ip_wrce = wrce_temp;
 				bus2ip_data = WDATA;
 				if(ip2bus_wrack == 1) begin
 					w_ready <= 1;

@@ -29,7 +29,7 @@ static unsigned int ng4[] = {8U, 0U};
 static unsigned int ng5[] = {805306368U, 0U};
 static unsigned int ng6[] = {12U, 0U};
 static unsigned int ng7[] = {0U, 0U};
-static unsigned int ng8[] = {387U, 0U};
+static unsigned int ng8[] = {275U, 0U};
 static unsigned int ng9[] = {240U, 0U};
 static unsigned int ng10[] = {170U, 0U};
 static unsigned int ng11[] = {3U, 0U};
@@ -343,7 +343,7 @@ LAB2:    xsi_set_current_line(347, ng0);
 
 LAB4:    xsi_set_current_line(348, ng0);
     t2 = (t0 + 10672);
-    xsi_process_wait(t2, 1007000LL);
+    xsi_process_wait(t2, 207000LL);
     *((char **)t1) = &&LAB5;
 
 LAB1:    return;
@@ -395,7 +395,7 @@ LAB2:    xsi_set_current_line(352, ng0);
 
 LAB4:    xsi_set_current_line(353, ng0);
     t2 = (t0 + 10920);
-    xsi_process_wait(t2, 1507000LL);
+    xsi_process_wait(t2, 407000LL);
     *((char **)t1) = &&LAB5;
 
 LAB1:    return;
@@ -447,7 +447,7 @@ LAB2:    xsi_set_current_line(357, ng0);
 
 LAB4:    xsi_set_current_line(358, ng0);
     t2 = (t0 + 11168);
-    xsi_process_wait(t2, 1907000LL);
+    xsi_process_wait(t2, 607000LL);
     *((char **)t1) = &&LAB5;
 
 LAB1:    return;
@@ -499,7 +499,7 @@ LAB2:    xsi_set_current_line(362, ng0);
 
 LAB4:    xsi_set_current_line(363, ng0);
     t2 = (t0 + 11416);
-    xsi_process_wait(t2, 2307000LL);
+    xsi_process_wait(t2, 807000LL);
     *((char **)t1) = &&LAB5;
 
 LAB1:    return;
@@ -738,7 +738,7 @@ LAB4:    xsi_set_current_line(407, ng0);
     xsi_vlogvar_wait_assign_value(t3, t2, 0, 0, 1, 0LL);
     xsi_set_current_line(410, ng0);
     t2 = (t0 + 12408);
-    xsi_process_wait(t2, 170000LL);
+    xsi_process_wait(t2, 17000LL);
     *((char **)t1) = &&LAB5;
 
 LAB1:    return;
@@ -748,7 +748,7 @@ LAB5:    xsi_set_current_line(411, ng0);
     xsi_vlogvar_wait_assign_value(t4, t3, 0, 0, 1, 0LL);
     xsi_set_current_line(412, ng0);
     t2 = (t0 + 12408);
-    xsi_process_wait(t2, 400000LL);
+    xsi_process_wait(t2, 100000LL);
     *((char **)t1) = &&LAB6;
     goto LAB1;
 

@@ -327,7 +327,7 @@ module TB_AXI_SPI;
 		#37	Write_to		<= BASE_ADDRESS+OFFSET_COMMAND_REG;	
 				W_Data		<= CMD_REG;	
 		#10	W_Start		<= 1;					//Send Data
-	end
+	end// 135ns
 	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
 	/*//Write to the tx_fifo: WREN
 	initial begin
@@ -345,22 +345,22 @@ module TB_AXI_SPI;
 	/**/
 	//Write to the eeprom
 	initial begin
-		#1007	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
-				W_Data		<= 32'h00000000+9'b110000011;	//write ctrl word
+		#207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+				W_Data		<= 32'h00000000+9'b100010011;	//write ctrl word: write 3 bytes
 		#10	W_Start		<= 1;					
 	end	
 	initial begin
-		#1507	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#407	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_HIGH;	//addr
 		#10	W_Start		<= 1;					
 	end	
 	initial begin
-		#1907	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#607	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_LOW;	//addr
 		#10	W_Start		<= 1;					
 	end	
 	initial begin
-		#2307	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#807	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+8'b10101010;	//32 bit Data
 		#10	W_Start		<= 1;					
 	end	
@@ -407,9 +407,9 @@ module TB_AXI_SPI;
 			WP_N 					<= 0;
 			HOLD_N				<= 0;
 			SPI_RESET			<= 0;
-		#170 
+		#17 
 			SPI_RESET			<= 1;
-		#400
+		#100
 			SPI_RESET			<= 0;		
 			HOLD_N				<= 1;
 			WP_N 					<= 1;			
