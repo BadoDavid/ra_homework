@@ -1,5 +1,6 @@
 verilog work "M_SpiSender.v"
-verilog work "ipcore_dir/axiToSpi_fifo.v"
+verilog work "ipcore_dir/axiToSpi_txFifo.v"
+verilog work "ipcore_dir/axiToSpi_rxFifo.v"
 verilog work "axiToSpi.v"
 verilog work "addr_management.v"
 verilog work "SPI_Writer.v"

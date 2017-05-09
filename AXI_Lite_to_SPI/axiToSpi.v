@@ -205,7 +205,7 @@ axiToSpi_rxFifo rxFifo(
             sr_idle : begin
 					
             end
-				sr_beginReading : begin
+				sr_beginRead : begin
 					rxFifo_rd <= 1;
 					rxFifoState <= sr_waitValid;
             end
@@ -214,10 +214,10 @@ axiToSpi_rxFifo rxFifo(
 					begin
 						rxFifo_rd <= 0;
 						REG_RX <= {24'hFF_FF_FF, rxFifo_dout};
-						rxFifoState <= sr_signalDone;
+						rxFifoState <= sr_done;
 					end
 				end
-				sr_signalDone : begin
+				sr_done : begin
 					ip2bus_rdack = 1;
 					rxFifoState <= sr_idle;
             end
@@ -269,12 +269,12 @@ axiToSpi_rxFifo rxFifo(
 	begin
 		if (newRxFifoItem == 1)
 		begin
-			WR_EN <= 1;
+			rxFifo_wr <= 1;
 			newRxFifoItem <= 0;
 		end
 		else begin
-			if (WR_ACK == 1)
-				WR_EN <= 0;
+			if (rxFifo_wrack == 1)
+				rxFifo_wr <= 0;
 		end
 	end
 
@@ -370,7 +370,7 @@ axiToSpi_rxFifo rxFifo(
 						wrFifoState <= sw_waitFifoWrite;
 						txFifo_wr <= 1; // enable fifo writing
 						longSeqCount = longSeqCount + 1;
-						txFifo_din <= {1, SPI_CMD_WR}; // schedule a write cmd and hold CE afterwards
+						txFifo_din <= {1, SPI_CMD_WRITE}; // schedule a write cmd and hold CE afterwards
 					end
 					else if (direction == read && longSeqCount == 3) // means only a dummy write is missing
 					begin

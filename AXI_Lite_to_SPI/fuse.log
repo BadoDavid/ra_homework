@@ -4,16 +4,20 @@ Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" into library work
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 88: Constant value is truncated to fit in <4> bits.
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 89: Constant value is truncated to fit in <4> bits.
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 90: Constant value is truncated to fit in <4> bits.
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 91: Constant value is truncated to fit in <4> bits.
-Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/ipcore_dir/axiToSpi_fifo.v" into library work
+WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 102: Constant value is truncated to fit in <4> bits.
+WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 103: Constant value is truncated to fit in <4> bits.
+WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 104: Constant value is truncated to fit in <4> bits.
+WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 105: Constant value is truncated to fit in <4> bits.
+Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/ipcore_dir/axiToSpi_txFifo.v" into library work
+Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/ipcore_dir/axiToSpi_rxFifo.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" into library work
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 269: Constant value is truncated to fit in <4> bits.
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 270: Constant value is truncated to fit in <4> bits.
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 271: Constant value is truncated to fit in <4> bits.
-WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 272: Constant value is truncated to fit in <4> bits.
+WARNING:HDLCompiler:568 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 380: Constant value is truncated to fit in <8> bits.
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 317: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 327: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 346: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 348: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 373: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 380: Concatenation with unsized literal; will interpret as 32 bits
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/addr_management.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/SPI_Writer.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.v" into library work
@@ -25,8 +29,8 @@ Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" int
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:267 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 136: Cannot find port DATA_COUNT on this module
-WARNING:HDLCompiler:267 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 164: Cannot find port DATA_COUNT on this module
+WARNING:HDLCompiler:267 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 138: Cannot find port DATA_COUNT on this module
+WARNING:HDLCompiler:267 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 166: Cannot find port DATA_COUNT on this module
 WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 461: Actual bit length 32 differs from formal bit length 1
 WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 462: Actual bit length 32 differs from formal bit length 1
 WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 463: Actual bit length 32 differs from formal bit length 1
@@ -38,27 +42,27 @@ WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" 
 WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 463: Actual bit length 32 differs from formal bit length 1
 WARNING:HDLCompiler:329 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI.v" Line 129: Target <R_Data> of concurrent assignment or output port connection should be a net type.
 WARNING:HDLCompiler:329 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI.v" Line 162: Target <SPI_MISO> of concurrent assignment or output port connection should be a net type.
-WARNING:HDLCompiler:329 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 77: Target <SPI_CS> of concurrent assignment or output port connection should be a net type.
-WARNING:HDLCompiler:329 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 78: Target <SPI_MOSI> of concurrent assignment or output port connection should be a net type.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 137: Module <axiToSpi_fifo> does not have a port named <CLK>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 138: Module <axiToSpi_fifo> does not have a port named <RST>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 139: Module <axiToSpi_fifo> does not have a port named <DIN>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 140: Module <axiToSpi_fifo> does not have a port named <WR_EN>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 141: Module <axiToSpi_fifo> does not have a port named <FULL>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 142: Module <axiToSpi_fifo> does not have a port named <WR_ACK>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 143: Module <axiToSpi_fifo> does not have a port named <DOUT>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 144: Module <axiToSpi_fifo> does not have a port named <RD_EN>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 145: Module <axiToSpi_fifo> does not have a port named <EMPTY>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 146: Module <axiToSpi_fifo> does not have a port named <VALID>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 147: Module <axiToSpi_fifo> does not have a port named <DATA_COUNT>.
-WARNING:HDLCompiler:1016 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 136: Port clk is not connected to this instance
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 165: Module <axiToSpi_fifo> does not have a port named <CLK>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 166: Module <axiToSpi_fifo> does not have a port named <RST>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 167: Module <axiToSpi_fifo> does not have a port named <DIN>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 168: Module <axiToSpi_fifo> does not have a port named <WR_EN>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 169: Module <axiToSpi_fifo> does not have a port named <FULL>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 170: Module <axiToSpi_fifo> does not have a port named <WR_ACK>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 171: Module <axiToSpi_fifo> does not have a port named <DOUT>.
-ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 172: Module <axiToSpi_fifo> does not have a port named <RD_EN>.
+WARNING:HDLCompiler:329 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 79: Target <SPI_CS> of concurrent assignment or output port connection should be a net type.
+WARNING:HDLCompiler:329 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 80: Target <SPI_MOSI> of concurrent assignment or output port connection should be a net type.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 139: Module <axiToSpi_txFifo> does not have a port named <CLK>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 140: Module <axiToSpi_txFifo> does not have a port named <RST>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 141: Module <axiToSpi_txFifo> does not have a port named <DIN>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 142: Module <axiToSpi_txFifo> does not have a port named <WR_EN>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 143: Module <axiToSpi_txFifo> does not have a port named <FULL>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 144: Module <axiToSpi_txFifo> does not have a port named <WR_ACK>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 145: Module <axiToSpi_txFifo> does not have a port named <DOUT>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 146: Module <axiToSpi_txFifo> does not have a port named <RD_EN>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 147: Module <axiToSpi_txFifo> does not have a port named <EMPTY>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 148: Module <axiToSpi_txFifo> does not have a port named <VALID>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 149: Module <axiToSpi_txFifo> does not have a port named <DATA_COUNT>.
+WARNING:HDLCompiler:1016 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 138: Port clk is not connected to this instance
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 167: Module <axiToSpi_rxFifo> does not have a port named <CLK>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 168: Module <axiToSpi_rxFifo> does not have a port named <RST>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 169: Module <axiToSpi_rxFifo> does not have a port named <DIN>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 170: Module <axiToSpi_rxFifo> does not have a port named <WR_EN>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 171: Module <axiToSpi_rxFifo> does not have a port named <FULL>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 172: Module <axiToSpi_rxFifo> does not have a port named <WR_ACK>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 173: Module <axiToSpi_rxFifo> does not have a port named <DOUT>.
+ERROR:HDLCompiler:25 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 174: Module <axiToSpi_rxFifo> does not have a port named <RD_EN>.
 Sorry, too many errors..
 ERROR:Simulator:778 - Static elaboration of top level Verilog design unit(s) in library work failed

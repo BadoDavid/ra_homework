@@ -1,0 +1,56 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to D:/Projektek/ra_homework/AXI_Lite_to_SPI/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Parameter xsthdpdir set to D:/Projektek/ra_homework/AXI_Lite_to_SPI/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "M_SpiSender.v" in library work
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 98 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 99 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 100 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 101 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 102 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 103 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 104 Too many digits specified in binary constant
+WARNING:HDLCompilers:299 - "M_SpiSender.v" line 105 Too many digits specified in binary constant
+Compiling verilog file "ipcore_dir/axiToSpi_txFifo.v" in library work
+Module <M_SpiSender> compiled
+Compiling verilog file "ipcore_dir/axiToSpi_rxFifo.v" in library work
+Module <axiToSpi_txFifo> compiled
+Compiling verilog file "axiToSpi.v" in library work
+Module <axiToSpi_rxFifo> compiled
+ERROR:HDLCompilers:28 - "axiToSpi.v" line 208 'sr_beginReading' has not been declared
+ERROR:HDLCompilers:28 - "axiToSpi.v" line 217 'sr_signalDone' has not been declared
+ERROR:HDLCompilers:28 - "axiToSpi.v" line 220 'sr_signalDone' has not been declared
+ERROR:HDLCompilers:28 - "axiToSpi.v" line 272 'WR_EN' has not been declared
+ERROR:HDLCompilers:28 - "axiToSpi.v" line 276 'WR_ACK' has not been declared
+ERROR:HDLCompilers:28 - "axiToSpi.v" line 277 'WR_EN' has not been declared
+ERROR:HDLCompilers:28 - "axiToSpi.v" line 373 'SPI_CMD_WR' has not been declared
+WARNING:HDLCompilers:301 - "axiToSpi.v" line 380 Too many digits specified in hex constant
+Compiling verilog file "addr_management.v" in library work
+Module <axiToSpi> compiled
+Compiling verilog file "AXI_SPI_top.v" in library work
+Module <addr_management> compiled
+Module <AXI_SPI_top> compiled
+Analysis of file <"AXI_SPI_top.prj"> failed.
+--> 
+
+Total memory usage is 215680 kilobytes
+
+Number of errors   :    7 (   0 filtered)
+Number of warnings :   10 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
