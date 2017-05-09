@@ -404,6 +404,18 @@ module TB_AXI_SPI;
 		#25000	Read_from	<= BASE_ADDRESS+OFFSET_RX_FIFO;	
 					R_Start		<= 1;					
 	end	
+	//Init SPI
+	initial begin 
+			WP_N 					<= 0;
+			HOLD_N				<= 0;
+			SPI_RESET			<= 0;
+		#170 
+			SPI_RESET			<= 1;
+		#400
+			SPI_RESET			<= 0;		
+			HOLD_N				<= 1;
+			WP_N 					<= 1;			
+	end
 	/**/
 endmodule
 

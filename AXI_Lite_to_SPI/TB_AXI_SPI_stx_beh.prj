@@ -1,4 +1,6 @@
 verilog isim_temp "M_SpiSender.v"
+verilog isim_temp "axiToSpi_TxFifo.v"
+verilog isim_temp "axiToSpi_RxFifo.v"
 verilog isim_temp "axiToSpi.v"
 verilog isim_temp "addr_management.v"
 verilog isim_temp "SPI_Writer.v"

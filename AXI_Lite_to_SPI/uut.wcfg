@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="TB_AXI_SPI" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="29" />
+   <wvobject fp_name="/TB_AXI_SPI/AWVALID" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">AWVALID</obj_property>
+      <obj_property name="ObjectShortName">AWVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/AWADDR" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">AWADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AWADDR[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/WVALID" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">WVALID</obj_property>
+      <obj_property name="ObjectShortName">WVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/WDATA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/ARVALID" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ARVALID</obj_property>
+      <obj_property name="ObjectShortName">ARVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/ARADDR" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ARADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ARADDR[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/RREADY" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RREADY</obj_property>
+      <obj_property name="ObjectShortName">RREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/AWREADY" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">AWREADY</obj_property>
+      <obj_property name="ObjectShortName">AWREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/WREADY" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">WREADY</obj_property>
+      <obj_property name="ObjectShortName">WREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/ARREADY" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ARREADY</obj_property>
+      <obj_property name="ObjectShortName">ARREADY</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/RVALID" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RVALID</obj_property>
+      <obj_property name="ObjectShortName">RVALID</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/RDATA" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">RDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RDATA[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_MOSI" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_MOSI</obj_property>
+      <obj_property name="ObjectShortName">SPI_MOSI</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_SCK" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_SCK</obj_property>
+      <obj_property name="ObjectShortName">SPI_SCK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/Writer_Run" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Writer_Run</obj_property>
+      <obj_property name="ObjectShortName">Writer_Run</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/Reader_Run" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Reader_Run</obj_property>
+      <obj_property name="ObjectShortName">Reader_Run</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/CS_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">CS_N</obj_property>
+      <obj_property name="ObjectShortName">CS_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/ACLK" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ACLK</obj_property>
+      <obj_property name="ObjectShortName">ACLK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/ARESETn" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ARESETn</obj_property>
+      <obj_property name="ObjectShortName">ARESETn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_MISO" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_MISO</obj_property>
+      <obj_property name="ObjectShortName">SPI_MISO</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/Write_to" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">Write_to[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Write_to[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/W_Data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">W_Data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">W_Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/W_Start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">W_Start</obj_property>
+      <obj_property name="ObjectShortName">W_Start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/Read_from" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">Read_from[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Read_from[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/R_Data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R_Data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">R_Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/R_Start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">R_Start</obj_property>
+      <obj_property name="ObjectShortName">R_Start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/WP_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">WP_N</obj_property>
+      <obj_property name="ObjectShortName">WP_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/HOLD_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HOLD_N</obj_property>
+      <obj_property name="ObjectShortName">HOLD_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/SPI_RESET" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_RESET</obj_property>
+      <obj_property name="ObjectShortName">SPI_RESET</obj_property>
+   </wvobject>
+</wave_config>

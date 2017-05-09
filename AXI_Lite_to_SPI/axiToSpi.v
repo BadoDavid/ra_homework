@@ -177,17 +177,17 @@ axiToSpi_txFifo txFifo(
 	wire [4:0] rxFifo_dataCount;
 
 axiToSpi_rxFifo rxFifo(
-	.CLK(bus2ip_clk),
-	.RST(rst),
-	.DIN(rxFifo_din), // 7:0
-	.WR_EN(rxFifo_wr),
-	.FULL(rxFifo_full),
-	.WR_ACK(rxFifo_wrack),
-	.DOUT(rxFifo_dout), // 7:0
-	.RD_EN(rxFifo_rd),
-	.EMPTY(rxFifo_empty),
-	.VALID(rxFifo_valid),
-	.DATA_COUNT(rxFifo_dataCount) // 4:0
+	.clk(bus2ip_clk),
+	.rst(rst),
+	.din(rxFifo_din), // 7:0
+	.wr_en(rxFifo_wr),
+	.full(rxFifo_full),
+	.wr_ack(rxFifo_wrack),
+	.dout(rxFifo_dout), // 7:0
+	.rd_en(rxFifo_rd),
+	.empty(rxFifo_empty),
+	.valid(rxFifo_valid),
+	.data_count(rxFifo_dataCount) // 4:0
 );
 
 //**************** BASIC REGISTERS CONT'D ****************
