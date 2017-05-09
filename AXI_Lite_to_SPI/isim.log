@@ -1,11 +1,10 @@
 ISim log file
-Running: D:\Projektek\ra_homework\AXI_Lite_to_SPI\TB_AXI_SPI_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.wdb 
+Running: C:\Users\virtual_win\Documents\GitHub\ra_homework\AXI_Lite_to_SPI\TB_AXI_SPI_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
@@ -19,58 +18,15 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
 # run 1.00us
 ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-# run 1.00us
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
@@ -81,97 +37,10 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1.00us
-# run 1.00us
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-WARNING: File "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86.  For instance SPI_IP/sender/, width 2 of formal port clkDiv is not equal to width 1 of actual signal DIV.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 1ms
-# run 1ms
 ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
@@ -180,12 +49,13 @@ This is a Lite version of ISim.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 1ms
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
+# run 1.00us
+# run 1.00us
+WARNING: at 2895 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:2865 ns, :2895 ns, 50 ns)
+
+
+# run 1.00us
+# run 1.00us
+WARNING: at 4165 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:4135 ns, :4165 ns, 50 ns)
+
+

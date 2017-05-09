@@ -38,6 +38,11 @@ module M_SpiSender(
     input CPHA
     );
 
+initial begin
+	CE <= 1;
+	MOSI <= 0;
+end
+
 localparam
 	SPI_CMD_READ  = 8'b0000_0011, // Read data from memory array beginning at selected address
 	SPI_CMD_WRITE = 8'b0000_0010; // Write data to memory array beginning at selected address
@@ -55,7 +60,7 @@ localparam
 
 	reg enableClk = 0;
 	reg resetClk = 0;
-	reg [3:0] clock_counter;
+	reg [3:0] clock_counter = 0;
    
    always @(posedge clk)
 	begin
@@ -182,6 +187,7 @@ localparam
 				end
             s_finished : begin
 					enableClk <= 0;
+					resetClk = 1;
 					bitCount <= 4'b0;				
 					ready <= 1;
 					state <= s_idle;

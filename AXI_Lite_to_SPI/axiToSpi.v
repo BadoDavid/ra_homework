@@ -69,9 +69,9 @@ module axiToSpi(
 //**************** SPI SENDER INSTANCE ****************
 
 	reg
-		rst,
-		start,
-		continued;
+		rst = 0,
+		start = 0,
+		continued = 0;
 	wire
 		ready,
 		readDataIsReady;
@@ -359,7 +359,7 @@ axiToSpi_rxFifo rxFifo(
 							begin
 								if( (direction == read && longSeqCount < 3) || (direction == write && longSeqCount < 5) ) // NOTE longSeqCount <3 bc. 4th is dummy which does not come from the bus !!
 								begin // data message is expected to be received
-									longSeqCount = longSeqCount + 1;
+									longSeqCount <= longSeqCount + 1; // warning!!! 
 									txFifo_wr <= 1; // enable fifo writing
 									wrFifoState <= sw_waitFifoWrite;
 									DEBUG <= 3;
@@ -380,11 +380,14 @@ axiToSpi_rxFifo rxFifo(
 					begin
 						txFifo_wr <= 0;
 						DEBUG <= 4;
-						if ( !((direction == write && longSeqCount == 1) || (direction == read && longSeqCount == 3)) ) ip2bus_wrack <= 1; //Edited by M
+						//ez miért?
+						//if ( !((direction == write && longSeqCount == 1) || (direction == read && longSeqCount == 3)) ) ip2bus_wrack <= 1; //Edited by M
 						if ( (direction == read && longSeqCount == 4) || (direction == write && longSeqCount == 5) )
 							wrFifoState <= sw_endLongSeq;
-						else
+						else begin
 							wrFifoState <= sw_continueFilling;
+							ip2bus_wrack <= 1;
+						end
 					end
             end
 				sw_continueFilling : begin
@@ -460,10 +463,13 @@ normal:
       else begin
 			case (txFifoDepopulatorState)
             sdd_idle : begin
-					if (txFifo_empty == 0 && ready == 1)
+					if (txFifo_empty == 0 && ready == 1 && start==0)
 					begin
 						txFifo_rd <= 1;
 						txFifoDepopulatorState <= sdd_waitForTxFifo;
+					end
+					else begin
+						start <= 0;
 					end
             end
 				sdd_waitForTxFifo : begin
