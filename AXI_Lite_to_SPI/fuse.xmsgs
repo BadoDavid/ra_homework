@@ -5,97 +5,43 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 102: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
+<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 102: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 103: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
+<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 103: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 104: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
+<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 104: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 105: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
+<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" Line 105: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">4</arg>&gt; bits.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 393: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
+<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 393: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">8</arg>&gt; bits.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 330: Concatenation with unsized literal; will interpret as 32 bits
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 330: Concatenation with unsized literal; will interpret as 32 bits
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 340: Concatenation with unsized literal; will interpret as 32 bits
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 340: Concatenation with unsized literal; will interpret as 32 bits
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 359: Concatenation with unsized literal; will interpret as 32 bits
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 359: Concatenation with unsized literal; will interpret as 32 bits
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 361: Concatenation with unsized literal; will interpret as 32 bits
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 361: Concatenation with unsized literal; will interpret as 32 bits
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 386: Concatenation with unsized literal; will interpret as 32 bits
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 386: Concatenation with unsized literal; will interpret as 32 bits
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 393: Concatenation with unsized literal; will interpret as 32 bits
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 393: Concatenation with unsized literal; will interpret as 32 bits
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 461: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
+<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/addr_management.v" Line 104: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">2</arg>&gt; bits.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 462: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 463: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 461: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 462: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 463: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 461: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 462: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="188" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 463: Actual bit length <arg fmt="%d" index="1">32</arg> differs from formal bit length <arg fmt="%d" index="2">1</arg>
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI.v" Line 129: Target &lt;<arg fmt="%s" index="1">R_Data</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI.v" Line 162: Target &lt;<arg fmt="%s" index="1">SPI_MISO</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 92: Target &lt;<arg fmt="%s" index="1">SPI_CS</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 93: Target &lt;<arg fmt="%s" index="1">SPI_MOSI</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 330: Concatenation with unsized literal; will interpret as 32 bits
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 340: Concatenation with unsized literal; will interpret as 32 bits
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 359: Concatenation with unsized literal; will interpret as 32 bits
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 361: Concatenation with unsized literal; will interpret as 32 bits
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 386: Concatenation with unsized literal; will interpret as 32 bits
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 393: Concatenation with unsized literal; will interpret as 32 bits
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="189" delta="unknown" >"D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 86: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">clkDiv</arg>&gt;. Formal port size is <arg fmt="%d" index="2">2</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="568" delta="unknown" >"C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/addr_management.v" Line 105: Constant value is truncated to fit in &lt;<arg fmt="%d" index="1">2</arg>&gt; bits.
 </msg>
 
 </messages>

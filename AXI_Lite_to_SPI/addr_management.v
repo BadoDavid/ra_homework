@@ -48,6 +48,7 @@ module addr_management(
 	reg ar_ready;
 	reg w_ready;
 	reg r_valid;
+	reg [31:0] rdata;
 	
 	assign bus2ip_clk = ACLK;
 		
@@ -92,15 +93,23 @@ module addr_management(
 					bus2ip_wrce <= 0;//edited by M
 				end
 			end
-			
+
 	// Read data
 	always @ (posedge ACLK)
 		if (ip2bus_rdack == 1) 
 			begin
-				bus2ip_data = RDATA;
+				case (bus2ip_rdce)
+					2'b0001 : rdata = ip2bus_data[31:0];
+					2'b0010 : rdata = ip2bus_data[63:32];
+					2'b0100 : rdata = ip2bus_data[95:64];
+					2'b1000 : rdata = ip2bus_data[127:96];
+				endcase
+				//bus2ip_data = RDATA;
 				r_valid <= 1;
 				bus2ip_rdce	<= 0;//edited by M
 			end
+			
+	assign RDATA = rdata; 
 			
 	// Handshaking - rev. by Mate
 	always @ (posedge ACLK) begin
