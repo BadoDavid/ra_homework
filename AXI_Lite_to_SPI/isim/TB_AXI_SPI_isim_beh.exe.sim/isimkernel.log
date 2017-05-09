@@ -2,9 +2,9 @@ Command line:
    TB_AXI_SPI_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  51052
+     -socket  51078
 
-Wed May 10 01:00:01 2017
+Wed May 10 01:23:40 2017
 
 
  Elaboration Time: 0.046875 sec

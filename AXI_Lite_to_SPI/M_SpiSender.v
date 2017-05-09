@@ -40,7 +40,7 @@ module M_SpiSender(
 
 initial begin
 	CE <= 1;
-	MOSI <= 0;
+	MOSI <= 1;
 end
 
 localparam
@@ -127,8 +127,11 @@ localparam
 						
 						// write data to tx register if CPHA=0
 						// see 'initial data setup notes'
-						if (CPHA == 1'b0)
-							txReg <= txData;
+						if (CPHA == 1'b0) begin
+							//txReg <= txData;
+							txReg <= {txData[6:0], 1'b1}; 
+							MOSI <= txData[7]; 
+						end
 						
 						if (txData == SPI_CMD_READ)
 						begin
@@ -248,8 +251,11 @@ begin
 	begin
 		// write data to tx register if CPHA=0
 		// see 'initial data setup notes'
-		if (CPHA == 1'b0 && bitCount == 4'h0)
-			txReg <= txData;
+		if (CPHA == 1'b0 && bitCount == 4'h0)begin
+			//txReg <= txData;
+			txReg <= {txData[6:0], 1'b1}; 
+			MOSI <= txData[7]; 
+		end
 		else if (bitCount != 8)
 		begin // MSB first, as always on the selected chip
 			txReg <= {txReg[6:0], 1'b1}; 

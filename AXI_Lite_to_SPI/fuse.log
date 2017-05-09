@@ -70,8 +70,8 @@ Compiling module SPI_Writer
 Compiling module TB_AXI_SPI
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
+Waiting for 4 sub-compilation(s) to finish...
 Compiled 18 Verilog Units
 Built simulation executable C:/Users/virtual_win/Documents/GitHub/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.exe
-Fuse Memory Usage: 33480 KB
-Fuse CPU Usage: 624 ms
+Fuse Memory Usage: 33472 KB
+Fuse CPU Usage: 578 ms
