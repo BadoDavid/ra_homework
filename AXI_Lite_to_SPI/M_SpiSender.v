@@ -38,11 +38,6 @@ module M_SpiSender(
     input CPHA
     );
 
-initial begin
-	CE <= 1;
-	MOSI <= 1;
-end
-
 localparam
 	SPI_CMD_READ  = 8'b0000_0011, // Read data from memory array beginning at selected address
 	SPI_CMD_WRITE = 8'b0000_0010; // Write data to memory array beginning at selected address
@@ -100,19 +95,20 @@ localparam
 	reg [2:0] waitReg = 0;
 	
 	localparam
-		s_idle 		= 4'b0000_0001,
-		s_wait1		= 4'b0000_0010,
-		s_working 	= 4'b0000_0100,
-		s_wait2 		= 4'b0000_1000,
-		s_finished 	= 4'b0001_0000,
-		s_def 		= 4'b0010_0000,
-		s_2 			= 4'b0100_0000,
-		s_3 			= 4'b1000_0000;
+		s_idle 		= 8'b00000001,
+		s_wait1		= 8'b00000010,
+		s_working 	= 8'b00000100,
+		s_wait2 		= 8'b00001000,
+		s_finished 	= 8'b00010000,
+		s_def 		= 8'b00100000,
+		s_2 			= 8'b01000000,
+		s_3 			= 8'b10000000;
 
 	reg [7:0] state = s_def;
 
    always @(posedge clk)
       if (rst) begin
+			CE <= 1;
          state <= s_def;
 			returnedValue <= 0;
 			returnValue <= 0;
@@ -190,7 +186,7 @@ localparam
 				end
             s_finished : begin
 					enableClk <= 0;
-					resetClk = 1;
+					resetClk <= 1;
 					bitCount <= 4'b0;				
 					ready <= 1;
 					state <= s_idle;
@@ -220,7 +216,7 @@ localparam
 
 //**************** DATA SAMPLE ****************
 
-always @(divd_clk or posedge rst) 
+always @(divd_clk /*or posedge rst*/) 
 begin
 	if (rst == 1)
 	begin	// reset
@@ -238,7 +234,7 @@ end
 
 //**************** DATA SETUP ****************
 
-always @(divd_clk or posedge rst) 
+always @(divd_clk/* or posedge rst*/) 
 begin
 	if (rst == 1)
 	begin // reset
@@ -263,6 +259,5 @@ begin
 		end
 	end
 end
-
 
 endmodule

@@ -38,7 +38,7 @@ module TB_AXI_SPI;
 	wire [31:0] ARADDR;
 	//wire [2:0] ARPROT;
 	wire RREADY;
-	reg SPI_MISO;	
+	wire SPI_MISO;	
 
 	// Outputs
 	wire AWREADY;
@@ -62,7 +62,7 @@ module TB_AXI_SPI;
 	
 	// Reader Inputs
 	reg [31:0] Read_from;
-	reg [31:0] R_Data;
+	wire [31:0] R_Data;
 	//reg [2:0] R_Prot;
 	reg R_Start;
 	wire Reader_Run;	
@@ -110,7 +110,7 @@ module TB_AXI_SPI;
 		.SPI_MOSI(SPI_MOSI), 
 		.SPI_MISO(SPI_MISO), 
 		.SPI_SCK(SPI_SCK),
-		.SPI_CS(CS_N)
+		.SPI_CSn(CS_N)
 	);
 	
 	// Instantiate the AXI-Lite Reader 

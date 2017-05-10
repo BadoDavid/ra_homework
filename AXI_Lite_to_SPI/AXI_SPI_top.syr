@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.55 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.56 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Reading design: AXI_SPI_top.prj
 
@@ -104,7 +104,17 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
+Compiling verilog file "M_SpiSender.v" in library work
+Compiling verilog file "axiToSpi_TxFifo.v" in library work
+Module <M_SpiSender> compiled
+Compiling verilog file "axiToSpi_RxFifo.v" in library work
+Module <axiToSpi_txFifo> compiled
+Compiling verilog file "axiToSpi.v" in library work
+Module <axiToSpi_rxFifo> compiled
+Compiling verilog file "addr_management.v" in library work
+Module <axiToSpi> compiled
 Compiling verilog file "AXI_SPI_top.v" in library work
+Module <addr_management> compiled
 Module <AXI_SPI_top> compiled
 No errors in compilation
 Analysis of file <"AXI_SPI_top.prj"> succeeded.
@@ -113,142 +123,647 @@ Analysis of file <"AXI_SPI_top.prj"> succeeded.
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
+Analyzing hierarchy for module <AXI_SPI_top> in library <work>.
+
+Analyzing hierarchy for module <addr_management> in library <work>.
+
+Analyzing hierarchy for module <axiToSpi> in library <work> with parameters.
+	SPI_CMD_RDSR = "00000101"
+	SPI_CMD_READ = "00000011"
+	SPI_CMD_WRDI = "00000100"
+	SPI_CMD_WREN = "00000110"
+	SPI_CMD_WRITE = "00000010"
+	SPI_CMD_WRSR = "00000001"
+	ce_cmd = "00000000000000000000000000000010"
+	ce_rx = "00000000000000000000000000000000"
+	ce_status = "00000000000000000000000000000001"
+	ce_tx = "00000000000000000000000000000011"
+	read = "00000000000000000000000000000000"
+	sdd_activateSpiSender = "0100"
+	sdd_idle = "0001"
+	sdd_wait = "1000"
+	sdd_waitForTxFifo = "0010"
+	sr_beginRead = "0010"
+	sr_idle = "0001"
+	sr_signalDone = "1000"
+	sr_waitValid = "0100"
+	sw_continueFilling = "0100"
+	sw_endLongSeq = "1000"
+	sw_idle = "0001"
+	sw_waitFifoWrite = "0010"
+	write = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <M_SpiSender> in library <work> with parameters.
+	SPI_CMD_READ = "00000011"
+	SPI_CMD_WRITE = "00000010"
+	s_2 = "01000000"
+	s_3 = "10000000"
+	s_def = "00100000"
+	s_finished = "00010000"
+	s_idle = "00000001"
+	s_wait1 = "00000010"
+	s_wait2 = "00001000"
+	s_working = "00000100"
+
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing top module <AXI_SPI_top>.
+Module <AXI_SPI_top> is correct for synthesis.
+ 
+Analyzing module <addr_management> in library <work>.
+WARNING:Xst:863 - "addr_management.v" line 35: Name conflict (<rdata> and <RDATA>, renaming rdata as rdata_rnm0).
+Module <addr_management> is correct for synthesis.
+ 
+Analyzing module <axiToSpi> in library <work>.
+	SPI_CMD_RDSR = 8'b00000101
+	SPI_CMD_READ = 8'b00000011
+	SPI_CMD_WRDI = 8'b00000100
+	SPI_CMD_WREN = 8'b00000110
+	SPI_CMD_WRITE = 8'b00000010
+	SPI_CMD_WRSR = 8'b00000001
+	ce_cmd = 32'sb00000000000000000000000000000010
+	ce_rx = 32'sb00000000000000000000000000000000
+	ce_status = 32'sb00000000000000000000000000000001
+	ce_tx = 32'sb00000000000000000000000000000011
+	read = 32'sb00000000000000000000000000000000
+	sdd_activateSpiSender = 4'b0100
+	sdd_idle = 4'b0001
+	sdd_wait = 4'b1000
+	sdd_waitForTxFifo = 4'b0010
+	sr_beginRead = 4'b0010
+	sr_idle = 4'b0001
+	sr_signalDone = 4'b1000
+	sr_waitValid = 4'b0100
+	sw_continueFilling = 4'b0100
+	sw_endLongSeq = 4'b1000
+	sw_idle = 4'b0001
+	sw_waitFifoWrite = 4'b0010
+	write = 32'sb00000000000000000000000000000001
+WARNING:Xst:2211 - "axiToSpi_TxFifo.v" line 152: Instantiating black box module <axiToSpi_txFifo>.
+WARNING:Xst:2211 - "axiToSpi_RxFifo.v" line 180: Instantiating black box module <axiToSpi_rxFifo>.
+Module <axiToSpi> is correct for synthesis.
+ 
+Analyzing module <M_SpiSender> in library <work>.
+	SPI_CMD_READ = 8'b00000011
+	SPI_CMD_WRITE = 8'b00000010
+	s_2 = 8'b01000000
+	s_3 = 8'b10000000
+	s_def = 8'b00100000
+	s_finished = 8'b00010000
+	s_idle = 8'b00000001
+	s_wait1 = 8'b00000010
+	s_wait2 = 8'b00001000
+	s_working = 8'b00000100
+WARNING:Xst:905 - "M_SpiSender.v" line 220: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <rst>, <CPHA>, <MISO>
+WARNING:Xst:905 - "M_SpiSender.v" line 238: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <rst>, <CPHA>, <bitCount>, <txData>
+Module <M_SpiSender> is correct for synthesis.
+ 
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <ip2bus_rdack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <ip2bus_rdack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <ip2bus_rdack> in unit <axiToSpi> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <rxFifoState> in unit <axiToSpi> has a constant value of 0001 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <newRxFifoItem> in unit <axiToSpi> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <resetClk> in unit <M_SpiSender> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <bitCount> in unit <M_SpiSender> has a constant value of 0000 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <addr_management>.
+    Related source file is "addr_management.v".
+WARNING:Xst:647 - Input <ARADDR<31:4>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <ARADDR<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <AWADDR<31:4>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <AWADDR<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1305 - Output <bus2ip_addr> is never assigned. Tied to value 00000000000000000000000000000000.
+WARNING:Xst:647 - Input <ARESETn> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32-bit register for signal <bus2ip_data>.
+    Found 4-bit register for signal <bus2ip_rdce>.
+    Found 4-bit register for signal <bus2ip_wrce>.
+    Found 1-bit register for signal <ar_ready>.
+    Found 1-bit register for signal <aw_ready>.
+    Found 1-bit register for signal <r_valid>.
+    Found 32-bit register for signal <rdata_rnm0>.
+    Found 1-bit register for signal <w_ready>.
+    Found 4-bit register for signal <wrce_temp>.
+    Found 1-of-4 decoder for signal <wrce_temp$mux0000> created at line 66.
+    Summary:
+	inferred  80 D-type flip-flop(s).
+	inferred   1 Decoder(s).
+Unit <addr_management> synthesized.
+
+
+Synthesizing Unit <M_SpiSender>.
+    Related source file is "M_SpiSender.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 8                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00100000                                       |
+    | Power Up State     | 00100000                                       |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 8-bit latch for signal <txReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <MOSI>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 4-bit latch for signal <bitCount>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 8-bit latch for signal <rxReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit register for signal <returnedValue>.
+    Found 1-bit register for signal <CE>.
+    Found 1-bit register for signal <MOSI>.
+    Found 8-bit register for signal <rxData>.
+    Found 1-bit register for signal <ready>.
+    Found 4-bit adder for signal <bitCount$add0000> created at line 231.
+    Found 4-bit up counter for signal <clock_counter>.
+    Found 1-bit 4-to-1 multiplexer for signal <divd_clk>.
+    Found 1-bit register for signal <enableClk>.
+    Found 2-bit register for signal <longSequenceStep>.
+    Found 2-bit adder for signal <longSequenceStep$addsub0000> created at line 138.
+    Found 1-bit register for signal <resetClk>.
+    Found 1-bit register for signal <returnValue>.
+    Found 8-bit register for signal <txReg>.
+    Found 3-bit register for signal <waitReg>.
+    Found 3-bit adder for signal <waitReg$share0000> created at line 118.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred  28 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred   1 Multiplexer(s).
+Unit <M_SpiSender> synthesized.
+
+
+Synthesizing Unit <axiToSpi>.
+    Related source file is "axiToSpi.v".
+WARNING:Xst:646 - Signal <rxFifo_dataCount> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <REG_TX> is used but never assigned. This sourceless signal will be automatically connected to value 11111111111111111111111111111111.
+WARNING:Xst:646 - Signal <DEBUG> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+INFO:Xst:1799 - State 1000 is never reached in FSM <txFifoDepopulatorState>.
+    Found finite state machine <FSM_1> for signal <wrFifoState>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 22                                             |
+    | Inputs             | 15                                             |
+    | Outputs            | 5                                              |
+    | Clock              | bus2ip_clk                (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 0001                                           |
+    | Power Up State     | 0001                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_2> for signal <txFifoDepopulatorState>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 4                                              |
+    | Clock              | bus2ip_clk                (rising_edge)        |
+    | Clock enable       | rst                       (negative)           |
+    | Power Up State     | 0001                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <rxFifoState> of Case statement line 218 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <rxFifoState> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Using one-hot encoding for signal <rxFifoState>.
+    Found 4-bit register for signal <bus2ip_rdce_prev>.
+    Found 1-bit register for signal <continued>.
+    Found 1-bit register for signal <controlled>.
+    Found 1-bit register for signal <direction>.
+    Found 5-bit comparator greatequal for signal <direction$cmp_ge0000> created at line 336.
+    Found 5-bit comparator greatequal for signal <direction$cmp_ge0001> created at line 347.
+    Found 3-bit register for signal <longSeqCount>.
+    Found 3-bit adder for signal <longSeqCount$addsub0000> created at line 367.
+    Found 1-bit register for signal <newRxFifoItem>.
+    Found 32-bit register for signal <REG_CMD>.
+    Found 32-bit register for signal <REG_RX>.
+    Found 32-bit register for signal <REG_STATUS>.
+    Found 8-bit register for signal <rxFifo_din>.
+    Found 1-bit register for signal <rxFifo_rd>.
+    Found 1-bit register for signal <rxFifo_wr>.
+    Found 4-bit register for signal <rxFifoState>.
+    Found 1-bit register for signal <start>.
+    Found 8-bit register for signal <txData>.
+    Found 9-bit register for signal <txFifo_din>.
+    Found 1-bit register for signal <txFifo_rd>.
+    Found 1-bit register for signal <txFifo_wr>.
+    Found 5-bit comparator less for signal <wrFifoState$cmp_lt0000> created at line 347.
+    Found 5-bit comparator less for signal <wrFifoState$cmp_lt0001> created at line 336.
+    Found 3-bit comparator less for signal <wrFifoState$cmp_lt0002> created at line 365.
+    Found 3-bit comparator less for signal <wrFifoState$cmp_lt0003> created at line 365.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred 145 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
+Unit <axiToSpi> synthesized.
+
 
 Synthesizing Unit <AXI_SPI_top>.
     Related source file is "AXI_SPI_top.v".
+WARNING:Xst:646 - Signal <bus2ip_addr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 Unit <AXI_SPI_top> synthesized.
 
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# Adders/Subtractors                                   : 4
+ 2-bit adder                                           : 1
+ 3-bit adder                                           : 2
+ 4-bit adder                                           : 1
+# Counters                                             : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 38
+ 1-bit register                                        : 20
+ 2-bit register                                        : 1
+ 3-bit register                                        : 2
+ 32-bit register                                       : 5
+ 4-bit register                                        : 5
+ 8-bit register                                        : 4
+ 9-bit register                                        : 1
+# Latches                                              : 4
+ 1-bit latch                                           : 1
+ 4-bit latch                                           : 1
+ 8-bit latch                                           : 2
+# Comparators                                          : 6
+ 3-bit comparator less                                 : 2
+ 5-bit comparator greatequal                           : 2
+ 5-bit comparator less                                 : 2
+# Multiplexers                                         : 1
+ 1-bit 4-to-1 multiplexer                              : 1
+# Decoders                                             : 1
+ 1-of-4 decoder                                        : 1
+
 =========================================================================
 
 =========================================================================
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <SPI_IP/txFifoDepopulatorState/FSM> on signal <txFifoDepopulatorState[1:2]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0001  | 00
+ 0010  | 01
+ 0100  | 10
+ 1000  | unreached
+-------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <SPI_IP/wrFifoState/FSM> on signal <wrFifoState[1:2]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0001  | 00
+ 0010  | 01
+ 1000  | 10
+ 0100  | 11
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <SPI_IP/sender/state/FSM> on signal <state[1:6]> with one-hot encoding.
+----------------------
+ State    | Encoding
+----------------------
+ 00100000 | 000001
+ 00000010 | 000010
+ 00000100 | 000100
+ 00000001 | 001000
+ 00001000 | 010000
+ 00010000 | 100000
+----------------------
+INFO:Xst:2261 - The FF/Latch <REG_RX_8> in Unit <SPI_IP> is equivalent to the following 23 FFs/Latches, which will be removed : <REG_RX_9> <REG_RX_10> <REG_RX_11> <REG_RX_12> <REG_RX_13> <REG_RX_14> <REG_RX_15> <REG_RX_16> <REG_RX_17> <REG_RX_18> <REG_RX_19> <REG_RX_20> <REG_RX_21> <REG_RX_22> <REG_RX_23> <REG_RX_24> <REG_RX_25> <REG_RX_26> <REG_RX_27> <REG_RX_28> <REG_RX_29> <REG_RX_30> <REG_RX_31> 
+INFO:Xst:2261 - The FF/Latch <rxFifoState_ren_0> in Unit <SPI_IP> is equivalent to the following 2 FFs/Latches, which will be removed : <rxFifoState_ren_2> <rxFifoState_ren_3> 
+WARNING:Xst:1293 - FF/Latch <txReg_0> has a constant value of 1 in block <sender>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rxFifoState_ren_0> (without init value) has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rxFifoState_ren_1> (without init value) has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <rxFifoState_0> has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <REG_RX_8> has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <bus2ip_wrce_0> of sequential type is unconnected in block <Addr_Manage>.
+WARNING:Xst:2677 - Node <wrce_temp_0> of sequential type is unconnected in block <Addr_Manage>.
+WARNING:Xst:1293 - FF/Latch <rxFifoState_3> has a constant value of 0 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
-Found no macro
+Macro Statistics
+# FSMs                                                 : 3
+# Adders/Subtractors                                   : 4
+ 2-bit adder                                           : 1
+ 3-bit adder                                           : 2
+ 4-bit adder                                           : 1
+# Counters                                             : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 249
+ Flip-Flops                                            : 249
+# Latches                                              : 4
+ 1-bit latch                                           : 1
+ 4-bit latch                                           : 1
+ 8-bit latch                                           : 2
+# Comparators                                          : 6
+ 3-bit comparator less                                 : 2
+ 5-bit comparator greatequal                           : 2
+ 5-bit comparator less                                 : 2
+# Multiplexers                                         : 1
+ 1-bit 4-to-1 multiplexer                              : 1
+# Decoders                                             : 1
+ 1-of-4 decoder                                        : 1
+
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1293 - FF/Latch <txReg_0> has a constant value of 1 in block <M_SpiSender>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <REG_RX_31> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_30> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_29> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_28> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_27> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_26> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_25> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_24> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_23> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_22> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_21> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_20> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_19> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_18> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_17> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_16> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_15> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_14> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_13> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_12> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_11> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_10> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_9> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_8> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_0> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_3> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_2> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_1> (without init value) has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_0> (without init value) has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <rxFifoState_3> has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
 
-Optimizing unit <AXI_SPI_top> ...
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <ip2bus_wrack>; this signal is connected to multiple drivers.
+Drivers are: 
+   Signal <SPI_IP/ip2bus_wrack> in Unit <axiToSpi> is assigned to VCC
 
-Mapping all equations...
-Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block AXI_SPI_top, actual ratio is 0.
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <ip2bus_rdack>; this signal is connected to multiple drivers.
+Drivers are: 
+   Signal <SPI_IP/ip2bus_rdack> in Unit <axiToSpi> is assigned to VCC
 
-Final Macro Processing ...
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <newRxFifoItem>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/newRxFifoItem>
+   Signal <SPI_IP/newRxFifoItem> in Unit <axiToSpi> is assigned to GND
 
-=========================================================================
-Final Register Report
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<31>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_31>
+   Signal <SPI_IP/REG_STATUS<31>> in Unit <axiToSpi> is assigned to GND
 
-Found no macro
-=========================================================================
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<30>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_30>
+   Signal <SPI_IP/REG_STATUS<30>> in Unit <axiToSpi> is assigned to GND
 
-=========================================================================
-*                           Partition Report                            *
-=========================================================================
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<29>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_29>
+   Signal <SPI_IP/REG_STATUS<29>> in Unit <axiToSpi> is assigned to GND
 
-Partition Implementation Status
--------------------------------
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<28>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_28>
+   Signal <SPI_IP/REG_STATUS<28>> in Unit <axiToSpi> is assigned to GND
 
-  No Partitions were found in this design.
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<27>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_27>
+   Signal <SPI_IP/REG_STATUS<27>> in Unit <axiToSpi> is assigned to GND
 
--------------------------------
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<26>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_26>
+   Signal <SPI_IP/REG_STATUS<26>> in Unit <axiToSpi> is assigned to GND
 
-=========================================================================
-*                            Final Report                               *
-=========================================================================
-Final Results
-RTL Top Level Output File Name     : AXI_SPI_top.ngr
-Top Level Output File Name         : AXI_SPI_top
-Output Format                      : NGC
-Optimization Goal                  : Speed
-Keep Hierarchy                     : No
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<25>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_25>
+   Signal <SPI_IP/REG_STATUS<25>> in Unit <axiToSpi> is assigned to GND
 
-Design Statistics
-# IOs                              : 0
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<24>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_24>
+   Signal <SPI_IP/REG_STATUS<24>> in Unit <axiToSpi> is assigned to GND
 
-Cell Usage :
-=========================================================================
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<23>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_23>
+   Signal <SPI_IP/REG_STATUS<23>> in Unit <axiToSpi> is assigned to GND
 
-Device utilization summary:
----------------------------
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<22>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_22>
+   Signal <SPI_IP/REG_STATUS<22>> in Unit <axiToSpi> is assigned to GND
 
-Selected Device : 3s200ft256-4 
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<21>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_21>
+   Signal <SPI_IP/REG_STATUS<21>> in Unit <axiToSpi> is assigned to GND
 
- Number of Slices:                        0  out of   1920     0%  
- Number of IOs:                           0
- Number of bonded IOBs:                   0  out of    173     0%  
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<20>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_20>
+   Signal <SPI_IP/REG_STATUS<20>> in Unit <axiToSpi> is assigned to GND
 
----------------------------
-Partition Resource Summary:
----------------------------
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<19>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_19>
+   Signal <SPI_IP/REG_STATUS<19>> in Unit <axiToSpi> is assigned to GND
 
-  No Partitions were found in this design.
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<18>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_18>
+   Signal <SPI_IP/REG_STATUS<18>> in Unit <axiToSpi> is assigned to GND
 
----------------------------
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<17>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_17>
+   Signal <SPI_IP/REG_STATUS<17>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<16>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_16>
+   Signal <SPI_IP/REG_STATUS<16>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<15>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_15>
+   Signal <SPI_IP/REG_STATUS<15>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<14>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_14>
+   Signal <SPI_IP/REG_STATUS<14>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<13>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_13>
+   Signal <SPI_IP/REG_STATUS<13>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<12>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_12>
+   Signal <SPI_IP/REG_STATUS<12>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<11>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_11>
+   Signal <SPI_IP/REG_STATUS<11>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<10>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_10>
+   Signal <SPI_IP/REG_STATUS<10>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<9>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_9>
+   Signal <SPI_IP/REG_STATUS<9>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<8>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_8>
+   Signal <SPI_IP/REG_STATUS<8>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<7>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_7>
+   Signal <SPI_IP/REG_STATUS<7>> in Unit <axiToSpi> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<6>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Signal <SPI_IP/REG_STATUS_not0001> is assigned to logic
+   Output signal of FDE instance <SPI_IP/REG_STATUS_6>
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_RX<31>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FD instance <SPI_IP/rxFifoState_1>
+   Signal <SPI_IP/rxFifoState<1>> in Unit <axiToSpi> is assigned to GND
+   Signal <SPI_IP/REG_TX<0>> in Unit <axiToSpi> is assigned to VCC
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <rxFifoState_2>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FD instance <SPI_IP/rxFifoState_2>
+   Signal <SPI_IP/N0> in Unit <axiToSpi> is assigned to GND
+   Signal <SPI_IP/rxFifoState<2>> in Unit <axiToSpi> is assigned to GND
+   Signal <SPI_IP/rxFifoState<3>> in Unit <axiToSpi> is assigned to GND
+   Signal <SPI_IP/rxFifoState<0>> in Unit <axiToSpi> is assigned to VCC
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <MOSI>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/MOSI_ren/0>
+   Output signal of FDE instance <SPI_IP/sender/MOSI>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <resetClk>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/sender/resetClk>
+   Signal <SPI_IP/sender/resetClk> in Unit <M_SpiSender> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<3>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDC instance <SPI_IP/sender/bitCount/3/0>
+   Signal <SPI_IP/sender/bitCount<3>> in Unit <M_SpiSender> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<2>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDC instance <SPI_IP/sender/bitCount/2/0>
+   Signal <SPI_IP/sender/bitCount<2>> in Unit <M_SpiSender> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<1>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDC instance <SPI_IP/sender/bitCount/1/0>
+   Signal <SPI_IP/sender/bitCount<1>> in Unit <M_SpiSender> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<0>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDC instance <SPI_IP/sender/bitCount/0/0>
+   Signal <SPI_IP/sender/bitCount<0>> in Unit <M_SpiSender> is assigned to GND
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<7>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/7/0>
+   Output signal of FDE instance <SPI_IP/sender/txReg_7>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<6>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/6/0>
+   Output signal of FDE instance <SPI_IP/sender/txReg_6>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<5>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/5/0>
+   Output signal of FDE instance <SPI_IP/sender/txReg_5>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<4>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/4/0>
+   Output signal of FDE instance <SPI_IP/sender/txReg_4>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<3>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/3/0>
+   Output signal of FDE instance <SPI_IP/sender/txReg_3>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<2>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/2/0>
+   Output signal of FDE instance <SPI_IP/sender/txReg_2>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<1>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/1/0>
+   Output signal of FDE instance <SPI_IP/sender/txReg_1>
+
+ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<0>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of LDP instance <SPI_IP/sender/txReg_ren/0/0>
+   Signal <SPI_IP/sender/N1> in Unit <M_SpiSender> is assigned to VCC
 
 
-=========================================================================
-TIMING REPORT
-
-NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
-      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
-      GENERATED AFTER PLACE-and-ROUTE.
-
-Clock Information:
-------------------
-No clock signals found in this design
-
-Asynchronous Control Signals Information:
-----------------------------------------
-No asynchronous control signals found in this design
-
-Timing Summary:
----------------
-Speed Grade: -4
-
-   Minimum period: No path found
-   Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: No path found
-   Maximum combinational path delay: No path found
-
-Timing Detail:
---------------
-All values displayed in nanoseconds (ns)
-
-=========================================================================
-
-
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.66 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.25 secs
  
 --> 
 
-Total memory usage is 254000 kilobytes
+Total memory usage is 269356 kilobytes
 
-Number of errors   :    0 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Number of errors   :   45 (   0 filtered)
+Number of warnings :   58 (   0 filtered)
+Number of infos    :   15 (   0 filtered)
 

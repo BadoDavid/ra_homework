@@ -43,9 +43,9 @@ module AXI_SPI_top(
     output SPI_MOSI,
     input SPI_MISO,
     output SPI_SCK,
-	 output SPI_CS
+	 output SPI_CSn
     );
-	 
+	wire rst; 
 	wire bus2ip_clk;
 	wire [31:0] bus2ip_addr; 
 	wire [31:0] bus2ip_data;
@@ -54,6 +54,7 @@ module AXI_SPI_top(
 	wire [127:0] ip2bus_data;
 	wire ip2bus_rdack;
 	wire ip2bus_wrack;
+	assign rst = ~ARESETn;
 	
 	addr_management Addr_Manage(
    .ACLK(ACLK),
@@ -82,6 +83,7 @@ module AXI_SPI_top(
    );
 	
 	axiToSpi SPI_IP(
+	.rst(rst),
 	.bus2ip_clk(bus2ip_clk),		//16MHz
 	.bus2ip_data(bus2ip_data),
 	.bus2ip_wrce(bus2ip_wrce),
@@ -93,6 +95,6 @@ module AXI_SPI_top(
 	.SPI_MOSI(SPI_MOSI),
 	.SPI_MISO(SPI_MISO),
 	.SPI_SCK(SPI_SCK), // must no exceed 10MHz
-	.SPI_CS(SPI_CS)
+	.SPI_CSn(SPI_CSn)
 	);
 endmodule

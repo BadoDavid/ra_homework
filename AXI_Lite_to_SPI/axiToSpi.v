@@ -54,10 +54,11 @@ module axiToSpi(
 		It is better not to try and give WR and RD CEs simultaneously.
 	*/
 	
-	output reg SPI_MOSI,
+	output SPI_MOSI,
 	input SPI_MISO,
 	output SPI_SCK, // must no exceed 10MHz
-	output reg SPI_CS
+	output SPI_CSn,
+	input rst
     );
 
 	localparam
@@ -69,7 +70,6 @@ module axiToSpi(
 //**************** SPI SENDER INSTANCE ****************
 
 	reg
-		rst = 0,
 		start = 0,
 		continued = 0;
 	wire
@@ -77,7 +77,8 @@ module axiToSpi(
 		readDataIsReady;
 	wire [7:0] rxData;
 	reg [7:0] txData;
-	
+	wire CPOL, CPHA;
+	wire [1:0] DIV;
 
 M_SpiSender sender(
     .clk(bus2ip_clk),
@@ -90,7 +91,7 @@ M_SpiSender sender(
     .ready(ready),
 	 .returnedValue(readDataIsReady),
     .SCK(SPI_SCK),
-    .CE(SPI_CS),
+    .CE(SPI_CSn),
     .MOSI(SPI_MOSI),
     .MISO(SPI_MISO),
 	 .CPOL(CPOL),
@@ -100,12 +101,12 @@ M_SpiSender sender(
 //**************** CONTROL WORD DEFINITIONS ****************
 
 	localparam
-		SPI_CMD_READ  = 8'b0000_0011, // Read data from memory array beginning at selected address
-		SPI_CMD_WRITE = 8'b0000_0010, // Write data to memory array beginning at selected address
-		SPI_CMD_WRDI  = 8'b0000_0100, // Reset the write enable latch (disable write operations)
-		SPI_CMD_WREN  = 8'b0000_0110, // Set the write enable latch (enable write operations)
-		SPI_CMD_RDSR  = 8'b0000_0101, // Read STATUS register
-		SPI_CMD_WRSR  = 8'b0000_0001; // Write STATUS register
+		SPI_CMD_READ  = 8'b00000011, // Read data from memory array beginning at selected address
+		SPI_CMD_WRITE = 8'b00000010, // Write data to memory array beginning at selected address
+		SPI_CMD_WRDI  = 8'b00000100, // Reset the write enable latch (disable write operations)
+		SPI_CMD_WREN  = 8'b00000110, // Set the write enable latch (enable write operations)
+		SPI_CMD_RDSR  = 8'b00000101, // Read STATUS register
+		SPI_CMD_WRSR  = 8'b00000001; // Write STATUS register
 	
 //**************** plain registers ****************
 	reg [31:0] REG_CMD = 32'b0;
@@ -116,12 +117,9 @@ M_SpiSender sender(
 				29..28	DIV, value-divider pairings: 00-2 | 01-4 | 10-8 | 11-16
 				27..0		-
 		*/
-	wire CPOL, CPHA;
-	wire [1:0] DIV;
 	assign CPOL = REG_CMD[31];
 	assign CPHA = REG_CMD[30];
-	assign DIV = REG_CMD[29:28];
-		
+	assign DIV = REG_CMD[29:28];	
 	reg [31:0] REG_STATUS;
 		/*
 			LAYOUT IS AS FOLLOWS:
@@ -258,14 +256,21 @@ axiToSpi_rxFifo rxFifo(
 					rxFifoState  <= sr_beginRead;
 	end
 	
-	always @(negedge 
+	reg [3:0] bus2ip_rdce_prev; //Edited by M
+	always @ (posedge bus2ip_clk) begin
+		bus2ip_rdce_prev <= bus2ip_rdce;
+		if(bus2ip_rdce==4'b0000 && bus2ip_rdce_prev != 4'b0000)
+			ip2bus_rdack = 0;
+	end
+	
+	/*always @(negedge //Edited by M
 		bus2ip_rdce[ce_cmd],
 		bus2ip_rdce[ce_status],
 		bus2ip_rdce[ce_tx],
 		bus2ip_rdce[ce_rx]
 		)
 		ip2bus_rdack = 0;
-
+	*/
 //**************** RX FIFO POPULATOR ****************
 // if read data is returned from the spi sender module, push it to rx fifo
 	
@@ -395,7 +400,7 @@ axiToSpi_rxFifo rxFifo(
 					begin
 						wrFifoState <= sw_waitFifoWrite;
 						txFifo_wr <= 1; // enable fifo writing
-						longSeqCount = longSeqCount + 1;
+						longSeqCount <= longSeqCount + 1;
 						txFifo_din <= {1, SPI_CMD_WRITE}; // schedule a write cmd and hold CE afterwards
 						DEBUG <= 5;
 					end
@@ -403,8 +408,8 @@ axiToSpi_rxFifo rxFifo(
 					begin
 						wrFifoState <= sw_waitFifoWrite;
 						txFifo_wr <= 1; // enable fifo writing
-						longSeqCount = longSeqCount + 1;
-						txFifo_din <= {0, 8'hFF_FF_FF_FF}; // schedule dummy write cmd and release CE afterwards
+						longSeqCount <= longSeqCount + 1;
+						txFifo_din <= {0, 8'hFF}; // schedule dummy write cmd and release CE afterwards
 						DEBUG <= 6;
 					end
 					else begin

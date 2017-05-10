@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="43" />
+   <WVObjectSize size="45" />
    <wvobject fp_name="/TB_AXI_SPI/ARESETn" type="logic" db_ref_id="1">
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">ARESETn</obj_property>
@@ -125,6 +125,14 @@
    <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/controlled" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">controlled</obj_property>
       <obj_property name="ObjectShortName">controlled</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/CE" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">CE</obj_property>
+      <obj_property name="ObjectShortName">CE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/SPI_CSn" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SPI_CSn</obj_property>
+      <obj_property name="ObjectShortName">SPI_CSn</obj_property>
    </wvobject>
    <wvobject fp_name="divider84" type="divider">
       <obj_property name="label">TEST CONTROL</obj_property>

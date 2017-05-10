@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-05-09T16:51:51</DateModified>
+  <DateModified>2017-05-10T10:07:25</DateModified>
   <ModuleName>AXI_SPI_top</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2017-05-10T08:45:59</SummaryTimeStamp>
   <SavedFilePath>D:/Projektek/ra_homework/AXI_Lite_to_SPI/iseconfig/AXI_SPI_top.xreport</SavedFilePath>
   <ImplementationReportsDirectory>D:/Projektek/ra_homework/AXI_Lite_to_SPI\</ImplementationReportsDirectory>
   <DateInitialized>2017-03-13T09:58:27</DateInitialized>

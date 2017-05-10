@@ -5,14 +5,14 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Fri Apr 14 16:35:42 2017">
+  <application stringID="Xst" timeStamp="Wed May 10 10:09:17 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
         <column stringID="value"/>
         <row stringID="row" value="0">
           <item stringID="variable" value="Path"/>
-          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.7\ISE_DS\PlanAhead\bin;C:\Xilinx\14.7\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.7\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.7\ISE_DS\common\bin\nt64;C:\Xilinx\14.7\ISE_DS\common\lib\nt64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Common Files\Adobe\AGL"/>
+          <item stringID="value" value="C:\Xilinx\14.7\ISE_DS\ISE\\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.7\ISE_DS\PlanAhead\bin;C:\Xilinx\14.7\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.7\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.7\ISE_DS\common\bin\nt64;C:\Xilinx\14.7\ISE_DS\common\lib\nt64;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Common Files\Adobe\AGL;C:\Program Files (x86)\Microchip\xc8\v1.38\bin"/>
         </row>
         <row stringID="row" value="1">
           <item stringID="variable" value="PATHEXT"/>
@@ -105,39 +105,49 @@
       <item DEFAULT="YES" label="-equivalent_register_removal" stringID="XST_EQUIVALENTREGISTERREMOVAL" value="YES"/>
       <item DEFAULT="0%" label="-slice_utilization_ratio_maxmargin" stringID="XST_SLICEUTILIZATIONRATIOMAXMARGIN" value="5"/>
     </section>
-    <section stringID="XST_ADVANCED_HDL_SYNTHESIS_REPORTFOUND_NO_MACRO"/>
-    <section stringID="XST_FINAL_REGISTER_REPORTFOUND_NO_MACRO"/>
-    <section stringID="XST_PARTITION_REPORT">
-      <section stringID="XST_PARTITION_IMPLEMENTATION_STATUS">
-        <section stringID="XST_NO_PARTITIONS_WERE_FOUND_IN_THIS_DESIGN"/>
-      </section>
+    <section stringID="XST_HDL_SYNTHESIS_REPORT">
+      <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="4">
+        <item dataType="int" stringID="XST_3BIT_ADDER" value="2"/>
+        <item dataType="int" stringID="XST_4BIT_ADDER" value="1"/>
+      </item>
+      <item dataType="int" stringID="XST_COUNTERS" value="1">
+        <item dataType="int" stringID="XST_4BIT_UP_COUNTER" value="1"/>
+      </item>
+      <item dataType="int" stringID="XST_REGISTERS" value="38">
+        <item dataType="int" stringID="XST_1BIT_REGISTER" value="20"/>
+        <item dataType="int" stringID="XST_2BIT_REGISTER" value="1"/>
+        <item dataType="int" stringID="XST_3BIT_REGISTER" value="2"/>
+        <item dataType="int" stringID="XST_32BIT_REGISTER" value="5"/>
+        <item dataType="int" stringID="XST_4BIT_REGISTER" value="5"/>
+        <item dataType="int" stringID="XST_8BIT_REGISTER" value="4"/>
+        <item dataType="int" stringID="XST_9BIT_REGISTER" value="1"/>
+      </item>
+      <item dataType="int" stringID="XST_COMPARATORS" value="6"></item>
+      <item dataType="int" stringID="XST_MULTIPLEXERS" value="1">
+        <item dataType="int" stringID="XST_1BIT_4TO1_MULTIPLEXER" value="1"/>
+      </item>
     </section>
-    <section stringID="XST_FINAL_REPORT">
-      <section stringID="XST_FINAL_RESULTS">
-        <item stringID="XST_RTL_TOP_LEVEL_OUTPUT_FILE_NAME" value="AXI_SPI_top.ngr"/>
-        <item stringID="XST_TOP_LEVEL_OUTPUT_FILE_NAME" value="AXI_SPI_top"/>
-        <item stringID="XST_OUTPUT_FORMAT" value="NGC"/>
-        <item stringID="XST_OPTIMIZATION_GOAL" value="Speed"/>
-        <item stringID="XST_KEEP_HIERARCHY" value="No"/>
-      </section>
-      <section stringID="XST_DESIGN_STATISTICS">
-        <item stringID="XST_IOS" value="0"/>
-      </section>
-      <section stringID="XST_CELL_USAGE"/>
-    </section>
-    <section stringID="XST_DEVICE_UTILIZATION_SUMMARY">
-      <item stringID="XST_SELECTED_DEVICE" value="3s200ft256-4"/>
-      <item AVAILABLE="1920" dataType="int" label="Number of Slices" stringID="XST_NUMBER_OF_SLICES" value="0"/>
-      <item dataType="int" label="Number of IOs" stringID="XST_NUMBER_OF_IOS" value="0"/>
-      <item AVAILABLE="173" dataType="int" label="Number of bonded IOBs" stringID="XST_NUMBER_OF_BONDED_IOBS" value="0"/>
-    </section>
-    <section stringID="XST_PARTITION_RESOURCE_SUMMARY">
-      <section stringID="XST_NO_PARTITIONS_WERE_FOUND_IN_THIS_DESIGN"/>
+    <section stringID="XST_ADVANCED_HDL_SYNTHESIS_REPORT">
+      <item dataType="int" stringID="XST_FSMS" value="3"/>
+      <item dataType="int" stringID="XST_ADDERSSUBTRACTORS" value="4">
+        <item dataType="int" stringID="XST_3BIT_ADDER" value="2"/>
+        <item dataType="int" stringID="XST_4BIT_ADDER" value="1"/>
+      </item>
+      <item dataType="int" stringID="XST_COUNTERS" value="1">
+        <item dataType="int" stringID="XST_4BIT_UP_COUNTER" value="1"/>
+      </item>
+      <item dataType="int" stringID="XST_REGISTERS" value="249">
+        <item dataType="int" stringID="XST_FLIPFLOPS" value="249"/>
+      </item>
+      <item dataType="int" stringID="XST_COMPARATORS" value="6"></item>
+      <item dataType="int" stringID="XST_MULTIPLEXERS" value="1">
+        <item dataType="int" stringID="XST_1BIT_4TO1_MULTIPLEXER" value="1"/>
+      </item>
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="0"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="0"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="45"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="58"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="15"/>
     </section>
   </application>
 
