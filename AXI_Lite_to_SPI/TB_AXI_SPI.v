@@ -340,7 +340,7 @@ module TB_AXI_SPI;
 	initial begin
 		#607	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
 		#10	R_Start		<= 1;					
-	end
+	end/**/
 	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0;
 	/**/
 	//Write to the eeprom
@@ -366,42 +366,43 @@ module TB_AXI_SPI;
 	end	
 	
 	//Read status register
-	/*initial begin
-		#1507	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
+	initial begin
+		#6000000
+		#807	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
 		#10	R_Start		<= 1;					
 	end
-	*/
+	
 	//Read instruction to eeprom
 	initial begin
 		#6000000
 		#1007	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
-				W_Data		<= 32'h00000000+SPI_CMD_READ;	//read
+				W_Data		<= 32'h00000000+9'b100000010;	//read instruction, followed by 2 byte address
 		#10	W_Start		<= 1;					
 	end	
 	initial begin
 		#6000000
 		#1107	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
-				W_Data		<= 32'h00000000+SPI_ADDRESS_HIGH;	//addr
+				W_Data		<= 32'h00000000+SPI_ADDRESS_HIGH;	//addr1
 		#10	W_Start		<= 1;					
 	end	
 	initial begin
 		#6000000
 		#1207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
-				W_Data		<= 32'h00000000+SPI_ADDRESS_LOW;	//addr
+				W_Data		<= 32'h00000000+SPI_ADDRESS_LOW;	//addr2
 		#10	W_Start		<= 1;					
 	end	
 	//Read status register
-	/*initial begin
+	initial begin
 		#6000000
-		#20000	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
+		#10000	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
 		#10		R_Start		<= 1;					
-	end*/
+	end
 	//Read from the rx fifo
-	/*initial begin
+	initial begin
 		#6000000
-		#25000	Read_from	<= BASE_ADDRESS+OFFSET_RX_FIFO;	
+		#10600	Read_from	<= BASE_ADDRESS+OFFSET_RX_FIFO;	
 		#10		R_Start		<= 1;					
-	end	*/
+	end	
 	//Init SPI
 	initial begin 
 			WP_N 					<= 0;
