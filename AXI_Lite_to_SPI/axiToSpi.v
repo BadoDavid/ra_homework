@@ -114,7 +114,7 @@ M_SpiSender sender(
 			LAYOUT IS AS FOLLOWS:
 				31			CPOL
 				30			CPHA
-				29..28	DIV, value-divider pairings: 00-2 | 01-4 | 10-8 | 11-16
+				29..28	DIV, value-divider pairings: 00-8 | 01-16 | 10-32 | 11-64 //Edited by M
 				27..0		-
 		*/
 	assign CPOL = REG_CMD[31];

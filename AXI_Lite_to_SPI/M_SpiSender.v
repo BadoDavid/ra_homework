@@ -53,46 +53,39 @@ localparam
 
 //**************** CLOCK DIVIDER ****************
 
-	reg enableClk = 0;
-	reg resetClk = 0;
-	reg [3:0] clock_counter = 0;
-	
+	reg enableClk;
+	reg resetClk;
+	reg [5:0] clock_counter;//Edited by M 
+	//It needs at least 16:1 clock divider to avoid timing violations
    always @(posedge clk)
 	begin
 		if (resetClk)
-		begin
 			clock_counter <= 0;
-			resetClk <= 0;
-		end
 		else if (enableClk)
 			clock_counter <= clock_counter + 1;
 	end
 
 	//division selection based on REG_CMD
 	reg divd_clk;
-   always @(
-		clkDiv[1:0],
-		clock_counter[0],
-		clock_counter[1],
-		clock_counter[2],
-		clock_counter[3]
-		)
+   always @(posedge clk)
       case (clkDiv[1:0])
-         2'b00: divd_clk <= clock_counter[0];
-         2'b01: divd_clk <= clock_counter[1];
-         2'b10: divd_clk <= clock_counter[2];
-         2'b11: divd_clk <= clock_counter[3];
+         2'b00: divd_clk <= clock_counter[2];
+         2'b01: divd_clk <= clock_counter[3];
+         2'b10: divd_clk <= clock_counter[4];
+         2'b11: divd_clk <= clock_counter[5];
       endcase
 
 	// CPOL inverts clk, hence idle clk is 1 if CPOL is 1
 	assign SCK = CPOL ? ~divd_clk : divd_clk;
+	reg divd_clk_prev;
+	always @(posedge clk) divd_clk_prev=divd_clk;
 
 //**************** STATE MACHINE CONTROLLER ****************
 
-	reg [7:0] txReg = 8'hFF;
-	reg [7:0] rxReg = 8'hFF;
-	reg [3:0] bitCount = 4'b0;
-	reg [2:0] waitReg = 0;
+	reg [7:0] txReg;
+	reg [7:0] rxReg;
+	reg [3:0] bitCount;
+	reg [2:0] waitReg;
 	
 	localparam
 		s_idle 		= 8'b00000001,
@@ -106,21 +99,48 @@ localparam
 
 	reg [7:0] state = s_def;
 
-   always @(posedge clk)
+   always @(negedge clk) begin
       if (rst) begin
 			CE <= 1;
          state <= s_def;
 			returnedValue <= 0;
 			returnValue <= 0;
 			longSequenceStep <= 2'b0;
+			bitCount <= 0;
+			rxReg <= 8'hFF;  
+			txReg <= 8'hFF;
+			MOSI <= 1; 
+			waitReg <= 0;
+			enableClk <= 0;
+			resetClk <= 0;
+			clock_counter <= 0;
       end
-      else
+      else if(divd_clk_prev != divd_clk)	begin
+			if( (CPHA == 0 && divd_clk == 1) || (CPHA == 1 && divd_clk == 0) ) begin
+				rxReg <= {rxReg[6:0], MISO}; // Data sample, MSB always first
+				bitCount <= bitCount + 1;
+			end
+			else if (	(CPHA == 0 && divd_clk == 0) ||	(CPHA == 1 && divd_clk == 1) ) begin
+				// write data to tx register if CPHA=0
+				// see 'initial data setup notes'
+				if (CPHA == 1'b0 && bitCount == 4'h0) begin 
+					//txReg <= txData;
+					txReg <= {txData[6:0], 1'b1}; 
+					MOSI <= txData[7]; 
+				end
+				else if (bitCount != 8)	begin // MSB first, as always on the selected chip
+					txReg <= {txReg[6:0], 1'b1}; 
+					MOSI <= txReg[7]; 
+				end
+			end
+		end
+		else
 			case (state)
             s_idle : begin
                if (start == 1'b1)
 					begin
 						enableClk <= 1'b1;
-						
+						resetClk <= 0;
 						// write data to tx register if CPHA=0
 						// see 'initial data setup notes'
 						if (CPHA == 1'b0) begin
@@ -209,56 +229,42 @@ localparam
                state <= s_def;
 				end
 			endcase
+		end
 
 // initial data setup notes
 // if CPHA=0, tx data may be read at CE setup
 // if CPHA=1, use the first setup clockbeat
 // based on time diagrams: http://dlnware.com/theory/SPI-Transfer-Modes
 
-//**************** DATA SAMPLE ****************
-
-always @(divd_clk /*or posedge rst*/) 
+//**************** DATA SAMPLE and SETUP ****************
+/*always @(negedge clk) 
 begin
 	if (rst == 1)
 	begin	// reset
 		bitCount = 0;
 		rxReg = 8'hFF;  
-	end
-	else if (
-		(CPHA == 0 && divd_clk == 1) ||
-		(CPHA == 1 && divd_clk == 0) )
-	begin
-		rxReg = {rxReg[6:0], MISO}; // MSB always first
-		bitCount = bitCount + 1;
-	end
-end
-
-//**************** DATA SETUP ****************
-
-always @(divd_clk/* or posedge rst*/) 
-begin
-	if (rst == 1)
-	begin // reset
 		txReg <= 8'hFF;
 		MOSI <= 1; 
-	end 
-	else if (
-		(CPHA == 0 && divd_clk == 0) ||
-		(CPHA == 1 && divd_clk == 1) )
-	begin
-		// write data to tx register if CPHA=0
-		// see 'initial data setup notes'
-		if (CPHA == 1'b0 && bitCount == 4'h0)begin
-			//txReg <= txData;
-			txReg <= {txData[6:0], 1'b1}; 
-			MOSI <= txData[7]; 
+	end
+	else if(divd_clk_prev != divd_clk)	begin
+		if( (CPHA == 0 && divd_clk == 1) || (CPHA == 1 && divd_clk == 0) ) begin
+			rxReg = {rxReg[6:0], MISO}; // MSB always first
+			bitCount = bitCount + 1;
 		end
-		else if (bitCount != 8)
-		begin // MSB first, as always on the selected chip
-			txReg <= {txReg[6:0], 1'b1}; 
-			MOSI <= txReg[7]; 
+		else if (	(CPHA == 0 && divd_clk == 0) ||	(CPHA == 1 && divd_clk == 1) ) begin
+			// write data to tx register if CPHA=0
+			// see 'initial data setup notes'
+			if (CPHA == 1'b0 && bitCount == 4'h0) begin 
+				//txReg <= txData;
+				txReg <= {txData[6:0], 1'b1}; 
+				MOSI <= txData[7]; 
+			end
+			else if (bitCount != 8)	begin // MSB first, as always on the selected chip
+				txReg <= {txReg[6:0], 1'b1}; 
+				MOSI <= txReg[7]; 
+			end
 		end
 	end
-end
+end*/
 
 endmodule

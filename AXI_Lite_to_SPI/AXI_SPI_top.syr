@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.18 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.18 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Reading design: AXI_SPI_top.prj
 
@@ -216,10 +216,6 @@ Analyzing module <M_SpiSender> in library <work>.
 	s_wait1 = 8'b00000010
 	s_wait2 = 8'b00001000
 	s_working = 8'b00000100
-WARNING:Xst:905 - "M_SpiSender.v" line 221: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <rst>, <CPHA>, <MISO>
-WARNING:Xst:905 - "M_SpiSender.v" line 239: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
-   <rst>, <CPHA>, <bitCount>, <txData>
 Module <M_SpiSender> is correct for synthesis.
  
 
@@ -235,8 +231,7 @@ INFO:Xst:2679 - Register <rxFifo_wr> in unit <axiToSpi> has a constant value of 
 INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 0 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <resetClk> in unit <M_SpiSender> has a constant value of 0 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <bitCount> in unit <M_SpiSender> has a constant value of 0000 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <clock_counter> in unit <M_SpiSender> has a constant value of 000000 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <addr_management>.
     Related source file is "addr_management.v".
@@ -269,7 +264,8 @@ Synthesizing Unit <M_SpiSender>.
     | Transitions        | 12                                             |
     | Inputs             | 6                                              |
     | Outputs            | 8                                              |
-    | Clock              | clk                       (rising_edge)        |
+    | Clock              | clk                       (falling_edge)       |
+    | Clock enable       | state$not0000             (positive)           |
     | Reset              | rst                       (positive)           |
     | Reset type         | synchronous                                    |
     | Reset State        | 00100000                                       |
@@ -277,29 +273,30 @@ Synthesizing Unit <M_SpiSender>.
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-WARNING:Xst:737 - Found 8-bit latch for signal <txReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 1-bit latch for signal <MOSI>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 4-bit latch for signal <bitCount>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <rxReg>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Found 1-bit register for signal <returnedValue>.
     Found 1-bit register for signal <CE>.
     Found 1-bit register for signal <MOSI>.
     Found 8-bit register for signal <rxData>.
     Found 1-bit register for signal <ready>.
-    Found 4-bit adder for signal <bitCount$add0000> created at line 232.
-    Found 4-bit up counter for signal <clock_counter>.
-    Found 1-bit 4-to-1 multiplexer for signal <divd_clk>.
+    Found 4-bit register for signal <bitCount>.
+    Found 4-bit adder for signal <bitCount$addsub0000> created at line 121.
+    Found 6-bit up counter for signal <clock_counter>.
+    Found 1-bit register for signal <divd_clk>.
+    Found 1-bit 4-to-1 multiplexer for signal <divd_clk$mux0000> created at line 71.
+    Found 1-bit register for signal <divd_clk_prev>.
     Found 1-bit register for signal <enableClk>.
     Found 2-bit up counter for signal <longSequenceStep>.
     Found 1-bit register for signal <resetClk>.
     Found 1-bit register for signal <returnValue>.
+    Found 8-bit register for signal <rxReg>.
+    Found 1-bit xor2 for signal <state$xor0000> created at line 118.
     Found 8-bit register for signal <txReg>.
     Found 3-bit register for signal <waitReg>.
-    Found 3-bit adder for signal <waitReg$share0000> created at line 118.
+    Found 3-bit adder for signal <waitReg$share0000> created at line 138.
     Summary:
 	inferred   1 Finite State Machine(s).
 	inferred   2 Counter(s).
-	inferred  26 D-type flip-flop(s).
+	inferred  40 D-type flip-flop(s).
 	inferred   2 Adder/Subtractor(s).
 	inferred   1 Multiplexer(s).
 Unit <M_SpiSender> synthesized.
@@ -392,18 +389,14 @@ Macro Statistics
  4-bit adder                                           : 1
 # Counters                                             : 2
  2-bit up counter                                      : 1
- 4-bit up counter                                      : 1
-# Registers                                            : 38
- 1-bit register                                        : 21
+ 6-bit up counter                                      : 1
+# Registers                                            : 42
+ 1-bit register                                        : 23
  3-bit register                                        : 2
  32-bit register                                       : 6
- 4-bit register                                        : 4
- 8-bit register                                        : 4
+ 4-bit register                                        : 5
+ 8-bit register                                        : 5
  9-bit register                                        : 1
-# Latches                                              : 4
- 1-bit latch                                           : 1
- 4-bit latch                                           : 1
- 8-bit latch                                           : 2
 # Comparators                                          : 6
  3-bit comparator less                                 : 2
  5-bit comparator greatequal                           : 2
@@ -412,6 +405,8 @@ Macro Statistics
  1-bit 4-to-1 multiplexer                              : 1
 # Decoders                                             : 1
  1-of-4 decoder                                        : 1
+# Xors                                                 : 1
+ 1-bit xor2                                            : 1
 
 =========================================================================
 
@@ -453,7 +448,7 @@ Optimizing FSM <SPI_IP/sender/state/FSM> on signal <state[1:6]> with one-hot enc
 ----------------------
 INFO:Xst:2261 - The FF/Latch <REG_RX_8> in Unit <SPI_IP> is equivalent to the following 23 FFs/Latches, which will be removed : <REG_RX_9> <REG_RX_10> <REG_RX_11> <REG_RX_12> <REG_RX_13> <REG_RX_14> <REG_RX_15> <REG_RX_16> <REG_RX_17> <REG_RX_18> <REG_RX_19> <REG_RX_20> <REG_RX_21> <REG_RX_22> <REG_RX_23> <REG_RX_24> <REG_RX_25> <REG_RX_26> <REG_RX_27> <REG_RX_28> <REG_RX_29> <REG_RX_30> <REG_RX_31> 
 INFO:Xst:2261 - The FF/Latch <REG_STATUS_7> in Unit <SPI_IP> is equivalent to the following 24 FFs/Latches, which will be removed : <REG_STATUS_8> <REG_STATUS_9> <REG_STATUS_10> <REG_STATUS_11> <REG_STATUS_12> <REG_STATUS_13> <REG_STATUS_14> <REG_STATUS_15> <REG_STATUS_16> <REG_STATUS_17> <REG_STATUS_18> <REG_STATUS_19> <REG_STATUS_20> <REG_STATUS_21> <REG_STATUS_22> <REG_STATUS_23> <REG_STATUS_24> <REG_STATUS_25> <REG_STATUS_26> <REG_STATUS_27> <REG_STATUS_28> <REG_STATUS_29> <REG_STATUS_30> <REG_STATUS_31> 
-WARNING:Xst:1293 - FF/Latch <txReg_0> has a constant value of 1 in block <sender>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <txReg_0> (without init value) has a constant value of 1 in block <sender>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <ip2bus_rdack> (without init value) has a constant value of 0 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <REG_STATUS_7> (without init value) has a constant value of 0 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <REG_RX_8> has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
@@ -470,13 +465,9 @@ Macro Statistics
  4-bit adder                                           : 1
 # Counters                                             : 2
  2-bit up counter                                      : 1
- 4-bit up counter                                      : 1
-# Registers                                            : 276
- Flip-Flops                                            : 276
-# Latches                                              : 4
- 1-bit latch                                           : 1
- 4-bit latch                                           : 1
- 8-bit latch                                           : 2
+ 6-bit up counter                                      : 1
+# Registers                                            : 290
+ Flip-Flops                                            : 290
 # Comparators                                          : 6
  3-bit comparator less                                 : 2
  5-bit comparator greatequal                           : 2
@@ -485,13 +476,15 @@ Macro Statistics
  1-bit 4-to-1 multiplexer                              : 1
 # Decoders                                             : 1
  1-of-4 decoder                                        : 1
+# Xors                                                 : 1
+ 1-bit xor2                                            : 1
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1293 - FF/Latch <txReg_0> has a constant value of 1 in block <M_SpiSender>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <txReg_0> (without init value) has a constant value of 1 in block <M_SpiSender>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <REG_STATUS_31> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_8> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_9> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
@@ -637,85 +630,15 @@ Drivers are:
    Output signal of FD instance <SPI_IP/rxFifoState_0>
    Signal <SPI_IP/rxFifoState<0>> in Unit <axiToSpi> is assigned to VCC
 
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <MOSI>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/MOSI_ren/0>
-   Output signal of FDE instance <SPI_IP/sender/MOSI>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <resetClk>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/sender/resetClk>
-   Signal <SPI_IP/sender/resetClk> in Unit <M_SpiSender> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<3>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDC instance <SPI_IP/sender/bitCount/3/0>
-   Signal <SPI_IP/sender/bitCount<3>> in Unit <M_SpiSender> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<2>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDC instance <SPI_IP/sender/bitCount/2/0>
-   Signal <SPI_IP/sender/bitCount<2>> in Unit <M_SpiSender> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<1>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDC instance <SPI_IP/sender/bitCount/1/0>
-   Signal <SPI_IP/sender/bitCount<1>> in Unit <M_SpiSender> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <bitCount<0>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDC instance <SPI_IP/sender/bitCount/0/0>
-   Signal <SPI_IP/sender/bitCount<0>> in Unit <M_SpiSender> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<7>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/7/0>
-   Output signal of FDE instance <SPI_IP/sender/txReg_7>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<6>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/6/0>
-   Output signal of FDE instance <SPI_IP/sender/txReg_6>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<5>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/5/0>
-   Output signal of FDE instance <SPI_IP/sender/txReg_5>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<4>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/4/0>
-   Output signal of FDE instance <SPI_IP/sender/txReg_4>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<3>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/3/0>
-   Output signal of FDE instance <SPI_IP/sender/txReg_3>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<2>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/2/0>
-   Output signal of FDE instance <SPI_IP/sender/txReg_2>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<1>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/1/0>
-   Output signal of FDE instance <SPI_IP/sender/txReg_1>
-
-ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <txReg<0>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of LDP instance <SPI_IP/sender/txReg_ren/0/0>
-   Signal <SPI_IP/sender/N1> in Unit <M_SpiSender> is assigned to VCC
-
 
 Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.06 secs
+Total CPU time to Xst completion: 5.42 secs
  
 --> 
 
-Total memory usage is 269356 kilobytes
+Total memory usage is 267756 kilobytes
 
-Number of errors   :   28 (   0 filtered)
-Number of warnings :   75 (   0 filtered)
-Number of infos    :   14 (   0 filtered)
+Number of errors   :   14 (   0 filtered)
+Number of warnings :   69 (   0 filtered)
+Number of infos    :   13 (   0 filtered)
 

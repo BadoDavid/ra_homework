@@ -1,4 +1,4 @@
-Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.exe" -prj "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_beh.prj" "TB_AXI_SPI" "work.glbl" 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.exe" -prj "D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_beh.prj" "work.TB_AXI_SPI" "work.glbl" 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
@@ -14,7 +14,6 @@ WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" 
 WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 419: Concatenation with unsized literal; will interpret as 32 bits
 WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 427: Concatenation with unsized literal; will interpret as 32 bits
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/addr_management.v" into library work
-Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/SPI_Writer.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Writer.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_Lite_Reader.v" into library work
@@ -56,8 +55,8 @@ Compiling module M25AA160C
 Compiling module TB_AXI_SPI
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 9 sub-compilation(s) to finish...
+Waiting for 10 sub-compilation(s) to finish...
 Compiled 17 Verilog Units
 Built simulation executable D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.exe
-Fuse Memory Usage: 35488 KB
-Fuse CPU Usage: 1013 ms
+Fuse Memory Usage: 35400 KB
+Fuse CPU Usage: 826 ms
