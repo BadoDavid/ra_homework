@@ -218,7 +218,9 @@ axiToSpi_rxFifo rxFifo(
       else begin
 			case (rxFifoState)
             sr_idle : begin
-					
+					if (bus2ip_rdce[ce_rx])
+						if (rxFifo_empty == 0)
+							rxFifoState  <= sr_beginRead;
             end
 				sr_beginRead : begin
 					rxFifo_rd <= 1;
@@ -251,10 +253,10 @@ axiToSpi_rxFifo rxFifo(
 			ip2bus_rdack <= 1;
 		else if (bus2ip_rdce[ce_tx])
 			ip2bus_rdack <= 1; // this should really never happen tho (!)
-		else if (bus2ip_rdce[ce_rx])
+		/*else if (bus2ip_rdce[ce_rx])
 			if (rxFifo_empty == 0)
 				if (rxFifoState == sr_idle)
-					rxFifoState  <= sr_beginRead;
+					rxFifoState  <= sr_beginRead;*/
 	end
 	
 	reg [3:0] bus2ip_rdce_prev; //Edited by M
@@ -275,18 +277,30 @@ axiToSpi_rxFifo rxFifo(
 //**************** RX FIFO POPULATOR ****************
 // if read data is returned from the spi sender module, push it to rx fifo
 	
-	reg newRxFifoItem = 0;
-
-	always @(posedge readDataIsReady)
+	//reg newRxFifoItem = 0;
+	reg readDataIsReady_prev;
+	always @(posedge bus2ip_clk)
 	begin
-		if (ready == 1) // should always be so when readDataIsReady, but who knows ¯\_(o_o)_/¯
+		readDataIsReady_prev <= readDataIsReady;
+		if (ready == 1 && readDataIsReady == 1 && readDataIsReady_prev == 0) // should always be so when readDataIsReady, but who knows ¯\_(o_o)_/¯
+		begin
 			if (rxFifo_full == 0)
 			begin
-				rxFifo_din = rxData;
-				newRxFifoItem = 1;
+				rxFifo_din <= rxData;
+			//	newRxFifoItem <= 1;
+				
+				rxFifo_wr <= 1;
 			end
+		end
+		/*else if (rxFifo_wrack == 1)
+			rxFifo_wr <= 0;*/
 	end
 	
+	always @(negedge bus2ip_clk)
+		if (rxFifo_wrack == 1)
+			rxFifo_wr <= 0;
+	
+	/*
 	always @(posedge bus2ip_clk)
 	begin
 		if (newRxFifoItem == 1)
@@ -299,7 +313,7 @@ axiToSpi_rxFifo rxFifo(
 				rxFifo_wr <= 0;
 		end
 	end
-
+*/
 //**************** WRITE STATE MACHINE ****************
 //populates tx fifo with axi-incoming data
 

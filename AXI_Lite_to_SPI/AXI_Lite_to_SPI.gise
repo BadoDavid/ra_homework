@@ -90,9 +90,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494488558" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494488558">
+    <transform xil_pn:end_ts="1494494770" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494494770">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="25AA160C.v"/>
       <outfile xil_pn:name="AXI_Lite_Reader.v"/>
       <outfile xil_pn:name="AXI_Lite_Writer.v"/>
@@ -108,10 +112,12 @@
     <transform xil_pn:end_ts="1494487681" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="8119700915022018105" xil_pn:start_ts="1494487681">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1494487681" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="3869293892167747569" xil_pn:start_ts="1494487681">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
     </transform>
     <transform xil_pn:end_ts="1494487681" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="4641318271003307238" xil_pn:start_ts="1494487681">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -121,6 +127,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
@@ -140,6 +147,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
@@ -154,6 +162,7 @@
     <transform xil_pn:end_ts="1494487687" xil_pn:in_ck="6511850746758078445" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8238929933520176465" xil_pn:start_ts="1494487686">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
@@ -189,11 +198,10 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494488220" xil_pn:in_ck="6893225936790398621" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-7068365938410377274" xil_pn:start_ts="1494488216">
+    <transform xil_pn:end_ts="1494495461" xil_pn:in_ck="6893225936790398621" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-7068365938410377274" xil_pn:start_ts="1494495451">
       <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="AXI_SPI_top.lso"/>
       <outfile xil_pn:name="AXI_SPI_top.ngc"/>

@@ -10,16 +10,19 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="47" />
+   <WVObjectSize size="61" />
+   <wave_markers>
+      <marker time="6006235000000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/TB_AXI_SPI/ACLK" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ACLK</obj_property>
+      <obj_property name="ObjectShortName">ACLK</obj_property>
+   </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/ARESETn" type="logic" db_ref_id="1">
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">ARESETn</obj_property>
       <obj_property name="ObjectShortName">ARESETn</obj_property>
       <obj_property name="label">ARESETn</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/ACLK" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">ACLK</obj_property>
-      <obj_property name="ObjectShortName">ACLK</obj_property>
    </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/AWVALID" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">AWVALID</obj_property>
@@ -110,9 +113,46 @@
       <obj_property name="ElementShortName">bus2ip_rdce[3:0]</obj_property>
       <obj_property name="ObjectShortName">bus2ip_rdce[3:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/readDataIsReady_prev" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">readDataIsReady_prev</obj_property>
+      <obj_property name="ObjectShortName">readDataIsReady_prev</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/readDataIsReady" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">readDataIsReady</obj_property>
+      <obj_property name="ObjectShortName">readDataIsReady</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifo_wr" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifo_wr</obj_property>
+      <obj_property name="ObjectShortName">rxFifo_wr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifo_wrack" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifo_wrack</obj_property>
+      <obj_property name="ObjectShortName">rxFifo_wrack</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifo_dataCount" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifo_dataCount[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rxFifo_dataCount[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifo_empty" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifo_empty</obj_property>
+      <obj_property name="ObjectShortName">rxFifo_empty</obj_property>
+   </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifoState" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">rxFifoState[3:0]</obj_property>
       <obj_property name="ObjectShortName">rxFifoState[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifo_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifo_dout[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rxFifo_dout[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifo_rd" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifo_rd</obj_property>
+      <obj_property name="ObjectShortName">rxFifo_rd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifo_valid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifo_valid</obj_property>
+      <obj_property name="ObjectShortName">rxFifo_valid</obj_property>
    </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_wrce" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">bus2ip_wrce[3:0]</obj_property>
@@ -137,10 +177,6 @@
    <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/controlled" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">controlled</obj_property>
       <obj_property name="ObjectShortName">controlled</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/CE" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">CE</obj_property>
-      <obj_property name="ObjectShortName">CE</obj_property>
    </wvobject>
    <wvobject fp_name="divider84" type="divider">
       <obj_property name="label">TEST CONTROL</obj_property>
@@ -189,6 +225,30 @@
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">128 128 255</obj_property>
       <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">state[7:0]</obj_property>
+      <obj_property name="ObjectShortName">state[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/rxData" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rxData[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rxData[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/returnValue" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">returnValue</obj_property>
+      <obj_property name="ObjectShortName">returnValue</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/returnedValue" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">returnedValue</obj_property>
+      <obj_property name="ObjectShortName">returnedValue</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/ready" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/sender/longSequenceStep" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">longSequenceStep[1:0]</obj_property>
+      <obj_property name="ObjectShortName">longSequenceStep[1:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/SPI_RESET" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">SPI_RESET</obj_property>

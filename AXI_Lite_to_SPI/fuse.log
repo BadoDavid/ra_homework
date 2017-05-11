@@ -7,12 +7,12 @@ Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v" 
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi_TxFifo.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi_RxFifo.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" into library work
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 341: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 352: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 373: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 375: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 405: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 413: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 355: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 366: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 387: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 389: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 419: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 427: Concatenation with unsized literal; will interpret as 32 bits
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/addr_management.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/SPI_Writer.v" into library work
 Analyzing Verilog file "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.v" into library work
@@ -31,12 +31,12 @@ WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" 
 WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 461: Actual bit length 32 differs from formal bit length 1
 WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 462: Actual bit length 32 differs from formal bit length 1
 WARNING:HDLCompiler:188 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/25AA160C.v" Line 463: Actual bit length 32 differs from formal bit length 1
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 341: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 352: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 373: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 375: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 405: Concatenation with unsized literal; will interpret as 32 bits
-WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 413: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 355: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 366: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 387: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 389: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 419: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v" Line 427: Concatenation with unsized literal; will interpret as 32 bits
 Completed static elaboration
 Compiling module addr_management
 Compiling module M_SpiSender
@@ -56,8 +56,8 @@ Compiling module M25AA160C
 Compiling module TB_AXI_SPI
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 8 sub-compilation(s) to finish...
+Waiting for 9 sub-compilation(s) to finish...
 Compiled 17 Verilog Units
 Built simulation executable D:/Projektek/ra_homework/AXI_Lite_to_SPI/TB_AXI_SPI_isim_beh.exe
-Fuse Memory Usage: 35524 KB
-Fuse CPU Usage: 763 ms
+Fuse Memory Usage: 35488 KB
+Fuse CPU Usage: 1013 ms

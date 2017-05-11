@@ -112,7 +112,7 @@ localparam
          state <= s_def;
 			returnedValue <= 0;
 			returnValue <= 0;
-			longSequenceStep <= 4'b0;
+			longSequenceStep <= 2'b0;
       end
       else
 			case (state)
@@ -132,7 +132,7 @@ localparam
 						if (txData == SPI_CMD_READ)
 						begin
 							returnValue <= 1;
-							longSequenceStep <= 4'b0;
+							longSequenceStep <= 2'b00;
 						end
 						else if (returnValue == 1)
 							longSequenceStep <= longSequenceStep + 1;
@@ -191,10 +191,11 @@ localparam
 					ready <= 1;
 					state <= s_idle;
 					
-					if (returnValue == 1 && longSequenceStep == 2'b11)
+					if (returnValue == 1 && longSequenceStep == 2'b11) begin
 						returnedValue <= 1;
-					returnValue <= 0;
-					longSequenceStep <= 4'b0;
+						returnValue <= 0;
+					end
+					//longSequenceStep <= 2'b0;
             end
             s_def : begin
                resetClk <= 1;
