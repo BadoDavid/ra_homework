@@ -770,7 +770,7 @@ LAB35:    xsi_set_current_line(92, ng0);
 LAB38:    xsi_set_current_line(93, ng0);
     t21 = ((char*)((ng2)));
     t22 = (t0 + 4648);
-    xsi_vlogvar_assign_value(t22, t21, 0, 0, 4);
+    xsi_vlogvar_wait_assign_value(t22, t21, 0, 0, 4, 0LL);
     xsi_set_current_line(94, ng0);
     t2 = ((char*)((ng8)));
     t3 = (t0 + 4968);

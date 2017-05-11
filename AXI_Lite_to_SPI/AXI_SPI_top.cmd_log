@@ -21,3 +21,5 @@ xst -intstyle ise -ifn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.xst
 xst -intstyle ise -ifn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.xst" -ofn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.syr" 
 xst -intstyle ise -ifn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.xst" -ofn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.syr" 
 xst -intstyle ise -ifn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.xst" -ofn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.syr" 
+xst -intstyle ise -ifn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.xst" -ofn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.syr" 
+xst -intstyle ise -ifn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.xst" -ofn "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.syr" 

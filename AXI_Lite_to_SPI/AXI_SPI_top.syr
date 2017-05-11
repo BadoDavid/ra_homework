@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: AXI_SPI_top.prj
 
@@ -228,10 +228,9 @@ Module <M_SpiSender> is correct for synthesis.
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <ip2bus_rdack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <rxFifoState> in unit <axiToSpi> has a constant value of 0001 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <ip2bus_rdack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <ip2bus_rdack> in unit <axiToSpi> has a constant value of 0 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <rxFifoState> in unit <axiToSpi> has a constant value of 0001 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <newRxFifoItem> in unit <axiToSpi> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <ip2bus_wrack> in unit <axiToSpi> has a constant value of 1 during circuit operation. The register is replaced by logic.
@@ -246,7 +245,6 @@ WARNING:Xst:647 - Input <ARADDR<1:0>> is never used. This port will be preserved
 WARNING:Xst:647 - Input <AWADDR<31:4>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <AWADDR<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1305 - Output <bus2ip_addr> is never assigned. Tied to value 00000000000000000000000000000000.
-WARNING:Xst:647 - Input <ARESETn> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 32-bit register for signal <bus2ip_data>.
     Found 4-bit register for signal <bus2ip_rdce>.
     Found 4-bit register for signal <bus2ip_wrce>.
@@ -340,19 +338,20 @@ INFO:Xst:1799 - State 1000 is never reached in FSM <txFifoDepopulatorState>.
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <rxFifoState> of Case statement line 218 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <rxFifoState> of Case statement line 219 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <rxFifoState> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
     Using one-hot encoding for signal <rxFifoState>.
+    Found 1-bit register for signal <ip2bus_rdack>.
     Found 4-bit register for signal <bus2ip_rdce_prev>.
     Found 1-bit register for signal <continued>.
     Found 1-bit register for signal <controlled>.
     Found 1-bit register for signal <direction>.
-    Found 5-bit comparator greatequal for signal <direction$cmp_ge0000> created at line 336.
-    Found 5-bit comparator greatequal for signal <direction$cmp_ge0001> created at line 347.
+    Found 5-bit comparator greatequal for signal <direction$cmp_ge0000> created at line 337.
+    Found 5-bit comparator greatequal for signal <direction$cmp_ge0001> created at line 348.
     Found 3-bit register for signal <longSeqCount>.
-    Found 3-bit adder for signal <longSeqCount$addsub0000> created at line 367.
+    Found 3-bit adder for signal <longSeqCount$addsub0000> created at line 368.
     Found 1-bit register for signal <newRxFifoItem>.
     Found 32-bit register for signal <REG_CMD>.
     Found 32-bit register for signal <REG_RX>.
@@ -366,13 +365,13 @@ INFO:Xst:2117 - HDL ADVISOR - Mux Selector <rxFifoState> of Case statement line 
     Found 9-bit register for signal <txFifo_din>.
     Found 1-bit register for signal <txFifo_rd>.
     Found 1-bit register for signal <txFifo_wr>.
-    Found 5-bit comparator less for signal <wrFifoState$cmp_lt0000> created at line 347.
-    Found 5-bit comparator less for signal <wrFifoState$cmp_lt0001> created at line 336.
-    Found 3-bit comparator less for signal <wrFifoState$cmp_lt0002> created at line 365.
-    Found 3-bit comparator less for signal <wrFifoState$cmp_lt0003> created at line 365.
+    Found 5-bit comparator less for signal <wrFifoState$cmp_lt0000> created at line 348.
+    Found 5-bit comparator less for signal <wrFifoState$cmp_lt0001> created at line 337.
+    Found 3-bit comparator less for signal <wrFifoState$cmp_lt0002> created at line 366.
+    Found 3-bit comparator less for signal <wrFifoState$cmp_lt0003> created at line 366.
     Summary:
 	inferred   2 Finite State Machine(s).
-	inferred 145 D-type flip-flop(s).
+	inferred 178 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   6 Comparator(s).
 Unit <axiToSpi> synthesized.
@@ -395,11 +394,11 @@ Macro Statistics
  4-bit adder                                           : 1
 # Counters                                             : 1
  4-bit up counter                                      : 1
-# Registers                                            : 38
- 1-bit register                                        : 20
+# Registers                                            : 40
+ 1-bit register                                        : 21
  2-bit register                                        : 1
  3-bit register                                        : 2
- 32-bit register                                       : 5
+ 32-bit register                                       : 6
  4-bit register                                        : 5
  8-bit register                                        : 4
  9-bit register                                        : 1
@@ -456,14 +455,104 @@ Optimizing FSM <SPI_IP/sender/state/FSM> on signal <state[1:6]> with one-hot enc
 ----------------------
 INFO:Xst:2261 - The FF/Latch <REG_RX_8> in Unit <SPI_IP> is equivalent to the following 23 FFs/Latches, which will be removed : <REG_RX_9> <REG_RX_10> <REG_RX_11> <REG_RX_12> <REG_RX_13> <REG_RX_14> <REG_RX_15> <REG_RX_16> <REG_RX_17> <REG_RX_18> <REG_RX_19> <REG_RX_20> <REG_RX_21> <REG_RX_22> <REG_RX_23> <REG_RX_24> <REG_RX_25> <REG_RX_26> <REG_RX_27> <REG_RX_28> <REG_RX_29> <REG_RX_30> <REG_RX_31> 
 INFO:Xst:2261 - The FF/Latch <rxFifoState_ren_0> in Unit <SPI_IP> is equivalent to the following 2 FFs/Latches, which will be removed : <rxFifoState_ren_2> <rxFifoState_ren_3> 
+INFO:Xst:2261 - The FF/Latch <REG_STATUS_7> in Unit <SPI_IP> is equivalent to the following 24 FFs/Latches, which will be removed : <REG_STATUS_8> <REG_STATUS_9> <REG_STATUS_10> <REG_STATUS_11> <REG_STATUS_12> <REG_STATUS_13> <REG_STATUS_14> <REG_STATUS_15> <REG_STATUS_16> <REG_STATUS_17> <REG_STATUS_18> <REG_STATUS_19> <REG_STATUS_20> <REG_STATUS_21> <REG_STATUS_22> <REG_STATUS_23> <REG_STATUS_24> <REG_STATUS_25> <REG_STATUS_26> <REG_STATUS_27> <REG_STATUS_28> <REG_STATUS_29> <REG_STATUS_30> <REG_STATUS_31> 
 WARNING:Xst:1293 - FF/Latch <txReg_0> has a constant value of 1 in block <sender>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <rxFifoState_ren_0> (without init value) has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <rxFifoState_ren_1> (without init value) has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <rxFifoState_0> has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <REG_STATUS_7> (without init value) has a constant value of 0 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <ip2bus_rdack> (without init value) has a constant value of 0 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <REG_RX_8> has a constant value of 1 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <bus2ip_wrce_0> of sequential type is unconnected in block <Addr_Manage>.
 WARNING:Xst:2677 - Node <wrce_temp_0> of sequential type is unconnected in block <Addr_Manage>.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_16> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_17> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_18> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_19> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_20> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_21> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_22> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_23> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_24> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_25> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_26> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_27> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_28> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_29> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_30> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_31> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <rxFifoState_3> has a constant value of 0 in block <SPI_IP>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <r_valid> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_0> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_1> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_2> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_3> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_4> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_5> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_6> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_7> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_8> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_9> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_10> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_11> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_12> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_13> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_14> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <rdata_rnm0_15> (without init value) has a constant value of 0 in block <Addr_Manage>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_0> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_0> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_1> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_1> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_2> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_2> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_3> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_3> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_4> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_4> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_5> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_5> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_6> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_6> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_RX_7> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_7> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_8> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_9> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_10> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_11> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_12> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_13> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_14> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_15> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_16> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_17> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_18> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_19> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_20> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_21> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_22> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_23> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_24> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_25> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_26> is unconnected in block <SPI_IP>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <REG_CMD_27> is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <bus2ip_rdce_0> of sequential type is unconnected in block <Addr_Manage>.
+WARNING:Xst:2677 - Node <bus2ip_rdce_1> of sequential type is unconnected in block <Addr_Manage>.
+WARNING:Xst:2677 - Node <bus2ip_rdce_2> of sequential type is unconnected in block <Addr_Manage>.
+WARNING:Xst:2677 - Node <bus2ip_rdce_3> of sequential type is unconnected in block <Addr_Manage>.
+WARNING:Xst:2677 - Node <REG_STATUS_ren_0> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_ren_1> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_ren_2> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_ren_3> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_ren_4> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_ren_5> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_ren_6> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_0> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_1> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_2> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_3> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_4> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_5> of sequential type is unconnected in block <SPI_IP>.
+WARNING:Xst:2677 - Node <REG_STATUS_6> of sequential type is unconnected in block <SPI_IP>.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -476,8 +565,8 @@ Macro Statistics
  4-bit adder                                           : 1
 # Counters                                             : 1
  4-bit up counter                                      : 1
-# Registers                                            : 249
- Flip-Flops                                            : 249
+# Registers                                            : 282
+ Flip-Flops                                            : 282
 # Latches                                              : 4
  1-bit latch                                           : 1
  4-bit latch                                           : 1
@@ -497,193 +586,146 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 WARNING:Xst:1293 - FF/Latch <txReg_0> has a constant value of 1 in block <M_SpiSender>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <REG_RX_31> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_30> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_29> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_28> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_27> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_26> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_25> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_24> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_23> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_22> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_21> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_20> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_19> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_18> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_17> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_16> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_15> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_14> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_13> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_12> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_11> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_10> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_9> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <REG_STATUS_30> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_31> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ip2bus_rdack> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_8> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_0> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_3> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_2> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_1> (without init value) has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_9> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_10> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_11> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_12> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_13> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_14> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_15> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_16> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_17> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_18> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_19> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_20> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_21> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_22> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_23> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_24> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_25> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_26> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_27> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_28> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_29> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_30> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <REG_RX_31> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_0> (without init value) has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_1> (without init value) has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_2> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_ren_3> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <rxFifoState_0> has a constant value of 1 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_7> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_8> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_9> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_10> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_11> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_12> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_13> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_14> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_15> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_16> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_17> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_18> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_19> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_20> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_21> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_22> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_23> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_24> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_25> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_26> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_27> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_28> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <REG_STATUS_29> (without init value) has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <rxFifoState_3> has a constant value of 0 in block <axiToSpi>. This FF/Latch will be trimmed during the optimization process.
 
 ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <ip2bus_wrack>; this signal is connected to multiple drivers.
 Drivers are: 
    Signal <SPI_IP/ip2bus_wrack> in Unit <axiToSpi> is assigned to VCC
 
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <ip2bus_rdack>; this signal is connected to multiple drivers.
-Drivers are: 
-   Signal <SPI_IP/ip2bus_rdack> in Unit <axiToSpi> is assigned to VCC
-
 ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <newRxFifoItem>; this signal is connected to multiple drivers.
 Drivers are: 
    Output signal of FDE instance <SPI_IP/newRxFifoItem>
    Signal <SPI_IP/newRxFifoItem> in Unit <axiToSpi> is assigned to GND
 
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<31>>; this signal is connected to multiple drivers.
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <rxFifoState_2>; this signal is connected to multiple drivers.
 Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_31>
-   Signal <SPI_IP/REG_STATUS<31>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<30>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_30>
-   Signal <SPI_IP/REG_STATUS<30>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<29>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_29>
-   Signal <SPI_IP/REG_STATUS<29>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<28>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_28>
-   Signal <SPI_IP/REG_STATUS<28>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<27>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_27>
-   Signal <SPI_IP/REG_STATUS<27>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<26>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_26>
-   Signal <SPI_IP/REG_STATUS<26>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<25>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_25>
-   Signal <SPI_IP/REG_STATUS<25>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<24>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_24>
-   Signal <SPI_IP/REG_STATUS<24>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<23>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_23>
-   Signal <SPI_IP/REG_STATUS<23>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<22>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_22>
-   Signal <SPI_IP/REG_STATUS<22>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<21>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_21>
-   Signal <SPI_IP/REG_STATUS<21>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<20>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_20>
-   Signal <SPI_IP/REG_STATUS<20>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<19>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_19>
-   Signal <SPI_IP/REG_STATUS<19>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<18>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_18>
-   Signal <SPI_IP/REG_STATUS<18>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<17>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_17>
-   Signal <SPI_IP/REG_STATUS<17>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<16>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_16>
-   Signal <SPI_IP/REG_STATUS<16>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<15>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_15>
-   Signal <SPI_IP/REG_STATUS<15>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<14>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_14>
-   Signal <SPI_IP/REG_STATUS<14>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<13>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_13>
-   Signal <SPI_IP/REG_STATUS<13>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<12>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_12>
-   Signal <SPI_IP/REG_STATUS<12>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<11>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_11>
-   Signal <SPI_IP/REG_STATUS<11>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<10>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_10>
-   Signal <SPI_IP/REG_STATUS<10>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<9>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_9>
-   Signal <SPI_IP/REG_STATUS<9>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<8>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_8>
-   Signal <SPI_IP/REG_STATUS<8>> in Unit <axiToSpi> is assigned to GND
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<7>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDE instance <SPI_IP/REG_STATUS_7>
-   Signal <SPI_IP/REG_STATUS<7>> in Unit <axiToSpi> is assigned to GND
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_31>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_30>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_29>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_28>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_27>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_26>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_25>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_24>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_23>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_22>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_21>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_20>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_19>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_18>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_17>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_16>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_15>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_14>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_13>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_12>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_11>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_10>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_9>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_8>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_7>
+   Output signal of FD instance <SPI_IP/rxFifoState_2>
+   Signal <SPI_IP/N0> in Unit <axiToSpi> is assigned to GND
+   Signal <SPI_IP/rxFifoState<2>> in Unit <axiToSpi> is assigned to GND
+   Signal <SPI_IP/rxFifoState<3>> in Unit <axiToSpi> is assigned to GND
+   Signal <SPI_IP/rxFifoState<0>> in Unit <axiToSpi> is assigned to VCC
+   Signal <SPI_IP/ip2bus_rdack> in Unit <axiToSpi> is assigned to VCC
 
 ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<6>>; this signal is connected to multiple drivers.
 Drivers are: 
-   Signal <SPI_IP/REG_STATUS_not0001> is assigned to logic
-   Output signal of FDE instance <SPI_IP/REG_STATUS_6>
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_6>
+   Output signal of FD instance <SPI_IP/REG_STATUS_6>
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<5>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_5>
+   Output signal of FD instance <SPI_IP/REG_STATUS_5>
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<4>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_4>
+   Output signal of FD instance <SPI_IP/REG_STATUS_4>
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<3>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_3>
+   Output signal of FD instance <SPI_IP/REG_STATUS_3>
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<2>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_2>
+   Output signal of FD instance <SPI_IP/REG_STATUS_2>
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<1>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_1>
+   Output signal of FD instance <SPI_IP/REG_STATUS_1>
+
+ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_STATUS<0>>; this signal is connected to multiple drivers.
+Drivers are: 
+   Output signal of FDE instance <SPI_IP/REG_STATUS_ren_0>
+   Output signal of FD instance <SPI_IP/REG_STATUS_0>
 
 ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <REG_RX<31>>; this signal is connected to multiple drivers.
 Drivers are: 
    Output signal of FD instance <SPI_IP/rxFifoState_1>
    Signal <SPI_IP/rxFifoState<1>> in Unit <axiToSpi> is assigned to GND
    Signal <SPI_IP/REG_TX<0>> in Unit <axiToSpi> is assigned to VCC
-
-ERROR:Xst:528 - Multi-source in Unit <axiToSpi> on signal <rxFifoState_2>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FD instance <SPI_IP/rxFifoState_2>
-   Signal <SPI_IP/N0> in Unit <axiToSpi> is assigned to GND
-   Signal <SPI_IP/rxFifoState<2>> in Unit <axiToSpi> is assigned to GND
-   Signal <SPI_IP/rxFifoState<3>> in Unit <axiToSpi> is assigned to GND
-   Signal <SPI_IP/rxFifoState<0>> in Unit <axiToSpi> is assigned to VCC
 
 ERROR:Xst:528 - Multi-source in Unit <M_SpiSender> on signal <MOSI>; this signal is connected to multiple drivers.
 Drivers are: 
@@ -756,14 +798,14 @@ Drivers are:
    Signal <SPI_IP/sender/N1> in Unit <M_SpiSender> is assigned to VCC
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.25 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.55 secs
  
 --> 
 
-Total memory usage is 269356 kilobytes
+Total memory usage is 269100 kilobytes
 
-Number of errors   :   45 (   0 filtered)
-Number of warnings :   58 (   0 filtered)
+Number of errors   :   25 (   0 filtered)
+Number of warnings :  172 (   0 filtered)
 Number of infos    :   15 (   0 filtered)
 

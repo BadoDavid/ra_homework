@@ -90,7 +90,7 @@ module addr_management(
 				ar_ready <= 1;
 			end
 		else 	if (ip2bus_rdack == 1) begin
-			bus2ip_rdce = 4'b0000;
+			bus2ip_rdce <= 4'b0000;
 			ar_ready <= 0;
 			end
 		else ar_ready <= 0;

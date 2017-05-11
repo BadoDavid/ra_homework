@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Wed May 10 10:09:17 2017">
+  <application stringID="Xst" timeStamp="Thu May 11 08:48:53 2017">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -113,11 +113,11 @@
       <item dataType="int" stringID="XST_COUNTERS" value="1">
         <item dataType="int" stringID="XST_4BIT_UP_COUNTER" value="1"/>
       </item>
-      <item dataType="int" stringID="XST_REGISTERS" value="38">
-        <item dataType="int" stringID="XST_1BIT_REGISTER" value="20"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="40">
+        <item dataType="int" stringID="XST_1BIT_REGISTER" value="21"/>
         <item dataType="int" stringID="XST_2BIT_REGISTER" value="1"/>
         <item dataType="int" stringID="XST_3BIT_REGISTER" value="2"/>
-        <item dataType="int" stringID="XST_32BIT_REGISTER" value="5"/>
+        <item dataType="int" stringID="XST_32BIT_REGISTER" value="6"/>
         <item dataType="int" stringID="XST_4BIT_REGISTER" value="5"/>
         <item dataType="int" stringID="XST_8BIT_REGISTER" value="4"/>
         <item dataType="int" stringID="XST_9BIT_REGISTER" value="1"/>
@@ -136,8 +136,8 @@
       <item dataType="int" stringID="XST_COUNTERS" value="1">
         <item dataType="int" stringID="XST_4BIT_UP_COUNTER" value="1"/>
       </item>
-      <item dataType="int" stringID="XST_REGISTERS" value="249">
-        <item dataType="int" stringID="XST_FLIPFLOPS" value="249"/>
+      <item dataType="int" stringID="XST_REGISTERS" value="282">
+        <item dataType="int" stringID="XST_FLIPFLOPS" value="282"/>
       </item>
       <item dataType="int" stringID="XST_COMPARATORS" value="6"></item>
       <item dataType="int" stringID="XST_MULTIPLEXERS" value="1">
@@ -145,8 +145,8 @@
       </item>
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="45"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="58"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="25"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="172"/>
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="15"/>
     </section>
   </application>

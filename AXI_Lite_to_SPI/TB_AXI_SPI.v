@@ -29,41 +29,31 @@ module TB_AXI_SPI;
 	reg ARESETn;
 	wire AWVALID;
 	wire [31:0] AWADDR;
-	//wire [2:0] AWPROT;
 	wire WVALID;
 	wire [31:0] WDATA;
-	//wire [3:0] WSTRB;
-	//wire BREADY;
 	wire ARVALID;
 	wire [31:0] ARADDR;
-	//wire [2:0] ARPROT;
 	wire RREADY;
 	wire SPI_MISO;	
 
 	// Outputs
 	wire AWREADY;
 	wire WREADY;
-	//wire BVALID;
-	//wire [1:0] BRESP;
 	wire ARREADY;
 	wire RVALID;
 	wire [31:0] RDATA;
-	//wire [1:0] RRESP;
 	wire SPI_MOSI;
 	wire SPI_SCK;
 
 	// Writer Inputs 
 	reg [31:0] Write_to;
 	reg [31:0] W_Data;
-	//reg [3:0] Strobe;
-	//reg [2:0] W_Prot;
 	reg W_Start;
 	wire Writer_Run;
 	
 	// Reader Inputs
 	reg [31:0] Read_from;
 	wire [31:0] R_Data;
-	//reg [2:0] R_Prot;
 	reg R_Start;
 	wire Reader_Run;	
 	
@@ -91,22 +81,15 @@ module TB_AXI_SPI;
 		.AWVALID(AWVALID), 
 		.AWREADY(AWREADY), 
 		.AWADDR(AWADDR), 
-		//.AWPROT(AWPROT), 
 		.WVALID(WVALID), 
 		.WREADY(WREADY), 
 		.WDATA(WDATA), 
-		//.WSTRB(WSTRB), 
-		//.BVALID(BVALID), 
-		//.BREADY(BREADY), 
-		//.BRESP(BRESP), 
 		.ARVALID(ARVALID), 
 		.ARREADY(ARREADY), 
 		.ARADDR(ARADDR), 
-		//.ARPROT(ARPROT), 
 		.RVALID(RVALID), 
 		.RREADY(RREADY), 
 		.RDATA(RDATA), 
-		//.RRESP(RRESP), 
 		.SPI_MOSI(SPI_MOSI), 
 		.SPI_MISO(SPI_MISO), 
 		.SPI_SCK(SPI_SCK),
@@ -120,14 +103,11 @@ module TB_AXI_SPI;
 		.ARVALID(ARVALID), 
 		.ARREADY(ARREADY), 
 		.ARADDR(ARADDR), 
-		//.ARPROT(ARPROT), 
 		.RDATA(RDATA), 
 		.RVALID(RVALID), 
 		.RREADY(RREADY), 
-		//.RRESP(RRESP), 
 		.Read_from(Read_from),
 		.R_Data(R_Data),
-		//.R_Prot(R_Prot),
 		.R_Start(R_Start),
 		.Reader_Run(Reader_Run)
 	);
@@ -139,18 +119,11 @@ module TB_AXI_SPI;
 		.AWVALID(AWVALID), 
 		.AWREADY(AWREADY), 
 		.AWADDR(AWADDR), 
-		//.AWPROT(AWPROT), 
 		.WVALID(WVALID), 
 		.WREADY(WREADY), 
 		.WDATA(WDATA), 
-		//.WSTRB(WSTRB), 
-		//.BVALID(BVALID), 
-		//.BREADY(BREADY), 
-		//.BRESP(BRESP), 
 		.Write_to(Write_to),
 		.W_Data(W_Data),
-		//.Strobe(Strobe),
-		//.W_Prot(W_Prot),
 		.W_Start(W_Start),
 		.Writer_Run(Writer_Run)
 	);	
@@ -196,8 +169,6 @@ module TB_AXI_SPI;
 	initial begin
 		#37	Write_to		<= 32'h00000000;	//32 bit Write Address
 				W_Data		<= 32'h00000000;	//32 bit Data
-				//Strobe		<= 4'b1111;			//Valid Bytes in Data (e.g. 1111: the whole 32bits are valid, 0011: The last 2 Bytes (16 bits) are valid)
-				//W_Prot		<= 3'b000;			//Data[0]/Instr[1], Secure[0]/Non-Secure[1], Normal access[0]/Privileged[1]
 				W_Start		<= 1;					//Send Data
 	end
 	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
@@ -210,7 +181,6 @@ module TB_AXI_SPI;
 	/* Remove this line to run the read example
 	initial begin
 		#37	Read_from	<= 32'h00000000;	//32 bit Read Address
-				//R_Prot		<= 3'b000;			//Data[0]/Instr[1], Secure[0]/Non-Secure[1], Normal access[0]/Privileged[1]
 				R_Start		<= 1;					//Send Data
 	end
 	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0; 
@@ -314,14 +284,8 @@ module TB_AXI_SPI;
 		OFFSET_STATUS_REG		= 4'b0100,
 		OFFSET_TX_FIFO 		= 4'b1100,
 		OFFSET_RX_FIFO 		= 4'b0000,
-		CMD_REG					= 32'b00110000000000000000000000000000, //CPOL=0 CPHA=0 DIV1_DIV2=11 -> SPI_SCK=ACLK/16
-		SPI_CMD_READ  			= 8'b0000_0011, // Read data from memory array beginning at selected address
-		SPI_CMD_WRITE 			= 8'b0000_0010, // Write data to memory array beginning at selected address
-		SPI_CMD_WRDI  			= 8'b0000_0100, // Reset the write enable latch (disable write operations)
-		SPI_CMD_WREN  			= 8'b0000_0110, // Set the write enable latch (enable write operations)
-		SPI_CMD_RDSR  			= 8'b0000_0101, // Read STATUS register
-		SPI_CMD_WRSR  			= 8'b0000_0001; // Write STATUS register
-	
+		CMD_REG					= 32'b00110000000000000000000000000000; //CPOL=0 CPHA=0 DIV1_DIV2=11 -> SPI_SCK=ACLK/16
+
 	//Configure the command register	
 	initial begin
 		#37	Write_to		<= BASE_ADDRESS+OFFSET_COMMAND_REG;	
@@ -381,13 +345,13 @@ module TB_AXI_SPI;
 	end	
 	initial begin
 		#6000000
-		#1107	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#1207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_HIGH;	//addr1
 		#10	W_Start		<= 1;					
 	end	
 	initial begin
 		#6000000
-		#1207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
+		#1407	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
 				W_Data		<= 32'h00000000+SPI_ADDRESS_LOW;	//addr2
 		#10	W_Start		<= 1;					
 	end	
