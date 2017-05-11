@@ -1,0 +1,3 @@
+vhdtdtfi -lib work D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.v -lang verilog -prj AXI_Lite_to_SPI -o M_SpiSender.spl -module M_SpiSender -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3 M_SpiSender.spl D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.sym 
+vhdtdtfi -lang verilog -prj AXI_Lite_to_SPI -o D:/Projektek/ra_homework/AXI_Lite_to_SPI/M_SpiSender.tfi -lib work D:/Projektek/ra_homework/AXI_Lite_to_SPI//M_SpiSender.v -module M_SpiSender -template C:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 

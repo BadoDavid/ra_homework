@@ -140,7 +140,7 @@ module TB_AXI_SPI;
 	);
 	
 	// Instantiate the SPI Writer
-	SPI_Writer SPI_W (
+	/*SPI_Writer SPI_W (
 		.SCK(SCK_Test),
 		.RST(SPI_Writer_RST),
 		.MOSI(MOSI_Test),
@@ -149,7 +149,7 @@ module TB_AXI_SPI;
 		.Start(SPI_Writer_Start),
 		.Running(SPI_Writer_Running),
 		.After_W_CSN(After_W_CSN)
-	);
+	);*/
 
 	// Initialize ACKL and ARESETn	
 	initial begin

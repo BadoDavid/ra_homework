@@ -55,10 +55,10 @@ module axiToSpi(
 	*/
 	
 	output SPI_MOSI,
-	input SPI_MISO,
 	output SPI_SCK, // must no exceed 10MHz
 	output SPI_CSn,
-	input rst
+	input rst,
+	input SPI_MISO
     );
 
 	localparam

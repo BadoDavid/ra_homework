@@ -56,7 +56,7 @@ localparam
 	reg enableClk = 0;
 	reg resetClk = 0;
 	reg [3:0] clock_counter = 0;
-   
+	
    always @(posedge clk)
 	begin
 		if (resetClk)

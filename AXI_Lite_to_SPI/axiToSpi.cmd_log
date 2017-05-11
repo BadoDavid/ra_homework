@@ -1,0 +1,3 @@
+vhdtdtfi -lib work D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.v -lang verilog -prj AXI_Lite_to_SPI -o axiToSpi.spl -module axiToSpi -template C:/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
+spl2sym -intstyle ise -family spartan3 axiToSpi.spl D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.sym 
+vhdtdtfi -lang verilog -prj AXI_Lite_to_SPI -o D:/Projektek/ra_homework/AXI_Lite_to_SPI/axiToSpi.tfi -lib work D:/Projektek/ra_homework/AXI_Lite_to_SPI//axiToSpi.v -module axiToSpi -template C:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 

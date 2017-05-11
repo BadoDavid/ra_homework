@@ -25,7 +25,7 @@ static const char *ng0 = "D:/Projektek/ra_homework/AXI_Lite_to_SPI/AXI_SPI_top.v
 
 
 
-static void Cont_57_0(char *t0)
+static void Cont_50_0(char *t0)
 {
     char t3[8];
     char *t1;
@@ -69,7 +69,7 @@ LAB0:    t1 = (t0 + 6368U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(57, ng0);
+LAB2:    xsi_set_current_line(50, ng0);
     t2 = (t0 + 1208U);
     t4 = *((char **)t2);
     memset(t3, 0, 8);
@@ -141,7 +141,7 @@ LAB9:    t15 = *((unsigned int *)t3);
 
 extern void work_m_00000000003032443567_1505086248_init()
 {
-	static char *pe[] = {(void *)Cont_57_0};
+	static char *pe[] = {(void *)Cont_50_0};
 	xsi_register_didat("work_m_00000000003032443567_1505086248", "isim/TB_AXI_SPI_isim_beh.exe.sim/work/m_00000000003032443567_1505086248.didat");
 	xsi_register_executes(pe);
 }

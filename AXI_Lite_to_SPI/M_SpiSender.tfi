@@ -1,0 +1,23 @@
+
+
+
+// Instantiate the module
+M_SpiSender instance_name (
+    .clk(clk), 
+    .rst(rst), 
+    .start(start), 
+    .continued(continued), 
+    .clkDiv(clkDiv), 
+    .txData(txData), 
+    .rxData(rxData), 
+    .ready(ready), 
+    .returnedValue(returnedValue), 
+    .SCK(SCK), 
+    .CE(CE), 
+    .MOSI(MOSI), 
+    .MISO(MISO), 
+    .CPOL(CPOL), 
+    .CPHA(CPHA)
+    );
+
+

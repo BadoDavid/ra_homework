@@ -1,0 +1,18 @@
+[Inputs]
+bus2ip_clk
+SPI_MISO
+rst
+=bus2ip_data[31:0]=
+=bus2ip_wrce[3:0]=
+=bus2ip_rdce[3:0]=
+[Outputs]
+ip2bus_rdack
+ip2bus_wrack
+SPI_MOSI
+SPI_SCK
+SPI_CSn
+=ip2bus_data[127:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel axiToSpi
+

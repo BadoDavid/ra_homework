@@ -1,0 +1,20 @@
+
+
+
+// Instantiate the module
+axiToSpi instance_name (
+    .bus2ip_data(bus2ip_data), 
+    .bus2ip_wrce(bus2ip_wrce), 
+    .bus2ip_rdce(bus2ip_rdce), 
+    .bus2ip_clk(bus2ip_clk), 
+    .ip2bus_data(ip2bus_data), 
+    .ip2bus_rdack(ip2bus_rdack), 
+    .ip2bus_wrack(ip2bus_wrack), 
+    .SPI_MOSI(SPI_MOSI), 
+    .SPI_MISO(SPI_MISO), 
+    .SPI_SCK(SPI_SCK), 
+    .SPI_CSn(SPI_CSn), 
+    .rst(rst)
+    );
+
+
