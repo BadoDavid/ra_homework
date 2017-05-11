@@ -60,20 +60,27 @@ module AXI_Lite_Reader(
 				ARADDR			<= Read_from;
 				//ARPROT			<= R_Prot;
 				ARVALID			<= 1;
+				RREADY			<= 0;
 				state				<= 2'b01;
 				end
 			else if(state == 2'b01) begin
 				if(ARREADY == 1) begin
 					ARVALID		<= 0;
-					RREADY		<= 1;
+					//RREADY		<= 1;
 					state 		<= 2'b10;
 					end
 				end
 			else if(state == 2'b10) begin
 				if(RVALID == 1) begin
+					RREADY		<= 1;
+					state 		<= 2'b11;
+					R_Data		<= RDATA;
+					end
+				end
+			else if(state == 2'b11) begin
+				if(RVALID == 1) begin
 					RREADY		<= 0;
 					state 		<= 2'b00;
-					R_Data		<= RDATA;
 					Reader_Run	<= 0;
 					started		<= 0;
 					end

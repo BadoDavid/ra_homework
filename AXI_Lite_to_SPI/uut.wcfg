@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="45" />
+   <WVObjectSize size="48" />
    <wvobject fp_name="/TB_AXI_SPI/ARESETn" type="logic" db_ref_id="1">
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">ARESETn</obj_property>
@@ -90,6 +90,14 @@
       <obj_property name="ElementShortName">bus2ip_data[31:0]</obj_property>
       <obj_property name="ObjectShortName">bus2ip_data[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/ip2bus_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ip2bus_data[127:0]</obj_property>
+      <obj_property name="ObjectShortName">ip2bus_data[127:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/rdata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/ip2bus_rdack" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">ip2bus_rdack</obj_property>
       <obj_property name="ObjectShortName">ip2bus_rdack</obj_property>
@@ -101,6 +109,10 @@
    <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_rdce" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">bus2ip_rdce[3:0]</obj_property>
       <obj_property name="ObjectShortName">bus2ip_rdce[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/rxFifoState" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rxFifoState[3:0]</obj_property>
+      <obj_property name="ObjectShortName">rxFifoState[3:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_wrce" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">bus2ip_wrce[3:0]</obj_property>

@@ -193,7 +193,7 @@ axiToSpi_rxFifo rxFifo(
 
 //**************** BASIC REGISTERS CONT'D ****************
 
-	always @(*)
+	always @(posedge bus2ip_clk)
 	begin
 		REG_STATUS = {~rxFifo_empty, txFifo_full, txFifo_dataCount};
 	end
@@ -213,6 +213,7 @@ axiToSpi_rxFifo rxFifo(
 	begin
       if (rst) begin
          rxFifoState <= sr_idle;
+			ip2bus_rdack <= 0;
       end
       else begin
 			case (rxFifoState)
@@ -232,7 +233,7 @@ axiToSpi_rxFifo rxFifo(
 					end
 				end
 				sr_signalDone : begin
-					ip2bus_rdack = 1;
+					ip2bus_rdack <= 1;
 					rxFifoState <= sr_idle;
             end
             default: begin  // Fault Recovery
@@ -247,9 +248,9 @@ axiToSpi_rxFifo rxFifo(
 	always @(posedge bus2ip_clk)
 	begin
 		if (bus2ip_rdce[ce_cmd] || bus2ip_rdce[ce_status])
-			ip2bus_rdack = 1;
+			ip2bus_rdack <= 1;
 		else if (bus2ip_rdce[ce_tx])
-			ip2bus_rdack = 1; // this should really never happen tho (!)
+			ip2bus_rdack <= 1; // this should really never happen tho (!)
 		else if (bus2ip_rdce[ce_rx])
 			if (rxFifo_empty == 0)
 				if (rxFifoState == sr_idle)
@@ -260,7 +261,7 @@ axiToSpi_rxFifo rxFifo(
 	always @ (posedge bus2ip_clk) begin
 		bus2ip_rdce_prev <= bus2ip_rdce;
 		if(bus2ip_rdce==4'b0000 && bus2ip_rdce_prev != 4'b0000)
-			ip2bus_rdack = 0;
+			ip2bus_rdack <= 0;
 	end
 	
 	/*always @(negedge //Edited by M

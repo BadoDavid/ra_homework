@@ -64,10 +64,10 @@ module addr_management(
 		if (AWVALID == 1) 
 			begin
 				case (AWADDR[3:2])
-					2'b00 : wrce_temp = 4'b0001;
-					2'b01 : wrce_temp = 4'b0010;
-					2'b10 : wrce_temp = 4'b0100;
-					2'b11 : wrce_temp = 4'b1000;
+					2'b00 : wrce_temp <= 4'b0001;
+					2'b01 : wrce_temp <= 4'b0010;
+					2'b10 : wrce_temp <= 4'b0100;
+					2'b11 : wrce_temp <= 4'b1000;
 				endcase
 				aw_ready <= 1;
 			end
@@ -75,13 +75,17 @@ module addr_management(
 	
 	// Read address
 	always @ (posedge ACLK)
-		if (ARVALID == 1) 
+		if (ARESETn == 0) begin
+			bus2ip_rdce <= 4'b0001;
+			ar_ready <= 0;
+		end
+		else if (ARVALID == 1) 
 			begin
 				case (ARADDR[3:2])
-					2'b00 : bus2ip_rdce = 4'b0001;
-					2'b01 : bus2ip_rdce = 4'b0010;
-					2'b10 : bus2ip_rdce = 4'b0100;
-					2'b11 : bus2ip_rdce = 4'b1000;
+					2'b00 : bus2ip_rdce <= 4'b0001;
+					2'b01 : bus2ip_rdce <= 4'b0010;
+					2'b10 : bus2ip_rdce <= 4'b0100;
+					2'b11 : bus2ip_rdce <= 4'b1000;
 				endcase
 				ar_ready <= 1;
 			end
