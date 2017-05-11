@@ -90,7 +90,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494497732" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494497732">
+    <transform xil_pn:end_ts="1494541944" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494541944">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -121,7 +121,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494497732" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1494497732">
+    <transform xil_pn:end_ts="1494541944" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1494541944">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -141,7 +141,7 @@
       <outfile xil_pn:name="axiToSpi_RxFifo.v"/>
       <outfile xil_pn:name="axiToSpi_TxFifo.v"/>
     </transform>
-    <transform xil_pn:end_ts="1494497738" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1494497732">
+    <transform xil_pn:end_ts="1494541948" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1494541944">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -157,7 +157,7 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1494497739" xil_pn:in_ck="6511850746758078445" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8238929933520176465" xil_pn:start_ts="1494497738">
+    <transform xil_pn:end_ts="1494541949" xil_pn:in_ck="6511850746758078445" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8238929933520176465" xil_pn:start_ts="1494541948">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForProperties"/>
@@ -196,8 +196,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494503633" xil_pn:in_ck="6893225936790398621" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-7068365938410377274" xil_pn:start_ts="1494503625">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1494542782" xil_pn:in_ck="6893225936790398621" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-7068365938410377274" xil_pn:start_ts="1494542771">
+      <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name=".lso"/>
@@ -205,6 +205,7 @@
       <outfile xil_pn:name="AXI_SPI_top.ngc"/>
       <outfile xil_pn:name="AXI_SPI_top.ngr"/>
       <outfile xil_pn:name="AXI_SPI_top.prj"/>
+      <outfile xil_pn:name="AXI_SPI_top.stx"/>
       <outfile xil_pn:name="AXI_SPI_top.syr"/>
       <outfile xil_pn:name="AXI_SPI_top.xst"/>
       <outfile xil_pn:name="AXI_SPI_top_stx_beh.prj"/>

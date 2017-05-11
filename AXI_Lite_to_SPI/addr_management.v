@@ -35,7 +35,6 @@ module addr_management(
    output [31:0] RDATA,
 	 
 	output bus2ip_clk,
-	output [31:0] bus2ip_addr, 
 	output reg [31:0] bus2ip_data,
 	output reg [3:0] bus2ip_wrce,
 	output reg [3:0] bus2ip_rdce,

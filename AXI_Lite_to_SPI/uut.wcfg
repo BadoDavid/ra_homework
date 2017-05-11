@@ -10,10 +10,16 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="29" />
+   <WVObjectSize size="24" />
    <wave_markers>
       <marker time="6006235000000" label="" />
    </wave_markers>
+   <wvobject fp_name="divider78" type="divider">
+      <obj_property name="label">AXI4-Lite</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/ACLK" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">ACLK</obj_property>
       <obj_property name="ObjectShortName">ACLK</obj_property>
@@ -78,54 +84,11 @@
       <obj_property name="Radix">HEXRADIX</obj_property>
       <obj_property name="label">RDATA[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="divider89" type="divider">
-      <obj_property name="label">INNER SIGNALS</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="BkColor">128 128 255</obj_property>
-      <obj_property name="TextColor">230 230 230</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/DEBUG" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">DEBUG[7:0]</obj_property>
-      <obj_property name="ObjectShortName">DEBUG[7:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_rdce" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">bus2ip_rdce[3:0]</obj_property>
-      <obj_property name="ObjectShortName">bus2ip_rdce[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_data" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">bus2ip_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">bus2ip_data[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/ip2bus_data" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">ip2bus_data[127:0]</obj_property>
-      <obj_property name="ObjectShortName">ip2bus_data[127:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/ip2bus_rdack" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">ip2bus_rdack</obj_property>
-      <obj_property name="ObjectShortName">ip2bus_rdack</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/ip2bus_wrack" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">ip2bus_wrack</obj_property>
-      <obj_property name="ObjectShortName">ip2bus_wrack</obj_property>
-   </wvobject>
    <wvobject fp_name="divider83" type="divider">
       <obj_property name="label">SPI</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">128 128 255</obj_property>
       <obj_property name="TextColor">230 230 230</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/SPI_RESET" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">SPI_RESET</obj_property>
-      <obj_property name="ObjectShortName">SPI_RESET</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/WP_N" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">WP_N</obj_property>
-      <obj_property name="ObjectShortName">WP_N</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TB_AXI_SPI/HOLD_N" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">HOLD_N</obj_property>
-      <obj_property name="ObjectShortName">HOLD_N</obj_property>
    </wvobject>
    <wvobject fp_name="/TB_AXI_SPI/SPI_SCK" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">SPI_SCK</obj_property>
@@ -144,5 +107,74 @@
       <obj_property name="ElementShortName">SPI_MISO</obj_property>
       <obj_property name="ObjectShortName">SPI_MISO</obj_property>
       <obj_property name="label">SPI_MISO</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider89" type="divider">
+      <obj_property name="label">INNER SIGNALS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="group79" type="group">
+      <obj_property name="label">Inner signals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bus2ip_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bus2ip_data[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/ip2bus_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ip2bus_data[127:0]</obj_property>
+         <obj_property name="ObjectShortName">ip2bus_data[127:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/uut/SPI_IP/bus2ip_wrce" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bus2ip_wrce[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bus2ip_wrce[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/ip2bus_wrack" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ip2bus_wrack</obj_property>
+         <obj_property name="ObjectShortName">ip2bus_wrack</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/bus2ip_rdce" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bus2ip_rdce[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bus2ip_rdce[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/uut/Addr_Manage/ip2bus_rdack" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ip2bus_rdack</obj_property>
+         <obj_property name="ObjectShortName">ip2bus_rdack</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="divider80" type="divider">
+      <obj_property name="label">TESTER CONTROL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="group85" type="group">
+      <obj_property name="label">Tester control</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/TB_AXI_SPI/ACLK" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ACLK</obj_property>
+         <obj_property name="ObjectShortName">ACLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/Writer_Run" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Writer_Run</obj_property>
+         <obj_property name="ObjectShortName">Writer_Run</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/Reader_Run" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Reader_Run</obj_property>
+         <obj_property name="ObjectShortName">Reader_Run</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/SPI_RESET" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">SPI_RESET</obj_property>
+         <obj_property name="ObjectShortName">SPI_RESET</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/WP_N" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">WP_N</obj_property>
+         <obj_property name="ObjectShortName">WP_N</obj_property>
+      </wvobject>
+      <wvobject fp_name="/TB_AXI_SPI/HOLD_N" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">HOLD_N</obj_property>
+         <obj_property name="ObjectShortName">HOLD_N</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

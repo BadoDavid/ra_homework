@@ -40,7 +40,7 @@ module AXI_SPI_top(
     );
 	wire rst; 
 	wire bus2ip_clk;
-	wire [31:0] bus2ip_addr; 
+	//wire [31:0] bus2ip_addr; 
 	wire [31:0] bus2ip_data;
 	wire [3:0] bus2ip_wrce;
 	wire [3:0] bus2ip_rdce;
@@ -66,7 +66,6 @@ module AXI_SPI_top(
    .RDATA(RDATA),
 	 
 	.bus2ip_clk(bus2ip_clk),
-	.bus2ip_addr(bus2ip_addr), 
 	.bus2ip_data(bus2ip_data),
 	.bus2ip_wrce(bus2ip_wrce),
 	.bus2ip_rdce(bus2ip_rdce),

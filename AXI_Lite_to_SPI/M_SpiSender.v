@@ -113,7 +113,6 @@ localparam
 			waitReg <= 0;
 			enableClk <= 0;
 			resetClk <= 0;
-			clock_counter <= 0;
       end
       else if(divd_clk_prev != divd_clk)	begin
 			if( (CPHA == 0 && divd_clk == 1) || (CPHA == 1 && divd_clk == 0) ) begin
