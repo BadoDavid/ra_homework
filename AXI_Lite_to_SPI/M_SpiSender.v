@@ -55,8 +55,8 @@ localparam
 
 	reg enableClk;
 	reg resetClk;
-	reg [5:0] clock_counter;//Edited by M 
-	//It needs at least 16:1 clock divider to avoid timing violations
+	reg [5:0] clock_counter;
+	// it needs at least 16:1 clock divider to avoid timing violations
    always @(posedge clk)
 	begin
 		if (resetClk)
@@ -65,7 +65,7 @@ localparam
 			clock_counter <= clock_counter + 1;
 	end
 
-	//division selection based on REG_CMD
+	// division selection based on REG_CMD
 	reg divd_clk;
    always @(posedge clk)
       case (clkDiv[1:0])
@@ -91,30 +91,31 @@ localparam
 		s_idle 		= 8'b00000001,
 		s_wait1		= 8'b00000010,
 		s_working 	= 8'b00000100,
-		s_wait2 		= 8'b00001000,
+		s_wait2 	= 8'b00001000,
 		s_finished 	= 8'b00010000,
 		s_def 		= 8'b00100000,
-		s_2 			= 8'b01000000,
-		s_3 			= 8'b10000000;
+		s_2 		= 8'b01000000,
+		s_3 		= 8'b10000000;
 
 	reg [7:0] state = s_def;
 
    always @(negedge clk) begin
-      if (rst) begin
-			CE <= 1;
-         state <= s_def;
-			returnedValue <= 0;
-			returnValue <= 0;
-			longSequenceStep <= 2'b0;
-			bitCount <= 0;
-			rxReg <= 8'hFF;  
-			txReg <= 8'hFF;
-			MOSI <= 1; 
-			waitReg <= 0;
-			enableClk <= 0;
-			resetClk <= 0;
-      end
-      else if(divd_clk_prev != divd_clk)	begin
+		if (rst) begin
+			CE 				<= 1;
+			state 			<= s_def;
+			returnedValue 	<= 0;
+			returnValue 	<= 0;
+			longSequenceStep<= 2'b0;
+			bitCount 		<= 0;
+			rxReg 			<= 8'hFF;  
+			txReg 			<= 8'hFF;
+			MOSI 			<= 1; 
+			waitReg 		<= 0;
+			enableClk 		<= 0;
+			resetClk 		<= 0;
+		end
+		//**************** DATA SAMPLE and SETUP ****************
+		else if(divd_clk_prev != divd_clk)	begin
 			if( (CPHA == 0 && divd_clk == 1) || (CPHA == 1 && divd_clk == 0) ) begin
 				rxReg <= {rxReg[6:0], MISO}; // Data sample, MSB always first
 				bitCount <= bitCount + 1;
@@ -143,7 +144,6 @@ localparam
 						// write data to tx register if CPHA=0
 						// see 'initial data setup notes'
 						if (CPHA == 1'b0) begin
-							//txReg <= txData;
 							txReg <= {txData[6:0], 1'b1}; 
 							MOSI <= txData[7]; 
 						end
@@ -214,7 +214,6 @@ localparam
 						returnedValue <= 1;
 						returnValue <= 0;
 					end
-					//longSequenceStep <= 2'b0;
             end
             s_def : begin
                resetClk <= 1;
@@ -234,36 +233,5 @@ localparam
 // if CPHA=0, tx data may be read at CE setup
 // if CPHA=1, use the first setup clockbeat
 // based on time diagrams: http://dlnware.com/theory/SPI-Transfer-Modes
-
-//**************** DATA SAMPLE and SETUP ****************
-/*always @(negedge clk) 
-begin
-	if (rst == 1)
-	begin	// reset
-		bitCount = 0;
-		rxReg = 8'hFF;  
-		txReg <= 8'hFF;
-		MOSI <= 1; 
-	end
-	else if(divd_clk_prev != divd_clk)	begin
-		if( (CPHA == 0 && divd_clk == 1) || (CPHA == 1 && divd_clk == 0) ) begin
-			rxReg = {rxReg[6:0], MISO}; // MSB always first
-			bitCount = bitCount + 1;
-		end
-		else if (	(CPHA == 0 && divd_clk == 0) ||	(CPHA == 1 && divd_clk == 1) ) begin
-			// write data to tx register if CPHA=0
-			// see 'initial data setup notes'
-			if (CPHA == 1'b0 && bitCount == 4'h0) begin 
-				//txReg <= txData;
-				txReg <= {txData[6:0], 1'b1}; 
-				MOSI <= txData[7]; 
-			end
-			else if (bitCount != 8)	begin // MSB first, as always on the selected chip
-				txReg <= {txReg[6:0], 1'b1}; 
-				MOSI <= txReg[7]; 
-			end
-		end
-	end
-end*/
 
 endmodule

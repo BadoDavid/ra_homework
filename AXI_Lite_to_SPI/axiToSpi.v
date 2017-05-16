@@ -200,7 +200,7 @@ axiToSpi_rxFifo rxFifo(
 // gets data from rx fifo and puts it onto bus
 
 	localparam
-		sr_idle 			= 4'b0001,
+		sr_idle			= 4'b0001,
 		sr_beginRead	= 4'b0010,
 		sr_waitValid	= 4'b0100,
 		sr_signalDone	= 4'b1000;
@@ -210,7 +210,7 @@ axiToSpi_rxFifo rxFifo(
 	always @(posedge bus2ip_clk)
 	begin
       if (rst) begin
-         rxFifoState 		<= sr_idle;
+         rxFifoState			<= sr_idle;
 			rxFifo_rd 			<= 0;
 			REG_RX 				<= 32'hFF_FF_FF_FF;
 			REG_TX 				<= 32'hFF_FF_FF_FF;
@@ -235,7 +235,6 @@ axiToSpi_rxFifo rxFifo(
 					end
 				end
 				sr_signalDone : begin
-					//ip2bus_rdack <= 1;
 					rxFifoState <= sr_idle;
             end
             default: begin  // Fault Recovery
@@ -267,8 +266,10 @@ axiToSpi_rxFifo rxFifo(
 	reg readDataIsReady_prev;
 	always @(posedge bus2ip_clk)
 	begin
-		if(rst) 								rxFifo_wr <= 0;
-		else if (rxFifo_wrack == 1)	rxFifo_wr <= 0;
+		if(rst)
+			rxFifo_wr <= 0;
+		else if (rxFifo_wrack == 1)	
+			rxFifo_wr <= 0;
 		else if (ready == 1 && readDataIsReady == 1 && readDataIsReady_prev == 0) // should always be so when readDataIsReady, but who knows ¯\_(o_o)_/¯
 		begin
 			if (rxFifo_full == 0)
@@ -284,10 +285,10 @@ axiToSpi_rxFifo rxFifo(
 //populates tx fifo with axi-incoming data
 
 	localparam
-		sw_idle 					= 4'b0001,
-		sw_waitFifoWrite		= 4'b0010,
+		sw_idle 			= 4'b0001,
+		sw_waitFifoWrite	= 4'b0010,
 		sw_continueFilling	= 4'b0100,
-		sw_endLongSeq			= 4'b1000;
+		sw_endLongSeq		= 4'b1000;
 
 	reg [3:0] wrFifoState  = sw_idle;
 	reg direction = 0;
@@ -298,15 +299,15 @@ axiToSpi_rxFifo rxFifo(
 	reg controlled = 0;
 	reg [2:0] longSeqCount = 0;
 
-   always @(posedge bus2ip_clk)
+	always @(posedge bus2ip_clk)
 	begin
-      if (rst) begin
-         wrFifoState <= sw_idle;
+		if (rst) begin
+			wrFifoState <= sw_idle;
 			ip2bus_wrack_en1 <= 0;
-      end
-      else begin
+		end
+		else begin
 			case (wrFifoState)
-            sw_idle : begin
+				sw_idle : begin
 					if (bus2ip_wrce[ce_tx] == 1 && ip2bus_wrack == 0)
 					begin
 						if (bus2ip_data[8] == 1) // got a ctrl msg
@@ -424,10 +425,10 @@ normal:
 // if any data is found in tx fifo and spi module idle, begin transmission
 
 	localparam
-		sdd_idle 					= 4'b0001,
-		sdd_waitForTxFifo			= 4'b0010,
+		sdd_idle 				= 4'b0001,
+		sdd_waitForTxFifo		= 4'b0010,
 		sdd_activateSpiSender	= 4'b0100,
-		sdd_wait						= 4'b1000;
+		sdd_wait				= 4'b1000;
 
 	reg [3:0] txFifoDepopulatorState  = sdd_idle;
 	
