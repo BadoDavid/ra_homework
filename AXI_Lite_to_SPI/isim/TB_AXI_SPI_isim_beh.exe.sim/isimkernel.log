@@ -2,28 +2,28 @@ Command line:
    TB_AXI_SPI_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  65335
+     -socket  49960
 
-Fri May 12 00:44:50 2017
+Wed May 17 12:31:47 2017
 
 
- Elaboration Time: 0.062401 sec
+ Elaboration Time: 0.0624 sec
 
  Current Memory Usage: 682.648 Meg
 
- Total Signals          : 1277
- Total Nets             : 5265
+ Total Signals          : 1274
+ Total Nets             : 5262
  Total Signal Drivers   : 382
  Total Blocks           : 21
  Total Primitive Blocks : 10
  Total Processes        : 518
- Total Traceable Variables  : 1141
- Total Scalar Nets and Variables : 50640
-Total Line Count : 1327
+ Total Traceable Variables  : 1136
+ Total Scalar Nets and Variables : 50625
+Total Line Count : 1329
 
- Total Simulation Time: 5.19483 sec
+ Total Simulation Time: 8.39285 sec
 
- Current Memory Usage: 997.22 Meg
+ Current Memory Usage: 839.934 Meg
 
-Fri May 12 00:45:59 2017
+Thu May 18 08:21:50 2017
 

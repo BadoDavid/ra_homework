@@ -62,18 +62,7 @@ module TB_AXI_SPI;
 	reg WP_N;
 	reg HOLD_N;
 	reg SPI_RESET;
-	reg SCK_Test;			// These 3 signals are for testing the EEPROM without using the AXI-SPI peripheral
-	wire MOSI_Test;
-	wire MISO_Test;
 	
-	//SPI_Writer Inputs
-	reg [7:0] Data;
-	reg SPI_Writer_Start;
-	reg SPI_Writer_RST;
-	wire SPI_Writer_Running;
-	reg After_W_CSN;
-	
-
 	// Instantiate the Unit Under Test (UUT)
 	AXI_SPI_top uut (
 		.ACLK(ACLK), 
@@ -130,26 +119,20 @@ module TB_AXI_SPI;
 	
 	//	Instantiate the SPI EEPROM
 	M25AA160C EEPROM (
-		.SI(SPI_MOSI),		// Change MOSI_Test to SPI_MOSI to run test on UUT
-		.SCK(SPI_SCK),		// Change SCK_Test to SPI_SCK to run test on UUT
-		.SO(SPI_MISO),		// Change MISO_Test to SPI_MISO to run test on UUT
+		.SI(SPI_MOSI),		
+		.SCK(SPI_SCK),		
+		.SO(SPI_MISO),		
 		.CS_N(CS_N),
 		.WP_N(WP_N),
 		.HOLD_N(HOLD_N),
 		.RESET(SPI_RESET)
-	);
+	);	
 	
-	// Instantiate the SPI Writer
-	/*SPI_Writer SPI_W (
-		.SCK(SCK_Test),
-		.RST(SPI_Writer_RST),
-		.MOSI(MOSI_Test),
-		.CS_N(CS_N),
-		.DATA(Data),
-		.Start(SPI_Writer_Start),
-		.Running(SPI_Writer_Running),
-		.After_W_CSN(After_W_CSN)
-	);*/
+	/*************************** UUT Test *****************************************/
+	/*			Configures the AXI-Lite - SPI Peripheral										*/
+	/*			Writes a byte to the memory (Address=, Data=)								*/
+	/*			Then reads it.																			*/
+	/******************************************************************************/
 
 	// Initialize ACKL and ARESETn	
 	initial begin
@@ -158,124 +141,25 @@ module TB_AXI_SPI;
 		#17 ARESETn <= 0;
 		#30 ARESETn <= 1;
 	end
-
 	always	#5 ACLK <= ~ACLK;
-	
-	/**************************** Simple write to module **********************************/
-	/* Writes 'W_Data' to the address given in 'Write_to' as a Master on the AXI-Lite bus.*/
-	/**************************************************************************************/
-	/* Remove this line to run the write example
-	
-	initial begin
-		#37	Write_to		<= 32'h00000000;	//32 bit Write Address
-				W_Data		<= 32'h00000000;	//32 bit Data
-				W_Start		<= 1;					//Send Data
-	end
-	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
-	
-	
-	/**************************** Simple read from module ***********************************/
-	/*          Reads 32 bits data (R_Data) from the address given in 'Read_from'           */
-	/*								as a Master on the AXI-Lite bus.											 */
-	/****************************************************************************************/
-	/* Remove this line to run the read example
-	initial begin
-		#37	Read_from	<= 32'h00000000;	//32 bit Read Address
-				R_Start		<= 1;					//Send Data
-	end
-	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0; 
 
+	// Only start AXI Writer/Reader if they are not already running
+	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
+	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0;
 	
-	/*************************** EEPROM Test ************************************************/
-	/*			Writes a single data to the memory and then reads it.									 */
-	/****************************************************************************************/
-	/* Remove this line to test the EEPROM without the AXI-SPI IP
+	//Initialize SPI
 	initial begin 
 			WP_N 					<= 0;
 			HOLD_N				<= 0;
 			SPI_RESET			<= 0;
-			SCK_Test				<= 0;
-			SPI_Writer_RST 	<= 0;
-		#170 
+		#17 
 			SPI_RESET			<= 1;
-			SPI_Writer_RST 	<= 1;			
-		#400
-			SPI_RESET			<= 0;			
-			SPI_Writer_RST 	<= 0;			
-	end
-	
-	always #100 SCK_Test <= ~SCK_Test; //5 MHz SPI Clock
-
-	initial begin
-		#650
-			Data					<= 8'b00000110; //WREN
-			SPI_Writer_Start	<= 1;
-			After_W_CSN			<= 1;
+		#100
+			SPI_RESET			<= 0;		
 			HOLD_N				<= 1;
-			WP_N 					<= 1;
+			WP_N 					<= 1;			
 	end
 	
-	always @ (negedge SCK_Test) begin
-		if(SPI_Writer_Running) SPI_Writer_Start<=0;
-	end
-	
-	initial begin
-		#3050
-			Data					<= 8'b00000010; //WRITE
-			SPI_Writer_Start	<= 1;
-			After_W_CSN			<= 0;
-	end
-	//5000ns-nél adta le a write utasítás utolsó bitjét
-	initial begin
-		#4350
-			Data					<= 8'b00000000; //ADDRESS 1. byte
-			After_W_CSN			<= 0;
-	end
-	//6600-nál fejezi be
-	initial begin
-		#6350
-			After_W_CSN			<= 0;
-			Data					<= 8'b11110000; //ADDRESS 2. byte
-		#300
-			After_W_CSN			<= 0;
-	end	
-	//8200-ig tart a címek beírása
-	//2 byte-ot írunk: 10101010 és 11110000 lesznek
-	initial begin
-		#8150
-			Data					<=8'b10101010;
-		#1500
-			Data					<=8'b11110000;
-		#300
-			After_W_CSN			<= 1;
-	end
-	//12000ns-re bõven végez az írással
-	
-	//Kiolvasás
-	initial begin
-		#5000000 //Beírási idõ
-		#60000
-			Data					<= 8'b00000011;//READ instruction
-			SPI_Writer_Start	<= 1;
-			After_W_CSN			<= 0;
-			WP_N					<= 0;
-		#1500
-			Data					<= 8'b00000000;//1. address byte
-		#1600
-			Data					<= 8'b11110000; //ADDRESS 2. byte
-		#1600
-			Data					<= 8'b00000000;
-		#3000	
-			After_W_CSN			<= 1;
-	end
-	/**/
-	
-	/*************************** UUT Test *****************************************/
-	/*			Configures the AXI-Lite - SPI Peripheral										*/
-	/*			Writes a byte to the memory (Address=, Data=)								*/
-	/*			Then reads it.																			*/
-	/******************************************************************************/
-	// Remove the * to test the UUT
 	localparam
 		SPI_ADDRESS_LOW		= 8'b11110000,
 		SPI_ADDRESS_HIGH		= 8'b00000000,
@@ -292,21 +176,7 @@ module TB_AXI_SPI;
 				W_Data		<= CMD_REG;	
 		#10	W_Start		<= 1;					//Send Data
 	end// 135ns
-	always @(posedge ACLK) if(Writer_Run == 1) W_Start <= 0; 
-	/*//Write to the tx_fifo: WREN
-	initial begin
-		#207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
-				W_Data		<= 32'h00000000+SPI_CMD_WREN;	//write enable
-		#10	W_Start		<= 1;					
-	end	
-	
-	//Read status register
-	initial begin
-		#607	Read_from	<= BASE_ADDRESS+OFFSET_STATUS_REG;	
-		#10	R_Start		<= 1;					
-	end/**/
-	always @(posedge ACLK) if(Reader_Run == 1) R_Start <= 0;
-	/**/
+
 	//Write to the eeprom
 	initial begin
 		#207	Write_to		<= BASE_ADDRESS+OFFSET_TX_FIFO;	
@@ -367,18 +237,6 @@ module TB_AXI_SPI;
 		#10600	Read_from	<= BASE_ADDRESS+OFFSET_RX_FIFO;	
 		#10		R_Start		<= 1;					
 	end	
-	//Init SPI
-	initial begin 
-			WP_N 					<= 0;
-			HOLD_N				<= 0;
-			SPI_RESET			<= 0;
-		#17 
-			SPI_RESET			<= 1;
-		#100
-			SPI_RESET			<= 0;		
-			HOLD_N				<= 1;
-			WP_N 					<= 1;			
-	end
-	/**/
+
 endmodule
 

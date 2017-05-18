@@ -90,13 +90,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494541944" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1494541944">
+    <transform xil_pn:end_ts="1495017097" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1495017096">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="25AA160C.v"/>
       <outfile xil_pn:name="AXI_Lite_Reader.v"/>
       <outfile xil_pn:name="AXI_Lite_Writer.v"/>
@@ -121,14 +117,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494541944" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1494541944">
+    <transform xil_pn:end_ts="1495017097" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1495017097">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="25AA160C.v"/>
       <outfile xil_pn:name="AXI_Lite_Reader.v"/>
       <outfile xil_pn:name="AXI_Lite_Writer.v"/>
@@ -141,14 +132,10 @@
       <outfile xil_pn:name="axiToSpi_RxFifo.v"/>
       <outfile xil_pn:name="axiToSpi_TxFifo.v"/>
     </transform>
-    <transform xil_pn:end_ts="1494541948" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1494541944">
+    <transform xil_pn:end_ts="1495017104" xil_pn:in_ck="-1906388374608741597" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="4798479886112453198" xil_pn:start_ts="1495017097">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="TB_AXI_SPI_beh.prj"/>
       <outfile xil_pn:name="TB_AXI_SPI_isim_beh.exe"/>
@@ -157,11 +144,9 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1494541949" xil_pn:in_ck="6511850746758078445" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8238929933520176465" xil_pn:start_ts="1494541948">
+    <transform xil_pn:end_ts="1495017105" xil_pn:in_ck="6511850746758078445" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="8238929933520176465" xil_pn:start_ts="1495017104">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="TB_AXI_SPI_isim_beh.wdb"/>
@@ -200,6 +185,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="AXI_SPI_top.lso"/>
       <outfile xil_pn:name="AXI_SPI_top.ngc"/>

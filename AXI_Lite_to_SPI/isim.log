@@ -11,43 +11,7 @@ Time resolution is 1 ps
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# run 6500us
-WARNING: at 1620 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $hold( SCK:1545 ns, CS_N:1620 ns,100 ns)
-
-
-WARNING: at 2925 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:2885 ns, :2925 ns, 50 ns)
-
-
-WARNING: at 4195 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:4155 ns, :4195 ns, 50 ns)
-
-
-WARNING: at 5465 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:5425 ns, :5465 ns, 50 ns)
-
-
-WARNING: at 6770 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $hold( SCK:6695 ns, CS_N:6770 ns,100 ns)
-
-
-WARNING: at 6002385 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:6002345 ns, :6002385 ns, 50 ns)
-
-
-WARNING: at 6003655 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:6003615 ns, :6003655 ns, 50 ns)
-
-
-WARNING: at 6004925 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $width( SCK:6004885 ns, :6004925 ns, 50 ns)
-
-
-WARNING: at 6006230 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $hold( SCK:6006155 ns, CS_N:6006230 ns,100 ns)
-
-
-ISim P.20131013 (signature 0x7708f090)
-WARNING: A WEBPACK license was found.
-WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
-WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
-This is a Lite version of ISim.
-# run 1000 ns
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
-# run 6500us
+# run 6500 us
 WARNING: at 1620 ns: Timing violation in /TB_AXI_SPI/EEPROM/  $hold( SCK:1545 ns, CS_N:1620 ns,100 ns)
 
 

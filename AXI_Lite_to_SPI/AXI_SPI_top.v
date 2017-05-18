@@ -76,7 +76,7 @@ module AXI_SPI_top(
 	
 	axiToSpi SPI_IP(
 	.rst(rst),
-	.bus2ip_clk(bus2ip_clk),		//16MHz
+	.bus2ip_clk(bus2ip_clk),		
 	.bus2ip_data(bus2ip_data),
 	.bus2ip_wrce(bus2ip_wrce),
 	.bus2ip_rdce(bus2ip_rdce),
@@ -86,7 +86,7 @@ module AXI_SPI_top(
 	
 	.SPI_MOSI(SPI_MOSI),
 	.SPI_MISO(SPI_MISO),
-	.SPI_SCK(SPI_SCK), // must no exceed 10MHz
+	.SPI_SCK(SPI_SCK), 
 	.SPI_CSn(SPI_CSn)
 	);
 endmodule

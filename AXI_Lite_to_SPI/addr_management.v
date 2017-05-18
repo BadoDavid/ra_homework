@@ -56,7 +56,7 @@ module addr_management(
 	assign WREADY = w_ready;
 	assign RVALID = r_valid;
 	
-	reg [3:0] wrce_temp; //Edited by M
+	reg [3:0] wrce_temp; 
 	
 	// Write address
 	always @ (posedge ACLK)
@@ -102,7 +102,7 @@ module addr_management(
 				bus2ip_data = WDATA;
 				if(ip2bus_wrack == 1) begin
 					w_ready <= 1;
-					bus2ip_wrce <= 0;//edited by M
+					bus2ip_wrce <= 0;
 				end
 			end
 		else w_ready		<= 0;
@@ -118,18 +118,10 @@ module addr_management(
 					4'b0100 : rdata <= ip2bus_data[95:64];
 					4'b1000 : rdata <= ip2bus_data[127:96];
 				endcase
-				//bus2ip_data = RDATA;
+				
 				r_valid <= 1;
 			end
 			
 	assign RDATA = rdata; 
-			
-	// Handshaking - rev. by Mate
-/*	always @ (posedge ACLK) begin
-		if (AWVALID == 0)	aw_ready		<= 0;
-		if (ARVALID == 0)	ar_ready		<= 0;
-		if (WVALID == 0) 	w_ready		<= 0;
-		if	(RREADY == 1)	r_valid		<= 0;
-	end*/
 	
 endmodule
